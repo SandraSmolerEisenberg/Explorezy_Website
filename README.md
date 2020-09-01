@@ -61,12 +61,19 @@ Open the `server` and `client` in separate VSCode workspaces or open the combine
 
 ### Purpose
 
-2-5 sentences describing what the system does
+The system(named Explorezy) allows the user to view and search for different travel information by location such as restaurants, accommodations, city sightseeing, and different activities available at the selected location. Furthermore, the user can create an account. When logged in the user can manage (add and remove) favorite places for repeated access to locations of interest. Logged-in users can also create trips and add places to them.
 
 ### Pages
 
-* Home: 1-3 sentences describing what the page displays and what a user can do
-* Shopping cart: ...
+The Homepage consists of the main navigation bar where the user can choose to log in or register. The page has a map where the user can search for locations. A search box above the map facilitates a known-item search. If the user is logged in, the home page also displays “My favorites” and “My trips” in the global navigation bar. Once the user selects a location, a new component is loaded. 
+
+If a visitor uses the search function or the map on the Homepage, they are redirected to a new sub-page where the map is zoomed in on that location and displays all the places of interest in the area. If a user selects a place on the map, the side panel displays information about that chosen place. If the user is logged in they will have the option to add it to their favorites or to any existing trip.
+
+More sub-pages are divided by categories and display specific content of interest such as accommodation, food and drink, and more in a list view. If the user is logged in they will have the option to add an item to their list of favorites or trips. 
+
+The sub-pages “My favorites” and “My Trips” are available from the global navigation bar as a logged-in user. This is where the user can manage their own favorite saved places and create and manage trips. Once a trip is created the user will have the option to add a place of interest to the trip. The user can also log out and view and update their profile.
+
+[UI Prototype](https://drive.google.com/file/d/1J8VwD1p_1uqvXKWKEhklpzzby-T5zfD4/view?usp=sharing)
 
 ### Entity-Relationship (ER) Diagram
 
