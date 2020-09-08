@@ -61,19 +61,17 @@ Open the `server` and `client` in separate VSCode workspaces or open the combine
 
 ### Purpose
 
-The system(named Explorezy) allows the user to view and search for different travel information by location such as restaurants, accommodations, city sightseeing, and different activities available at the selected location. Furthermore, the user can create an account. When logged in the user can manage (add and remove) favorite places for repeated access to locations of interest. Logged-in users can also create trips and add places to them.
+The system (named Explorezy) allows the user to view travel locations such as restaurants, accommodations, city sightseeing, activities, and their information. Furthermore, the user can create an account. When logged in the user can add/delete favorite places and create/edit/delete trips that contain selected locations. Users can also create posts about locations which are displayed to all visitors of the website.
 
 ### Pages
 
-The Homepage consists of the main navigation bar where the user can choose to log in or register. The page has a map where the user can search for locations. A search box above the map facilitates a known-item search. If the user is logged in, the home page also displays “My favorites” and “My trips” in the global navigation bar. Once the user selects a location, a new component is loaded. 
+The website displays a global navigation bar where the user can navigate to the “Places” page, choose to log in, or register as a user. The Home Page displays posts about places made by users. If the user is logged in, the navigation bar also displays “My favorites” and “My trips”.
 
-If a visitor uses the search function or the map on the Homepage, they are redirected to a new sub-page where the map is zoomed in on that location and displays all the places of interest in the area. If a user selects a place on the map, the side panel displays information about that chosen place. If the user is logged in they will have the option to add it to their favorites or to any existing trip.
+The page “Places” displays a list of all places in the database. A search box allows the user to search for specific places to narrow the list. The user can click on a place to show more details. Here, the user can also favorite the place and/or add it to a trip.
 
-More sub-pages are divided by categories and display specific content of interest such as accommodation, food and drink, and more in a list view. If the user is logged in they will have the option to add an item to their list of favorites or trips. 
+The page “My favorites” displays a list of places which have been favorited by the user. Places can be removed from the list on the page.
 
-The sub-pages “My favorites” and “My Trips” are available from the global navigation bar as a logged-in user. This is where the user can manage their own favorite saved places and create and manage trips. Once a trip is created the user will have the option to add a place of interest to the trip. The user can also log out and view and update their profile.
-
-[UI Prototype](https://drive.google.com/file/d/1J8VwD1p_1uqvXKWKEhklpzzby-T5zfD4/view?usp=sharing)
+The page “My trips” shows a list of trips. The user can add a trip, delete a trip, and click on a trip to view details. Clicking a trip reveals all places that are added to the trip. A place can be added or removed from a trip.
 
 ### Entity-Relationship (ER) Diagram
 
