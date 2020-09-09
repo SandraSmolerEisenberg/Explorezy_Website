@@ -61,13 +61,20 @@ npm test
 
 ## Postman Tests
 
-* You can import the Postman collection from [tests/server.postman_collection.json](./tests/server.postman_collection.json)
-* [Extracting data from responses and chaining requests](http://blog.getpostman.com/2014/01/27/extracting-data-from-responses-and-chaining-requests/)
+We use the API testing tool Postman to define example HTTP requests and test assertions. Your tests will be automatically executed in GitLab pipelines whenever you push to the `master` branch. Try to do that as often as possible.
+
+* [Set up Postman for your project](./docs/POSTMAN.md)
 
 > Remember to **export and commit** any test changes back to `tests/server.postman_collection.json` and make sure `npm test` succeeds for your final submission!
 
+## Error Handling
+
+* [Error Handling in Node.js](https://www.joyent.com/node-js/production/design/errors)
+* [Error Handling in Express.js](https://expressjs.com/en/guide/error-handling.html)
+
 ## Debugging with VSCode
 
-Set a breakpoint and click *Debug > Start Debugging*
+1. Set a breakpoint by clicking on the left side of a line number
+2. Click *Run > Start Debugging* (Choose the "Debug Server" config if you opened the combined workspace)
 
 > Learn more in the [VSCode Debugging Docs](https://code.visualstudio.com/docs/editor/debugging).
