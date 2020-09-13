@@ -7,12 +7,14 @@ var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
 var placesController = require('./controllers/places');
+var usersController = require('./controllers/users');
+
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/explorezyDB';
 var port = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, function(err) {
     if (err) {
         console.error(`Failed to connect to MongoDB with URI: ${mongoURI}`);
         console.error(err.stack);
@@ -37,6 +39,7 @@ app.get('/api', function(req, res) {
 });
 
 app.use('/api/places', placesController);
+app.use('/api/users', usersController);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

@@ -26,7 +26,7 @@ var wikipediaSchema = new Schema({
     text: {type: String}
 });
 
-var placeShema = new Schema({
+var placeSchema = new Schema({
     name: { type: String },
     address: { type: addressSchema},
     wikipedia: { type: String },
@@ -36,4 +36,4 @@ var placeShema = new Schema({
 });
 
 
-module.exports = mongoose.model('places', placeShema);
+module.exports = mongoose.model('places', placeSchema);
