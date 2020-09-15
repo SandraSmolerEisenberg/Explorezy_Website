@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var User = require('../models/user');
 
+// Create new user
 router.post('/', function(req, res, next) {
     User.find({email: req.body.email}, function(err, user){
         if(err){
@@ -23,17 +24,19 @@ router.post('/', function(req, res, next) {
                     last_name: req.body.last_name || '',
                     email: req.body.email,
                     password: hash,
-                    favorite_places: []
+                    favorite_places: [], 
+                    trips: []
                 });   
                 user.save(function(err, user) {
                     if (err) { return next(err); }
                     res.status(201).json(user);
                 });
             }
-        } );
+        });
     });
 });
 
+// Get all users
 router.get('/', function(req, res, next) {
     User.find(function(err, users) {
         if (err) { return next(err); }
@@ -41,6 +44,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// Find user by ID
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
@@ -52,7 +56,7 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-
+// Replace user
 router.put('/:id', function(req, res, next) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
@@ -65,11 +69,13 @@ router.put('/:id', function(req, res, next) {
         user.email = req.body.email;
         user.password = req.body.password;
         user.favorite_places = req.body.favorite_places;
+        user.trips = req.body.trips;
         user.save();
         res.json(user);
     });
 });
 
+// Update user
 router.patch('/:id', function(req, res, next) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
@@ -81,13 +87,14 @@ router.patch('/:id', function(req, res, next) {
         user.last_name = req.body.last_name || user.last_name ;
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;
-        // This will probably not work We need a diffrent way to update the favorite places
         user.favorite_places = req.body.favorite_places || user.favorite_places;
+        user.trips = req.body.trips || user.trips;
         user.save();
         res.json(user);
     });
 });
 
+// Delete user
 router.delete('/:id', function(req, res, next) {
     var id = req.params.id;
     User.findOneAndDelete({_id: id}, function(err, user) {
@@ -99,11 +106,92 @@ router.delete('/:id', function(req, res, next) {
     });
 });
 
-// TODO 
-// Endpoint to add favorite places
-// Endpoint to add trips 
-// Endpoint to remove a favorite place
-// Endpoint to remove a trip
-// Endpoint for login
+// Add favourite place
+router.post('/:id/favoruite-places', function(req, res, next){
+    var id = req.params.id;
+    var favourite_places = req.body.favorite_places;
+    User.findById(id, function(err, user){
+        if (err) { return next(err); }
+        if (user === null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        if (favourite_places === null) {
+            return res.status(404).json({'message': 'Favourite place not found'});
+        }
+        user.favorite_places.push(favourite_places);
+    });
+});
+
+// Remove favourite place
+router.delete('/:id/favourite-places/:placeId', function(req, res, next) {
+    var id = req.params.id;
+    var placeId = req.params.placeId;
+    User.findById(id, function(err, user) {
+        if (err) { return next(err); }
+        if (user === null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        let index = user.favourite_places.indexOf(placeId);
+        user.favourite_places.splice(index, 1);
+        res.json(user.favourite_places);
+    });
+});
+
+// Add trips
+router.post('/:id/trips', function(req, res, next){
+    var id = req.params.id;
+    var trips = req.body.trip;
+    User.findById(id, function(err, user){
+        if (err) { return next(err); }
+        if (user === null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        if (trip === null) {
+            return res.status(404).json({'message': 'Trip not found'});
+        }
+        user.trips.push(trips);
+    });
+});
+
+// Remove trip
+router.delete('/:id/trips/:tripId', function(req, res, next) {
+    var id = req.params.id;
+    var tripId = req.params.tripId;
+    User.findById(id, function(err, user) {
+        if (err) { return next(err); }
+        if (user === null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        let index = user.trips.indexOf(tripId);
+        user.trips.splice(index, 1);
+        res.json(user.trips);
+    });
+});
+
+router.post('/login', function(req, res, next) {
+    User.find({email: req.body.email}, function(err, user){
+        if(err){
+            return next(err);
+        }
+        if(user.length < 1){
+            return res.status(401).json({
+                message: 'Login failed'
+            });
+        }
+        bcrypt.compare(req.body.password, user[0].password, function(err, result){
+            if(err){
+                return res.status(401).json({
+                    message: 'Login failed'
+                });
+            }
+            if(result){
+                return res.status(200).json(user);
+            }
+            return res.status(401).json({
+                message: 'Login failed'
+            });
+        });
+    })
+})
 
 module.exports = router;
