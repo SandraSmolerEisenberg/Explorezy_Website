@@ -84,6 +84,9 @@ router.post('/:id/places', function(req, res, next){
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
+        if (places === null) {
+            return res.status(404).json({'message': 'Place not found'});
+        }
         trip.places.push(placeId);
     });
 });
@@ -96,7 +99,11 @@ router.get('/:id/places', function(req, res, next){
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
-        res.json({'tripName': trip.name, 'places' : trip.places });
+        var placesInTrip = [];        
+        for (let index = 0; index < trip.places.length; index++) {            
+            placesInTrip[index] = trip.places[index];                    
+        } 
+        res.json({'tripName': trip.name, 'places' : placesInTrip });
     });
 });
 
