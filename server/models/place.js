@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var pointShema = new Schema({
+var pointSchema = new Schema({
     lon: {type: Number},
     lat: {type: Number}
 });
@@ -32,7 +32,7 @@ var placeSchema = new Schema({
     wikipedia: { type: String },
     image: { type: String },
     wikipedia_extracts: { type: wikipediaSchema },
-    points: { type: pointShema }
+    points: { type: pointSchema }
 });
 
 
