@@ -78,7 +78,7 @@ router.delete('/:id', function(req, res, next) {
 //Add a place to trip.
 router.post('/:id/places', function(req, res, next){
     var id = req.params.id;
-    var placeId = rep.body.places;
+    var placeId = req.body.places;
     Trip.findById(id, function(err, trip) {
         if (err) { return next(err); }
         if (trip === null) {
