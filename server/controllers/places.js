@@ -14,7 +14,15 @@ router.post('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
     Place.find(function(err, places) {
         if (err) { return next(err); }
-        res.json({'places': places });
+        const pageNumber = req.query.pageNumber;
+        const limit = req.query.limit;
+        if(pageNumber && limit){
+            let startIndex  = (pageNumber - 1) * limit;
+            let endIndex = pageNumber * limit;
+            res.json(places.slice(startIndex, endIndex));
+        }else {
+            res.json({'places': places });
+        }
     });
 });
 

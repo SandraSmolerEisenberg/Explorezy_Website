@@ -9,7 +9,9 @@ var userSchema = new Schema({
     last_name: { type: String },
     email:  {type: String, lowercase: true, unique: true, required: [true, 'can\'t be blank'],match:  /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/ , index: true},
     password: { type: String, required: true},
-    favorite_places: [{type: Schema.Types.ObjectId, ref: 'places'}]
+    favorite_places: [{type: Schema.Types.ObjectId, ref: 'places'}],
+    trips: [{type: Schema.Types.ObjectId, ref: 'trips'}]
+
 });
 
 

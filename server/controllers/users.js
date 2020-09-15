@@ -105,6 +105,5 @@ router.delete('/:id', function(req, res, next) {
 // Endpoint to remove a favorite place
 // Endpoint to remove a trip
 // Endpoint for login
-// Fix 85
 
 module.exports = router;

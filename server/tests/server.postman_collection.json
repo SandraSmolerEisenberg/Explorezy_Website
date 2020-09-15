@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b36caa95-6492-4e45-a282-ad9aff0c4d24",
+		"_postman_id": "de98b358-b02d-4ce9-9b97-7ec74eac019f",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -11,9 +11,21 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0d32f076-a91f-426f-828f-7deccb83e8d4",
+						"id": "e85bc733-e897-4863-b4ad-22d6123229b1",
 						"exec": [
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "403cc285-4881-4fb0-bfad-d5dbb8571a00",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -37,7 +49,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "62e9400c-e06e-414b-989a-c98bbe75d20f",
+				"id": "6ab3eac9-ea5e-454e-8bfe-d1bf9734ec47",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -47,7 +59,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "4a271e17-9789-49d1-bcc7-a37980f01371",
+				"id": "c9a56304-cf5e-4947-8a1e-a7c89a05b830",
 				"type": "text/javascript",
 				"exec": [
 					""
