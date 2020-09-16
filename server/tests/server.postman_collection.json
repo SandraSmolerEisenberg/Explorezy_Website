@@ -1,17 +1,406 @@
 {
 	"info": {
-		"_postman_id": "de98b358-b02d-4ce9-9b97-7ec74eac019f",
+		"_postman_id": "d41b2d1c-82ed-475b-82dd-5e0be98ce86f",
 		"name": "server",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6e9f809e-c562-4249-a26c-fb8f8ae8511e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"exexample@gmail.com\",\r\n    \"password\": \"1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "84d5896f-c51f-4080-9546-573082ef422b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eexample@gmail.com\",\r\n    \"password\": \"1234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Testing endpoints for User entity\n",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Trips",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Posts",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Places",
+			"item": [
+				{
+					"name": "Create new place",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ee696cf5-dabd-484d-bbfa-377bcb29481d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2598fdd2-e2d8-4855-bbe9-e2080b6a7cc3",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"\r",
+									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all places",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bc762f0f-931e-4855-9e8e-4534a8c5f652",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "35d7f71a-2f64-42ba-99dc-024bf51738be",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that database is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6eba9587-960c-413a-a36e-d2e0468bcffb",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a442dde8-911b-4388-91d0-13f916b0dd98",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var expectedPlace = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Compare expected place name to testPlace name\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").name).to.equal(expectedPlace.name);\r",
+									"});\r",
+									"pm.test(\"Compare expected place id to testPlace id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").id).to.equal(expectedPlace.id);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2ab5106c-a4a2-4a55-8b29-3b05449a464e",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2a97d31b-3078-4cc7-a458-01650b72265a",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate same ID\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\")._id).to.equal(pm.response.json()._id);\r",
+									"});\r",
+									"pm.test(\"Validate different values in object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").name).to.not.equal(pm.response.json().name);\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\":\"Krasens Crib\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
 		{
 			"name": "GET /api",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "e85bc733-e897-4863-b4ad-22d6123229b1",
+						"id": "6de5737f-79b1-49dc-b280-07acf880b322",
 						"exec": [
 							""
 						],
@@ -21,7 +410,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "403cc285-4881-4fb0-bfad-d5dbb8571a00",
+						"id": "b46e552a-a65b-4feb-b3b6-3d05899a227d",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -40,7 +429,15 @@
 						"type": "text"
 					}
 				],
-				"url": "{{host}}/api"
+				"url": {
+					"raw": "{{host}}/api",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api"
+					]
+				}
 			},
 			"response": []
 		}
@@ -49,7 +446,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "6ab3eac9-ea5e-454e-8bfe-d1bf9734ec47",
+				"id": "a4d18434-a457-4548-869a-694098229ea6",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -59,7 +456,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "c9a56304-cf5e-4947-8a1e-a7c89a05b830",
+				"id": "9d3a1766-a251-42ee-9dbf-e55327117560",
 				"type": "text/javascript",
 				"exec": [
 					""
