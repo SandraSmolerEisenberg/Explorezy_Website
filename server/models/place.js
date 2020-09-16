@@ -1,13 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-var pointSchema = new Schema({
-    lon: {type: Number},
-    lat: {type: Number}
-});
-
-
 var addressSchema = new Schema({
     city: {type: String},
     road: {type: String},
@@ -26,14 +19,20 @@ var wikipediaSchema = new Schema({
     text: {type: String}
 });
 
+var pointSchema = new Schema({
+    lon: {type: Number},
+    lat: {type: Number}
+});
+
 var placeSchema = new Schema({
     name: { type: String },
     address: { type: addressSchema},
     wikipedia: { type: String },
     image: { type: String },
     wikipedia_extracts: { type: wikipediaSchema },
-    points: { type: pointSchema }
+    point: { type: pointSchema }
 });
 
 
 module.exports = mongoose.model('places', placeSchema);
+ 

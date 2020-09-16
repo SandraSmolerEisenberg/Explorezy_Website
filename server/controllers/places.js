@@ -5,10 +5,20 @@ var Place = require('../models/place');
 
 //Creates a new place object.
 router.post('/', function(req, res, next) {
-    var place = new Place(req.body);
-    place.save(function(err, place) {
-        if (err) { return next(err); }
-        res.status(201).json(place);
+    var placetoAdd = new Place(req.body);
+    Place.find({name: req.body.name}, function(err, place){
+        if(err){
+            return next(err);
+        }
+        if(place.length >= 1){
+            return res.status(409).json({
+                message: 'There is already a place with this name'
+            });
+        }
+        placetoAdd.save(function(err, newPlace) {
+            if (err) { return next(err); }
+            res.status(201).json(newPlace);
+        });
     });
 });
 
