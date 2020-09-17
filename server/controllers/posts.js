@@ -1,15 +1,30 @@
 const { text } = require('body-parser');
 var express = require('express');
+const { Schema } = require('mongoose');
 var router = express.Router();
 
 var Post = require('../models/post');
 
 //Creates a new post object.
 router.post('/', function(req, res, next) {
-    var Post = new Post(req.body);
-    Post.save(function(err, post) {
-        if (err) { return next(err); }
-        res.status(201).json(post);
+    Post.find({title: req.body.title}, function(err, post){
+        if(err){
+            return next(err);
+        }
+        if(post.length >= 1){
+            return res.status(409).json({
+                message: 'There is already a post with this title'
+            });
+        }else{
+            var newPost = new Post({
+                title: req.body.title,
+                text: req.body.text || ''
+            });
+        }
+        newPost.save(function(err, post) {
+            if (err) { return next(err); }
+            res.status(201).json(post);
+        });
     });
 });
 
@@ -69,7 +84,7 @@ router.patch('/:id', function(req, res, next) {
         post.title = req.body.title || post.title;
         post.text = req.body.text || post.text;
         post.author = req.body.author || post.author;
-        post.date = req.body.date || post.date;
+        post.date = Date.now;
         post.save();
         res.json(post);
     });
