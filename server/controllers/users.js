@@ -91,26 +91,20 @@ router.put('/:id', function(req, res, next) {
 // Update user
 router.patch('/:id', function(req, res, next) {
     var id = req.params.id;
-    if(req.body.json){
-        User.findById(id, function(err, user) {
-            if (err) { return next(err); }
-            if (user == null) {
-                return res.status(404).json({'message': 'User not found'});
-            }
-            user.first_name = req.body.first_name || user.first_name;
-            user.last_name = req.body.last_name || user.last_name ;
-            user.email = req.body.email || user.email;
-            user.password = req.body.password || user.password;
-            user.favorite_places = req.body.favorite_places || user.favorite_places;
-            user.trips = req.body.trips || user.trips;
-            user.save();
-            res.json(user);
-        });
-    } else {
-        return res.status(409).json({
-            message: 'Please provide data to update the user'
-        });
-    }
+    User.findById(id, function(err, user) {
+        if (err) { return next(err); }
+        if (user == null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        user.first_name = req.body.first_name || user.first_name;
+        user.last_name = req.body.last_name || user.last_name ;
+        user.email = req.body.email || user.email;
+        user.password = req.body.password || user.password;
+        user.favorite_places = req.body.favorite_places || user.favorite_places;
+        user.trips = req.body.trips || user.trips;
+        user.save();
+        res.json(user);
+    });
 });
 
 
