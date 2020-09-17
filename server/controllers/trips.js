@@ -84,7 +84,7 @@ router.post('/:id/places', function(req, res, next){
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
-        if (placesId === null) {
+        if (placeId === null) {
             return res.status(404).json({'message': 'Place not found'});
         }
         trip.places.push(placeId);

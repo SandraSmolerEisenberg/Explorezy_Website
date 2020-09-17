@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
                         last_name: req.body.last_name || '',
                         email: req.body.email,
                         password: hash,
-                        favorite_places: [], 
+                        favourite_places: [], 
                         trips: []
                     });   
                     user.save(function(err, user) {
@@ -66,7 +66,7 @@ router.get('/:id', function(req, res, next) {
 // Replace user
 router.put('/:id', function(req, res, next) {
     var id = req.params.id;
-    if(req.body.first_name && req.body.favorite_places && req.body.trips && req.body.password && req.body.email && req.body.last_name){
+    if(req.body.first_name && req.body.favourite_places && req.body.trips && req.body.password && req.body.email && req.body.last_name){
         User.findById(id, function(err, user) {
             if (err) { return next(err); }
             if (user == null) {
@@ -76,7 +76,7 @@ router.put('/:id', function(req, res, next) {
             user.last_name = req.body.last_name;
             user.email = req.body.email;
             user.password = req.body.password;
-            user.favorite_places = req.body.favorite_places;
+            user.favourite_places = req.body.favourite_places;
             user.trips = req.body.trips;
             user.save();
             res.json(user);
@@ -100,7 +100,7 @@ router.patch('/:id', function(req, res, next) {
         user.last_name = req.body.last_name || user.last_name ;
         user.email = req.body.email || user.email;
         user.password = req.body.password || user.password;
-        user.favorite_places = req.body.favorite_places || user.favorite_places;
+        user.favourite_places = req.body.favourite_places || user.favourite_places;
         user.trips = req.body.trips || user.trips;
         user.save();
         res.json(user);
@@ -121,9 +121,10 @@ router.delete('/:id', function(req, res, next) {
 });
 
 // Add favourite place
-router.post('/:id/favoruite-places', function(req, res, next){
+router.post('/:id/favourite', function(req, res, next){
+    
     var id = req.params.id;
-    var favourite_places = req.body.favorite_places;
+    var favourite_places = req.body.favourite_places;
     User.findById(id, function(err, user){
         if (err) { return next(err); }
         if (user === null) {
@@ -131,13 +132,15 @@ router.post('/:id/favoruite-places', function(req, res, next){
         }
         if (favourite_places === null) {
             return res.status(404).json({'message': 'Favourite place not found'});
-        }
-        user.favorite_places.push(favourite_places);
+        }     
+        user.favourite_places.push(favourite_places);
+        res.json(user);
+
     });
 });
 
 // Remove favourite place
-router.delete('/:id/favourite-places/:placeId', function(req, res, next) {
+router.delete('/:id/favourite/:placeId', function(req, res, next) {
     var id = req.params.id;
     var placeId = req.params.placeId;
     User.findById(id, function(err, user) {
@@ -147,7 +150,7 @@ router.delete('/:id/favourite-places/:placeId', function(req, res, next) {
         }
         let index = user.favourite_places.indexOf(placeId);
         user.favourite_places.splice(index, 1);
-        res.json(user.favourite_places);
+        res.json(user);
     });
 });
 
