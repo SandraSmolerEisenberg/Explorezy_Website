@@ -8,6 +8,8 @@ var history = require('connect-history-api-fallback');
 
 var placesController = require('./controllers/places');
 var usersController = require('./controllers/users');
+var postsController = require('./controllers/posts');
+var tripsController = require('./controllers/trips');
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/explorezyDB';
@@ -40,6 +42,8 @@ app.get('/api', function(req, res) {
 
 app.use('/api/places', placesController);
 app.use('/api/users', usersController);
+app.use('/api/posts', postsController);
+app.use('/api/trips', tripsController);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
