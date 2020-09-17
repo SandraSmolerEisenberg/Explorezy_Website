@@ -132,8 +132,13 @@ router.post('/:id/favourite', function(req, res, next){
         }
         if (favourite_places === null) {
             return res.status(404).json({'message': 'Favourite place not found'});
-        }     
+        }        
+        if(user.favourite_places.includes(favourite_places)){
+            return res.status(409).json({'message': 'Place already exists in favorite list'});
+        }   
+
         user.favourite_places.push(favourite_places);
+        user.save();
         res.json(user);
 
     });
@@ -150,6 +155,7 @@ router.delete('/:id/favourite/:placeId', function(req, res, next) {
         }
         let index = user.favourite_places.indexOf(placeId);
         user.favourite_places.splice(index, 1);
+        user.save();
         res.json(user);
     });
 });
@@ -166,7 +172,12 @@ router.post('/:id/trips', function(req, res, next){
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
+        if(user.trips.includes(trip)){
+            return res.status(409).json({'message': 'Trip already exists in user list'});
+        }  
         user.trips.push(trip);
+        user.save();
+        res.json(user);
     });
 });
 
@@ -181,6 +192,7 @@ router.delete('/:id/trips/:tripId', function(req, res, next) {
         }
         let index = user.trips.indexOf(tripId);
         user.trips.splice(index, 1);
+        user.save();
         res.json(user.trips);
     });
 });
