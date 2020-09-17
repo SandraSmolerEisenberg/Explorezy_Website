@@ -176,29 +176,34 @@ router.delete('/:id/trips/:tripId', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-    User.find({email: req.body.email}, function(err, user){
-        if(err){
-            return next(err);
-        }
-        if(user.length < 1){
-            return res.status(401).json({
-                message: 'Login failed'
-            });
-        }
-        bcrypt.compare(req.body.password, user[0].password, function(err, result){
+    if(req.body.email && req.body.password){
+        User.find({email: req.body.email}, function(err, user){
             if(err){
+                return next(err);
+            }
+            if(user.length < 1){
                 return res.status(401).json({
                     message: 'Login failed'
                 });
             }
-            if(result){
-                return res.status(200).json(user);
-            }
-            return res.status(401).json({
-                message: 'Login failed'
+            bcrypt.compare(req.body.password, user[0].password, function(err, result){
+                if(err){
+                    return res.status(401).json({
+                        message: 'Login failed'
+                    });
+                }
+                if(result){
+                    return res.status(200).json(user);
+                }
+                return res.status(401).json({
+                    message: 'Login failed'
+                });
             });
+        });} else{
+        return res.status(401).json({
+            message: 'Please provide email and/or password'
         });
-    });
+    }
 });
 
 module.exports = router;
