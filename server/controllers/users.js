@@ -6,34 +6,41 @@ var User = require('../models/user');
 
 // Create new user
 router.post('/', function(req, res, next) {
-    User.find({email: req.body.email}, function(err, user){
-        if(err){
-            return next(err);
-        }
-        if(user.length >= 1){
-            return res.status(409).json({
-                message: 'There is a user with this email address'
-            });
-        }
-        bcrypt.hash(req.body.password,10,(err,hash) => {
-            if(err){return res.status(500).json({error: err});}
-            else{
-                var user = new User({
-                    _id: new mongoose.Types.ObjectId(),
-                    first_name: req.body.first_name || '',
-                    last_name: req.body.last_name || '',
-                    email: req.body.email,
-                    password: hash,
-                    favorite_places: [], 
-                    trips: []
-                });   
-                user.save(function(err, user) {
-                    if (err) { return next(err); }
-                    res.status(201).json(user);
+    if(req.body.email && req.body.password){
+        User.find({email: req.body.email}, function(err, user){
+            if(err){
+                return next(err);
+            }
+            if(user.length >= 1){
+                return res.status(409).json({
+                    message: 'There is a user with this email address'
                 });
             }
+            bcrypt.hash(req.body.password,10,(err,hash) => {
+                if(err){return res.status(500).json({error: err});}
+                else{
+                    var user = new User({
+                        _id: new mongoose.Types.ObjectId(),
+                        first_name: req.body.first_name || '',
+                        last_name: req.body.last_name || '',
+                        email: req.body.email,
+                        password: hash,
+                        favorite_places: [], 
+                        trips: []
+                    });   
+                    user.save(function(err, user) {
+                        if (err) { return next(err); }
+                        res.status(201).json(user);
+                    });
+                }
+            });
         });
-    });
+    }
+    else {
+        return res.status(409).json({
+            message: 'Please provide email and password'
+        });
+    }
 });
 
 // Get all users
