@@ -140,7 +140,7 @@ router.delete('/:id/favourite-places/:placeId', function(req, res, next) {
 // Add trips
 router.post('/:id/trips', function(req, res, next){
     var id = req.params.id;
-    var trips = req.body.trip;
+    var trip = req.body.trip;
     User.findById(id, function(err, user){
         if (err) { return next(err); }
         if (user === null) {
@@ -149,7 +149,7 @@ router.post('/:id/trips', function(req, res, next){
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
-        user.trips.push(trips);
+        user.trips.push(trip);
     });
 });
 
@@ -191,7 +191,7 @@ router.post('/login', function(req, res, next) {
                 message: 'Login failed'
             });
         });
-    })
-})
+    });
+});
 
 module.exports = router;
