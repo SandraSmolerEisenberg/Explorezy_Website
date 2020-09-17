@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "d41b2d1c-82ed-475b-82dd-5e0be98ce86f",
 		"name": "server",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -57,17 +57,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								""
-							]
-						}
+						"url": "{{host}}/api/users/"
 					},
 					"response": []
 				},
@@ -117,17 +107,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								""
-							]
-						}
+						"url": "{{host}}/api/users/"
 					},
 					"response": []
 				},
@@ -177,17 +157,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								""
-							]
-						}
+						"url": "{{host}}/api/users/"
 					},
 					"response": []
 				},
@@ -253,17 +223,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								""
-							]
-						}
+						"url": "{{host}}/api/users/"
 					},
 					"response": []
 				},
@@ -318,17 +278,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/login",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"login"
-							]
-						}
+						"url": "{{host}}/api/users/login"
 					},
 					"response": []
 				},
@@ -377,17 +327,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/login",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"login"
-							]
-						}
+						"url": "{{host}}/api/users/login"
 					},
 					"response": []
 				},
@@ -436,17 +376,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/login",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"login"
-							]
-						}
+						"url": "{{host}}/api/users/login"
 					},
 					"response": []
 				},
@@ -515,17 +445,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}"
 					},
 					"response": []
 				},
@@ -579,17 +499,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}"
 					},
 					"response": []
 				},
@@ -654,17 +564,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}"
 					},
 					"response": []
 				},
@@ -718,17 +618,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								""
-							]
-						}
+						"url": "{{host}}/api/users/"
 					},
 					"response": []
 				},
@@ -789,17 +679,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}"
 					},
 					"response": []
 				},
@@ -858,16 +738,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places"
-							]
-						}
+						"url": "{{host}}/api/places"
 					},
 					"response": []
 				},
@@ -921,18 +792,57 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}/favourite",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}",
-								"favourite"
-							]
+						"url": "{{host}}/api/users/{{user_id}}/favourite"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place that already exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fee3bb67-e171-467d-92d8-02a1718f9db1",
+								"exec": [
+									"pm.test(\"Failed post request\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "46ea4fa6-70f5-4131-96b8-9f44bf2074d3",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n     \"favourite_places\": \"{{place_id}}\"\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/users/{{user_id}}/favourite"
 					},
 					"response": []
 				},
@@ -986,19 +896,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}/favourite/{{test_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}",
-								"favourite",
-								"{{test_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}/favourite/{{test_id}}"
 					},
 					"response": []
 				},
@@ -1035,17 +933,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/places/{{placeId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places",
-								"{{placeId}}"
-							]
-						}
+						"url": "{{host}}/api/places/{{placeId}}"
 					},
 					"response": []
 				},
@@ -1099,16 +987,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/trips",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips"
-							]
-						}
+						"url": "{{host}}/api/trips"
 					},
 					"response": []
 				},
@@ -1162,18 +1041,57 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}/trips",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}",
-								"trips"
-							]
+						"url": "{{host}}/api/users/{{user_id}}/trips"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a trip that already exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f4808309-0b67-40e8-82cd-23d74ce5d935",
+								"exec": [
+									"pm.test(\"Failed to Add Trip that exists\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b0925b2d-19aa-4720-a112-ae9bfd7fc124",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n     \"trip\": \"{{trip_id}}\"\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/users/{{user_id}}/trips"
 					},
 					"response": []
 				},
@@ -1210,19 +1128,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}/trips/{{trip_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}",
-								"trips",
-								"{{trip_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}/trips/{{trip_id}}"
 					},
 					"response": []
 				},
@@ -1259,17 +1165,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{trip_id}}"
 					},
 					"response": []
 				},
@@ -1326,17 +1222,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}"
 					},
 					"response": []
 				},
@@ -1385,17 +1271,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/users/{{user_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"users",
-								"{{user_id}}"
-							]
-						}
+						"url": "{{host}}/api/users/{{user_id}}"
 					},
 					"response": []
 				}
@@ -1453,16 +1329,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/trips",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips"
-							]
-						}
+						"url": "{{host}}/api/trips"
 					},
 					"response": []
 				},
@@ -1488,16 +1355,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips"
-							]
-						}
+						"url": "{{host}}/api/trips"
 					},
 					"response": []
 				},
@@ -1538,17 +1396,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{tripId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{tripId}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{tripId}}"
 					},
 					"response": []
 				},
@@ -1596,17 +1444,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/trips/{{tripId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{tripId}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{tripId}}"
 					},
 					"response": []
 				},
@@ -1658,17 +1496,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/trips/{{tripId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{tripId}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{tripId}}"
 					},
 					"response": []
 				},
@@ -1705,17 +1533,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{tripId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{tripId}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{tripId}}"
 					},
 					"response": []
 				},
@@ -1751,18 +1569,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places"
-							]
-						}
+						"url": "{{host}}/api/trips/{{trip_id}}/places"
 					},
 					"response": []
 				},
@@ -1788,18 +1595,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places"
-							]
-						}
+						"url": "{{host}}/api/trips/{{trip_id}}/places"
 					},
 					"response": []
 				},
@@ -1825,19 +1621,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places",
-								"{{place_id}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}"
 					},
 					"response": []
 				},
@@ -1874,19 +1658,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places",
-								"{{place_id}}"
-							]
-						}
+						"url": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}"
 					},
 					"response": []
 				},
@@ -1922,18 +1694,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places"
-							]
-						}
+						"url": "{{host}}/api/trips/{{trip_id}}/places"
 					},
 					"response": []
 				}
@@ -1975,17 +1736,43 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/posts/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								""
-							]
+						"url": "{{host}}/api/posts/"
+					},
+					"response": []
+				},
+				{
+					"name": "Create duplicate post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6874578e-9ec1-4aae-be24-d78ef73b9c87",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Was awesome and I like it so much\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{host}}/api/posts/"
 					},
 					"response": []
 				},
@@ -1998,6 +1785,21 @@
 								"id": "99f680e0-ef79-48c3-b8ea-807aa7714e8b",
 								"exec": [
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef1662e9-c958-41bb-af76-86c8046894e9",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that database is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -2024,17 +1826,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/posts/",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								""
-							]
-						}
+						"url": "{{host}}/api/posts/"
 					},
 					"response": []
 				},
@@ -2073,17 +1865,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"5f62b66dddbe5b20c04bcf36"
-							]
-						}
+						"url": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36"
 					},
 					"response": []
 				},
@@ -2119,17 +1901,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"5f62b66dddbe5b20c04bcf36"
-							]
-						}
+						"url": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36"
 					},
 					"response": []
 				},
@@ -2165,29 +1937,35 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"5f62b66dddbe5b20c04bcf36"
-							]
-						}
+						"url": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36"
 					},
 					"response": []
 				},
 				{
-					"name": "Update a post by id Copy",
+					"name": "Delete a post by id",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"id": "f738c2f3-42a2-4add-818f-2a08c35037d3",
 								"exec": [
-									""
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f1dc5740-afaf-42e4-9149-7fd07d05f8bf",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var post = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testPost id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPost\")._id).to.equal(post._id);\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -2211,17 +1989,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/posts/5f62b52d490b9c55146deb64",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"5f62b52d490b9c55146deb64"
-							]
-						}
+						"url": "{{host}}/api/posts/{{postId}}"
 					},
 					"response": []
 				}
@@ -2285,16 +2053,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places"
-							]
-						}
+						"url": "{{host}}/api/places"
 					},
 					"response": []
 				},
@@ -2348,16 +2107,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places"
-							]
-						}
+						"url": "{{host}}/api/places"
 					},
 					"response": []
 				},
@@ -2419,17 +2169,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/places/{{placeId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places",
-								"{{placeId}}"
-							]
-						}
+						"url": "{{host}}/api/places/{{placeId}}"
 					},
 					"response": []
 				},
@@ -2488,17 +2228,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/places/{{placeId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places",
-								"{{placeId}}"
-							]
-						}
+						"url": "{{host}}/api/places/{{placeId}}"
 					},
 					"response": []
 				},
@@ -2550,17 +2280,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{host}}/api/places/{{placeId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places",
-								"{{placeId}}"
-							]
-						}
+						"url": "{{host}}/api/places/{{placeId}}"
 					},
 					"response": []
 				},
@@ -2597,17 +2317,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{host}}/api/places/{{placeId}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"places",
-								"{{placeId}}"
-							]
-						}
+						"url": "{{host}}/api/places/{{placeId}}"
 					},
 					"response": []
 				}
@@ -2649,15 +2359,7 @@
 						"type": "text"
 					}
 				],
-				"url": {
-					"raw": "{{host}}/api",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api"
-					]
-				}
+				"url": "{{host}}/api"
 			},
 			"response": []
 		}
