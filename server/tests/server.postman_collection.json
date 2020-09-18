@@ -737,6 +737,68 @@
 					"response": []
 				},
 				{
+					"name": "Get user that doesn't exist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "835c30e1-fea6-4bd3-9b02-341c63f4a92c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6faec317-1629-4b6d-80a7-13affa597ef2",
+								"exec": [
+									"pm.test(\"No users are returned\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/43124",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"43124"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get a spesific user",
 					"event": [
 						{
@@ -1545,6 +1607,7 @@
 									"});\r",
 									"\r",
 									"pm.environment.set(\"testTrip\", pm.response.json());\r",
+									"pm.environment.set(\"tripId\", pm.response.json()._id);\r",
 									"\r",
 									"var tripName = \"Sandras Trip\";\r",
 									"var testTrip = pm.variables.get(\"testTrip\");\r",
@@ -1580,13 +1643,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/trips",
+							"raw": "{{host}}/api/trips/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
-								"trips"
+								"trips",
+								""
 							]
 						}
 					},
@@ -1762,7 +1826,6 @@
 									"});\r",
 									"pm.test(\"Validate different values in object fields\", function (){\r",
 									"    pm.expect(pm.variables.get(\"testTrip\").name).to.not.equal(pm.response.json().name);\r",
-									"    pm.expect(pm.variables.get(\"testTrip\").places).to.not.equal(pm.response.json().places);\r",
 									"});\r",
 									"pm.test(\"Validate same values in unchanged object fields\", function (){\r",
 									"    pm.expect(pm.variables.get(\"testTrip\").user).to.equal(pm.response.json().user);\r",
@@ -1777,7 +1840,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Some new trip\",\r\n\t\"places\": [\"5f61cdb013011e40cc36ce24\"],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
+							"raw": "{\r\n\t\"name\": \"Some new trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1793,6 +1856,403 @@
 								"api",
 								"trips",
 								"{{tripId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create test place",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ee696cf5-dabd-484d-bbfa-377bcb29481d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2598fdd2-e2d8-4855-bbe9-e2080b6a7cc3",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
+									"\r",
+									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place to trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fdb86a20-5ba3-47fd-b02c-b04eff24e46f",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trip = pm.response.json();\r",
+									"pm.test(\"Validate that a place is added to the trip's places\", function(){\r",
+									"    pm.expect(trip.places).to.contain(pm.variables.get(\"placeId\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7f8749af-7299-429e-8381-8b4c37143aaa",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"places\": \"{{placeId}}\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place to trip which is already in the trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7f29202a-5008-4a64-9fcb-51a054d0e3c6",
+								"exec": [
+									"pm.test(\"Place is not added\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "67adce6e-4382-44ac-ab49-9d925469ffaf",
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"places\": \"{{placeId}}\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all places from a trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "51320c24-5978-40f0-83f5-4da91718db67",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that places is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one place from a trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb822c8a-d178-40fb-8941-d1f35491e56b",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that place returned is not null\", function (){\r",
+									"    pm.expect(pm.response.json()).to.be.not.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one place from a trip",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c7006381-8002-40dc-ae92-e6791924574f",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f24707de-9b80-4c56-974c-4e4f1012d3b6",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var placeId = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testPlace id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\")).to.not.contain(placeId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place to trip Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0fcdab4-ed27-427a-bda9-735f9c65a18f",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trip = pm.response.json();\r",
+									"pm.test(\"Validate that a place is added to the trip's places\", function(){\r",
+									"    pm.expect(trip.places).to.contain(pm.variables.get(\"placeId\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"places\": \"{{placeId}}\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all places from a trip",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "60e70968-5eb9-499a-830c-4f3580c3c131",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef25e1d8-9790-45d7-b09a-159062c985e9",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that places is empty\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").places).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
 							]
 						}
 					},
@@ -1846,134 +2306,12 @@
 					"response": []
 				},
 				{
-					"name": "Add a place to trip",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fdb86a20-5ba3-47fd-b02c-b04eff24e46f",
-								"exec": [
-									"pm.test(\"Successful POST request\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"var trip = pm.response.json();\r",
-									"pm.test(\"Validate that a place is added to the trip's places\", function(){\r",
-									"    pm.expect(trip.places).to.contain(pm.variables.get(\"place_id\"));\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n     \"places\": \"{{place_id}}\"\r\n   }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get list of all places from a trip",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "51320c24-5978-40f0-83f5-4da91718db67",
-								"exec": [
-									"pm.test(\"Successful GET request\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Validate that places is not empty\", function (){\r",
-									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get one place from a trip",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "fb822c8a-d178-40fb-8941-d1f35491e56b",
-								"exec": [
-									"pm.test(\"Successful GET request\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Validate that place returned is not null\", function (){\r",
-									"    pm.expect(pm.response.json()).to.be.not.null;\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places",
-								"{{place_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete one place from a trip",
+					"name": "Delete a place by id Copy",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c7006381-8002-40dc-ae92-e6791924574f",
+								"id": "65ab22bb-7b1e-4e25-bd7a-0961b2f8b3e1",
 								"exec": [
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
 								],
@@ -1983,14 +2321,14 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f24707de-9b80-4c56-974c-4e4f1012d3b6",
+								"id": "989df3f2-21f8-4032-bfc3-858ea95cd0e2",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"var placeId = pm.response.json();\r",
+									"var place = pm.response.json();\r",
 									"pm.test(\"Compare expected id to testPlace id\", function (){\r",
-									"    pm.expect(pm.variables.get(\"testPlace\").id).to.equal(placeId);\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").id).to.equal(place.id);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2001,63 +2339,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}",
+							"raw": "{{host}}/api/places/{{placeId}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
-								"trips",
-								"{{trip_id}}",
 								"places",
-								"{{place_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete all places from a trip",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "60e70968-5eb9-499a-830c-4f3580c3c131",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"id": "ef25e1d8-9790-45d7-b09a-159062c985e9",
-								"exec": [
-									"pm.test(\"Successful DELETE request\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Validate that places is empty\", function (){\r",
-									"    pm.expect(pm.variables.get(\"testTrip\").places).to.be.empty;\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/api/trips/{{trip_id}}/places",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"trips",
-								"{{trip_id}}",
-								"places"
+								"{{placeId}}"
 							]
 						}
 					},
@@ -2069,6 +2358,84 @@
 		{
 			"name": "Posts",
 			"item": [
+				{
+					"name": "Create author",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b5d87846-94d1-45ab-b16c-feada28ece5c",
+								"exec": [
+									"pm.variables.set( \"email\", \"testemail@test.com\");",
+									"pm.variables.set(\"password\", \"testpassword\");",
+									"pm.environment.set( \"first_name\", \"test_first_name\");",
+									"pm.environment.set( \"last_name\", \"test_last_name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "142b860d-9a18-453f-8a30-72295b98e1c3",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"pm.test(\"Verify that user is created with correct email\", function() {",
+									"    pm.expect(user.email).to.equal(pm.variables.get(\"email\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is created with correct first name\", function() {",
+									"    pm.expect(user.first_name).to.equal(pm.variables.get(\"first_name\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is created with correct last name\", function() {",
+									"    pm.expect(user.last_name).to.equal(pm.variables.get(\"last_name\"));",
+									"});",
+									"pm.environment.set(\"user\", user);",
+									"pm.environment.set(\"user_id\", user._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Create Post",
 					"event": [
@@ -2378,7 +2745,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"{{user_id}}\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2445,7 +2812,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"New text\",\r\n    \"author\": \"{{user_id}}\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2535,12 +2902,12 @@
 			"name": "Places",
 			"item": [
 				{
-					"name": "Create new place object",
+					"name": "Create place object",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ee696cf5-dabd-484d-bbfa-377bcb29481d",
+								"id": "888118d8-2521-4c61-b490-edb2e521ad5f",
 								"exec": [
 									""
 								],
@@ -2550,13 +2917,14 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2598fdd2-e2d8-4855-bbe9-e2080b6a7cc3",
+								"id": "246b1374-5277-4531-809f-34d810231df4",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
 									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
 									"\r",
 									"var placeName = \"Gustav II Adolfs staty\";\r",
 									"var testPlace = pm.variables.get(\"testPlace\");\r",
@@ -2784,7 +3152,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n      \"name\":\"Krasens Crib\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }",
+							"raw": "   {\r\n      \"name\":\"Göteborgs stadshus\",\r\n      \"address\":{\r\n          \"city\":\"Gbg\",\r\n         \"road\":\"Gustaf Adolfs Torg\",\r\n         \"state\":\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"country_code\":\"se\",\r\n         \"house_number\":\"4A\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2846,7 +3214,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n      \"name\":\"Some new place\",\r\n      \"address\":{\r\n         \"city\":\"Sthlm\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }",
+							"raw": "   {\r\n      \"name\":\"Göteborgs new name\",\r\n      \"address\":{\r\n          \"city\":\"Gbg-test\",\r\n         \"road\":\"Gustaf Adolfs Torg- test\",\r\n         \"state\":\"Västra Götalands län - test\",\r\n         \"county\":\"Göteborg - test\",\r\n         \"suburb\":\"Nordstaden - test\",\r\n         \"country\":\"Sverige- test\",\r\n         \"postcode\":\"41106 - test\",\r\n         \"country_code\":\"se - test\",\r\n         \"house_number\":\"4A - test\",\r\n         \"city_district\":\"Centrum -  test\" \r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus  test\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"

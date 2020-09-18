@@ -93,7 +93,14 @@ router.post('/:id/places', function(req, res, next){
         if(trip.places.includes(placeId)){
             return res.status(409).json({'message': 'Place already exists in trip'});
         }  
-        trip.places.push(placeId);
+        try{
+            trip.places.push(placeId);
+
+        }
+        catch(err) {
+            return res.status(409).json({'message': err});
+        }
+        trip.save();
         res.json(trip);
     });
 });
@@ -124,7 +131,7 @@ router.get('/:id/places/:placeId', function(req, res, next){
             return res.status(404).json({'message': 'Trip not found'});
         }
         Place.findById(placeId, function(err, place) {
-            if (err) { return next(err); }
+            if (err) { return res.status(404).json({'message': 'Place not found'}); }
             if (place === null) {
                 return res.status(404).json({'message': 'This trip does not have a place with that ID'});
             }
@@ -144,6 +151,7 @@ router.delete('/:id/places/:placeId', function(req, res, next) {
         }
         let index = trip.places.indexOf(placeId);
         trip.places.splice(index, 1);
+        trip.save();
         res.json(trip.places);
     });
 });
@@ -157,6 +165,8 @@ router.delete('/:id/places', function(req, res, next) {
             return res.status(404).json({'message': 'Trip not found'});
         }
         trip.places = [];
+        trip.save();
+        res.json(trip);
     });
 });
 

@@ -1,7 +1,6 @@
-const { text } = require('body-parser');
 var express = require('express');
-const { Schema } = require('mongoose');
 var router = express.Router();
+var ObjectId = require('mongoose').Types.ObjectId;
 
 var Post = require('../models/post');
 
@@ -45,7 +44,7 @@ router.get('/', function(req, res, next) {
 });
 
 //Get a specific post by id.
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res) {
     var id = req.params.id;
     Post.findById(id, function(err, post) {
         if (err) { 
@@ -66,12 +65,18 @@ router.put('/:id', function(req, res, next) {
         if (post === null) {
             return res.status(404).json({'message': 'Post not found'});
         }
-        post.title = req.body.title;
-        post.text = req.body.text;
-        post.author = req.body.author;
-        post.date = req.body.date;
-        post.save();
-        res.json(post);
+        if(ObjectId.isValid(req.body.author)){
+            post.title = req.body.title;
+            post.text = req.body.text;
+            post.author = req.body.author;
+            post.date = req.body.date;
+            post.save();
+            res.json(post);
+        }
+        else{
+            res.status(409).json({'message': 'Autor is not found'});
+        }
+
     });
 });
 

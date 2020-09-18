@@ -52,7 +52,7 @@ router.get('/', function(req, res, next) {
 });
 
 // Find user by ID
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
         if (err) {  return res.status(404).json({'message': 'User not found!'}); }
@@ -135,9 +135,12 @@ router.post('/:id/favourite', function(req, res, next){
         }        
         if(user.favourite_places.includes(favourite_places)){
             return res.status(409).json({'message': 'Place already exists in favorite list'});
+        }
+        try{        
+            user.favourite_places.push(favourite_places);
+        }catch(err){
+            return res.status(409).json({'message': err});
         }   
-
-        user.favourite_places.push(favourite_places);
         user.save();
         res.json(user);
 
