@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "d41b2d1c-82ed-475b-82dd-5e0be98ce86f",
 		"name": "server",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -16,6 +16,8 @@
 							"script": {
 								"id": "6e9f809e-c562-4249-a26c-fb8f8ae8511e",
 								"exec": [
+									"pm.environment.set( \"email\", \"example@test.com\");",
+									"pm.environment.set( \"password\", \"example\");",
 									""
 								],
 								"type": "text/javascript"
@@ -57,7 +59,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/"
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -107,7 +119,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/"
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -157,7 +179,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/"
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -223,7 +255,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/"
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -278,7 +320,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/login"
+						"url": {
+							"raw": "{{host}}/api/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -327,7 +379,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/login"
+						"url": {
+							"raw": "{{host}}/api/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -376,7 +438,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/login"
+						"url": {
+							"raw": "{{host}}/api/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -445,7 +517,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -499,7 +581,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -564,7 +656,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -618,7 +720,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/"
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -679,7 +791,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -738,7 +860,16 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/places"
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
 					},
 					"response": []
 				},
@@ -792,7 +923,18 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}/favourite"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/favourite",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"favourite"
+							]
+						}
 					},
 					"response": []
 				},
@@ -804,7 +946,7 @@
 							"script": {
 								"id": "fee3bb67-e171-467d-92d8-02a1718f9db1",
 								"exec": [
-									"pm.test(\"Failed post request\", function () {\r",
+									"pm.test(\"Fail to add a favorite place that exists\", function () {\r",
 									"    pm.response.to.have.status(409);\r",
 									"});\r",
 									""
@@ -842,7 +984,18 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}/favourite"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/favourite",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"favourite"
+							]
+						}
 					},
 					"response": []
 				},
@@ -896,7 +1049,19 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}/favourite/{{test_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/favourite/{{test_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"favourite",
+								"{{test_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -933,7 +1098,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/places/{{placeId}}"
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -987,7 +1162,16 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/trips"
+						"url": {
+							"raw": "{{host}}/api/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1041,7 +1225,18 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}/trips"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1053,7 +1248,7 @@
 							"script": {
 								"id": "f4808309-0b67-40e8-82cd-23d74ce5d935",
 								"exec": [
-									"pm.test(\"Failed to Add Trip that exists\", function () {\r",
+									"pm.test(\"Fail to Add Trip that exists\", function () {\r",
 									"    pm.response.to.have.status(409);\r",
 									"});\r",
 									""
@@ -1091,7 +1286,18 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}/trips"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1128,7 +1334,19 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/users/{{user_id}}/trips/{{trip_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips/{{trip_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips",
+								"{{trip_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1165,7 +1383,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/trips/{{trip_id}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1222,7 +1450,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1271,7 +1509,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/users/{{user_id}}"
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1329,7 +1577,16 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/trips"
+						"url": {
+							"raw": "{{host}}/api/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1355,7 +1612,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{host}}/api/trips"
+						"url": {
+							"raw": "{{host}}/api/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1396,7 +1662,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{host}}/api/trips/{{tripId}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1444,7 +1720,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/trips/{{tripId}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1496,7 +1782,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/trips/{{tripId}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1533,7 +1829,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/trips/{{tripId}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1569,7 +1875,18 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/trips/{{trip_id}}/places"
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}",
+								"places"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1595,7 +1912,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{host}}/api/trips/{{trip_id}}/places"
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}",
+								"places"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1621,7 +1949,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}",
+								"places",
+								"{{place_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1658,7 +1998,19 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}"
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}/places/{{place_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}",
+								"places",
+								"{{place_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1694,7 +2046,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/trips/{{trip_id}}/places"
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}",
+								"places"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1712,6 +2075,31 @@
 							"script": {
 								"id": "7622f268-f3c1-4643-8910-8d0b15e11523",
 								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c469a23-4365-4eca-97ba-dd9cb984e72a",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1729,14 +2117,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Was awesome and I like it so much\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/"
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -1752,6 +2150,18 @@
 								],
 								"type": "text/javascript"
 							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7f53a945-277d-4c37-9eb8-7204b222d260",
+								"exec": [
+									"pm.test(\"Title already created\", function(){\r",
+									"    pm.response.to.have.status(409);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
 					],
 					"request": {
@@ -1765,14 +2175,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Was awesome and I like it so much\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/"
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -1798,7 +2218,7 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"Validate that database is not empty\", function (){\r",
-									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"    pm.expect(pm.response.json().posts).to.be.not.empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1826,7 +2246,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/"
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
 					},
 					"response": []
 				},
@@ -1838,6 +2268,27 @@
 							"script": {
 								"id": "3da9019d-88ca-497a-a794-82d41a3f2f80",
 								"exec": [
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "be8637a3-d679-4b15-91c6-82da5a083e66",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var expectedPost = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Compare expected post title to testPost title\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPost\").title).to.equal(expectedPost.title);\r",
+									"});\r",
+									"pm.test(\"Compare expected post id to testPost id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPost\")._id).to.equal(expectedPost._id);\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1858,14 +2309,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"This was awwesome\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36"
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1877,7 +2338,28 @@
 							"script": {
 								"id": "f17970ed-19fc-4a66-ad2b-d4ea7bff9a1c",
 								"exec": [
-									""
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);\r",
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9c212555-d23f-4c08-9b6b-89e0570d0e9b",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1894,14 +2376,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"This was super awesome\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36"
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1911,9 +2403,30 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ff496bbb-4c01-4a34-8a94-25f5f61c413b",
+								"id": "4238272b-66ec-48dd-9b0b-b9e526b80e6a",
 								"exec": [
-									""
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);\r",
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8419c910-6cee-4a53-a318-bc9a6940b962",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1930,14 +2443,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"This was super awesome\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven, also I met a new friend\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/5f62b66dddbe5b20c04bcf36"
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1989,7 +2512,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/posts/{{postId}}"
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -2053,7 +2586,16 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/places"
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
 					},
 					"response": []
 				},
@@ -2107,7 +2649,16 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/places"
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
 					},
 					"response": []
 				},
@@ -2169,7 +2720,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/places/{{placeId}}"
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -2228,7 +2789,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/places/{{placeId}}"
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -2280,7 +2851,17 @@
 								}
 							}
 						},
-						"url": "{{host}}/api/places/{{placeId}}"
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -2317,7 +2898,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{host}}/api/places/{{placeId}}"
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -2359,7 +2950,15 @@
 						"type": "text"
 					}
 				],
-				"url": "{{host}}/api"
+				"url": {
+					"raw": "{{host}}/api",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api"
+					]
+				}
 			},
 			"response": []
 		}
