@@ -2090,6 +2090,9 @@
 									"});\r",
 									"pm.test(\"Validate that place returned is not null\", function (){\r",
 									"    pm.expect(pm.response.json()).to.be.not.null;\r",
+									"});\r",
+									"pm.test(\"Validate that place has same Id\", function (){\r",
+									"    pm.expect(pm.response.json().place._id).to.equal(pm.variables.get(\"placeId\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
