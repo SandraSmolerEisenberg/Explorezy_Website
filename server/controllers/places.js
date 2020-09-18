@@ -42,7 +42,8 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
     Place.findById(id, function(err, place) {
-        if (err) { return next(err); }
+        if (err) { return res.status(404).json({'message': 'Place not found'});
+        }
         if (place === null) {
             return res.status(404).json({'message': 'Place not found!'});
         }

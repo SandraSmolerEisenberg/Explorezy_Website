@@ -25,7 +25,9 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
     Trip.findById(id, function(err, trip) {
-        if (err) { return next(err); }
+        if (err) { 
+            return res.status(404).json({'message': 'Trip not found'});
+        }
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found!'});
         }
@@ -80,14 +82,19 @@ router.post('/:id/places', function(req, res, next){
     var id = req.params.id;
     var placeId = req.body.places;
     Trip.findById(id, function(err, trip) {
-        if (err) { return next(err); }
+        if (err) { 
+            return res.status(404).json({'message': 'Trip not found'});}
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
         if (placeId === null) {
             return res.status(404).json({'message': 'Place not found'});
         }
+        if(trip.places.includes(placeId)){
+            return res.status(409).json({'message': 'Place already exists in trip'});
+        }  
         trip.places.push(placeId);
+        res.json(trip);
     });
 });
 

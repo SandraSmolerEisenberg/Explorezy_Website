@@ -48,7 +48,9 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
     Post.findById(id, function(err, post) {
-        if (err) { return next(err); }
+        if (err) { 
+            return res.status(404).json({'message': 'Post not found'});
+        }
         if (post === null) {
             return res.status(404).json({'message': 'Post not found!'});
         }
