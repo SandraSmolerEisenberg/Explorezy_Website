@@ -3,8 +3,8 @@ var Schema = mongoose.Schema;
 
 var tripSchema = new Schema({
     name: { type: String },
-    place: [{type: Schema.Types.ObjectId, ref: 'place'}],
-    user: {type: Schema.Types.ObjectId, ref: 'user'}
+    places: [{type: Schema.Types.ObjectId, ref: 'places'}],
+    user: {type: Schema.Types.ObjectId, ref: 'users'}
 });
 
 module.exports = mongoose.model('trips', tripSchema);
