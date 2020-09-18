@@ -203,6 +203,8 @@
 								"exec": [
 									"pm.variables.set( \"email\", \"testemail@test.com\");",
 									"pm.variables.set(\"password\", \"testpassword\");",
+									"pm.environment.set( \"first_name\", \"test_first_name\");",
+									"pm.environment.set( \"last_name\", \"test_last_name\");",
 									""
 								],
 								"type": "text/javascript"
