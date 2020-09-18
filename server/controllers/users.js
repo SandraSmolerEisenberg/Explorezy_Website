@@ -55,7 +55,7 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
-        if (err) { return next(err); }
+        if (err) {  return res.status(404).json({'message': 'User not found!'}); }
         if (user === null) {
             return res.status(404).json({'message': 'User not found!'});
         }
