@@ -8,7 +8,9 @@ var Post = require('../models/post');
 router.post('/', function(req, res, next) {
     Post.find({title: req.body.title}, function(err, post){
         if(err){
-            return next(err);
+            return res.status(409).json({
+                message: 'Post was not saved', 'error': err
+            });
         }
         if(post.length >= 1){
             return res.status(409).json({
@@ -48,7 +50,9 @@ router.get('/:id', function(req, res) {
     var id = req.params.id;
     Post.findById(id, function(err, post) {
         if (err) { 
-            return res.status(404).json({'message': 'Post not found'});
+            return res.status(404).json({
+                message: 'Post not found!' , 'error': err
+            });
         }
         if (post === null) {
             return res.status(404).json({'message': 'Post not found!'});
@@ -58,10 +62,12 @@ router.get('/:id', function(req, res) {
 });
 
 //Replaces a post by id.
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function(req, res) {
     var id = req.params.id;
     Post.findById(id, function(err, post) {
-        if (err) { return next(err); }
+        if (err) {       return res.status(409).json({
+            message: 'Post not updated!', 'error': err
+        });}
         if (post === null) {
             return res.status(404).json({'message': 'Post not found'});
         }
@@ -81,10 +87,12 @@ router.put('/:id', function(req, res, next) {
 });
 
 //Updates a post by id.
-router.patch('/:id', function(req, res, next) {
+router.patch('/:id', function(req, res) {
     var id = req.params.id;
     Post.findById(id, function(err, post) {
-        if (err) { return next(err); }
+        if (err) {       return res.status(409).json({
+            message: 'Post not updated!', 'error': err
+        });}
         if (post === null) {
             return res.status(404).json({'message': 'Post not found'});
         }
@@ -98,10 +106,12 @@ router.patch('/:id', function(req, res, next) {
 });
 
 //Deletes a post by id.
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function(req, res) {
     var id = req.params.id;
     Post.findOneAndDelete({_id: id}, function(err, post) {
-        if (err) { return next(err); }
+        if (err) {       return res.status(409).json({
+            message: 'Post not updated!', 'error': err
+        }); }
         if (post === null) {
             return res.status(404).json({'message': 'Post not found'});
         }

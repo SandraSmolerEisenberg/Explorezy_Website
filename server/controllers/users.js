@@ -5,11 +5,11 @@ var bcrypt = require('bcrypt');
 var User = require('../models/user');
 
 // Create new user
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     if(req.body.email && req.body.password){
         User.find({email: req.body.email}, function(err, user){
             if(err){
-                return next(err);
+                return res.status(409).json({'message': 'Not able to register user!', 'error': err});
             }
             if(user.length >= 1){
                 return res.status(409).json({
@@ -29,7 +29,7 @@ router.post('/', function(req, res, next) {
                         trips: []
                     });   
                     user.save(function(err, user) {
-                        if (err) { return next(err); }
+                        if (err) { return res.status(409).json({'message': 'User not found!', 'error': err}); }
                         res.status(201).json(user);
                     });
                 }
@@ -55,7 +55,7 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
-        if (err) {  return res.status(404).json({'message': 'User not found!'}); }
+        if (err) {  return res.status(404).json({'message': 'User not found!', 'error': err}); }
         if (user === null) {
             return res.status(404).json({'message': 'User not found!'});
         }
@@ -64,11 +64,11 @@ router.get('/:id', function(req, res) {
 });
 
 // Replace user
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function(req, res) {
     var id = req.params.id;
     if(req.body.first_name && req.body.favourite_places && req.body.trips && req.body.password && req.body.email && req.body.last_name){
         User.findById(id, function(err, user) {
-            if (err) { return next(err); }
+            if (err) { return res.status(409).json({'message': 'User not updated!', 'error': err});}
             if (user == null) {
                 return res.status(404).json({'message': 'User not found'});
             }
@@ -89,10 +89,10 @@ router.put('/:id', function(req, res, next) {
 });
 
 // Update user
-router.patch('/:id', function(req, res, next) {
+router.patch('/:id', function(req, res) {
     var id = req.params.id;
     User.findById(id, function(err, user) {
-        if (err) { return next(err); }
+        if (err) { return res.status(409).json({'message': 'User not updated!', 'error': err}); }
         if (user == null) {
             return res.status(404).json({'message': 'User not found'});
         }
@@ -109,10 +109,10 @@ router.patch('/:id', function(req, res, next) {
 
 
 // Delete user
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function(req, res) {
     var id = req.params.id;
     User.findOneAndDelete({_id: id}, function(err, user) {
-        if (err) { return next(err); }
+        if (err) { return res.status(409).json({'message': 'User not deleted!', 'error': err}); }
         if (user == null) {
             return res.status(404).json({'message': 'User not found'});
         }
@@ -121,12 +121,12 @@ router.delete('/:id', function(req, res, next) {
 });
 
 // Add favourite place
-router.post('/:id/favourite', function(req, res, next){
+router.post('/:id/favourite', function(req, res){
     
     var id = req.params.id;
     var favourite_places = req.body.favourite_places;
     User.findById(id, function(err, user){
-        if (err) { return next(err); }
+        if (err) {  return res.status(404).json({'message': 'User not found!', 'error': err}); }
         if (user === null) {
             return res.status(404).json({'message': 'User not found'});
         }
@@ -148,27 +148,32 @@ router.post('/:id/favourite', function(req, res, next){
 });
 
 // Remove favourite place
-router.delete('/:id/favourite/:placeId', function(req, res, next) {
+router.delete('/:id/favourite/:placeId', function(req, res) {
     var id = req.params.id;
     var placeId = req.params.placeId;
     User.findById(id, function(err, user) {
-        if (err) { return next(err); }
+        if (err) {  return res.status(404).json({'message': 'User not found!', 'error': err});}
         if (user === null) {
             return res.status(404).json({'message': 'User not found'});
         }
-        let index = user.favourite_places.indexOf(placeId);
-        user.favourite_places.splice(index, 1);
-        user.save();
-        res.json(user);
+        try{
+            let index = user.favourite_places.indexOf(placeId);
+            user.favourite_places.splice(index, 1);
+            user.save();
+            res.json(user);
+        }
+        catch(error){
+            return res.status(404).json({'message': 'Place ID not valid!', 'error': error});
+        }
     });
 });
 
 // Add trips
-router.post('/:id/trips', function(req, res, next){
+router.post('/:id/trips', function(req, res){
     var id = req.params.id;
     var trip = req.body.trip;
     User.findById(id, function(err, user){
-        if (err) { return next(err); }
+        if (err) { return res.status(404).json({'message': 'User not found!', 'error': err}); }
         if (user === null) {
             return res.status(404).json({'message': 'User not found'});
         }
@@ -185,26 +190,31 @@ router.post('/:id/trips', function(req, res, next){
 });
 
 // Remove trip
-router.delete('/:id/trips/:tripId', function(req, res, next) {
+router.delete('/:id/trips/:tripId', function(req, res) {
     var id = req.params.id;
     var tripId = req.params.tripId;
     User.findById(id, function(err, user) {
-        if (err) { return next(err); }
+        if (err) {  return res.status(404).json({'message': 'User not found!', 'error': err}); }
         if (user === null) {
             return res.status(404).json({'message': 'User not found'});
         }
-        let index = user.trips.indexOf(tripId);
-        user.trips.splice(index, 1);
-        user.save();
-        res.json(user.trips);
+        try{
+            let index = user.trips.indexOf(tripId);
+            user.trips.splice(index, 1);
+            user.save();
+            res.json(user.trips);
+        }
+        catch(error){
+            return res.status(404).json({'message': 'Trip ID not valid!', 'error': error});
+        }
     });
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/login', function(req, res ) {
     if(req.body.email && req.body.password){
         User.find({email: req.body.email}, function(err, user){
             if(err){
-                return next(err);
+                return res.status(404).json({'message': 'User not found!', 'error': err});
             }
             if(user.length < 1){
                 return res.status(401).json({

@@ -4,11 +4,13 @@ var router = express.Router();
 var Place = require('../models/place');
 
 //Creates a new place object.
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     var placetoAdd = new Place(req.body);
     Place.find({name: req.body.name}, function(err, place){
         if(err){
-            return next(err);
+            return res.status(409).json({
+                message: 'Place not saved', 'error': err
+            });
         }
         if(place.length >= 1){
             return res.status(409).json({
@@ -16,7 +18,10 @@ router.post('/', function(req, res, next) {
             });
         }
         placetoAdd.save(function(err, newPlace) {
-            if (err) { return next(err); }
+            if (err) {             
+                return res.status(409).json({
+                    message: 'Place not saved', 'error': err
+                }); }
             res.status(201).json(newPlace);
         });
     });
@@ -39,11 +44,10 @@ router.get('/', function(req, res, next) {
 });
 
 //Get a specific place by id.
-router.get('/:id', function(req, res, next) {
+router.get('/:id', function(req, res) {
     var id = req.params.id;
     Place.findById(id, function(err, place) {
-        if (err) { return res.status(404).json({'message': 'Place not found'});
-        }
+        if (err) { res.status(404).json({'message': 'Place not found!', 'error': err});}
         if (place === null) {
             return res.status(404).json({'message': 'Place not found!'});
         }
@@ -52,10 +56,10 @@ router.get('/:id', function(req, res, next) {
 });
 
 //Replaces a place by id.
-router.put('/:id', function(req, res, next) {
+router.put('/:id', function(req, res) {
     var id = req.params.id;
     Place.findById(id, function(err, place) {
-        if (err) { return next(err); }
+        if (err) { res.status(409).json({'message': 'Place not updated!', 'error': err}); }
         if (place === null) {
             return res.status(404).json({'message': 'Place not found'});
         }
@@ -71,10 +75,10 @@ router.put('/:id', function(req, res, next) {
 });
 
 //Updates a place by id.
-router.patch('/:id', function(req, res, next) {
+router.patch('/:id', function(req, res) {
     var id = req.params.id;
     Place.findById(id, function(err, place) {
-        if (err) { return next(err); }
+        if (err) { res.status(409).json({'message': 'Place not updated', 'error': err}); }
         if (place === null) {
             return res.status(404).json({'message': 'Place not found'});
         }
@@ -90,10 +94,10 @@ router.patch('/:id', function(req, res, next) {
 });
 
 //Deletes a place by id.
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function(req, res) {
     var id = req.params.id;
     Place.findOneAndDelete({_id: id}, function(err, place) {
-        if (err) { return next(err); }
+        if (err) { res.status(409).json({'message': 'Place not deleted', 'error': err}); }
         if (place === null) {
             return res.status(404).json({'message': 'Place not found'});
         }
