@@ -30,13 +30,33 @@ router.post('/', function(req, res) {
 //Get a list of all places with pagination.
 router.get('/', function(req, res, next) {     
     Place.find(function(err, places) {         
-        if (err) { return next(err); }         
-        const pageNumber = req.query.pageNumber;         
-        const limit = req.query.limit;         
-        if(pageNumber && limit){             
+        if (err) { return next(err); }                 
+        if(req.query.page && req.query.limit){
+            try{
+                var pageNumber = parseInt(req.query.page);         
+                var limit = parseInt(req.query.limit);    
+            }
+            catch(error){
+                res.status(409).json({'message': 'Invalid page number and/or limit!', 'error': err});
+            }   
+         
             let startIndex  = (pageNumber - 1) * limit;             
-            let endIndex = pageNumber * limit;             
-            res.json(places.slice(startIndex, endIndex));         
+            let endIndex = pageNumber * limit;
+            const paginationResult = {};
+            if(endIndex < places.length){
+                paginationResult.nextPage = {
+                    page: pageNumber + 1,
+                    limit: limit
+                };
+            }
+            if (startIndex > 0){
+                paginationResult.previousPage = {
+                    page: pageNumber -1,
+                    limit: limit
+                };
+            }  
+            paginationResult.results = places.slice(startIndex, endIndex);
+            res.json(paginationResult);         
         }else {             
             res.json({'places': places });         
         }     
