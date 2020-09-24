@@ -43,7 +43,7 @@ router.get('/', function(req, res, next) {
             let startIndex  = (pageNumber - 1) * limit;             
             let endIndex = pageNumber * limit;
             const paginationResult = {};
-            if(startIndex < places.length){
+            if(endIndex < places.length){
                 paginationResult.nextPage = {
                     page: pageNumber + 1,
                     limit: limit
