@@ -1,19 +1,3196 @@
 {
 	"info": {
-		"_postman_id": "f7ee95b5-9cb9-442f-a6a9-42de46138872",
+		"_postman_id": "0249bf3d-d038-4b80-8ac7-a1530bff911a",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "375dae1b-f722-4737-8863-ed5221434669",
+								"exec": [
+									"pm.environment.set( \"email\", \"example@test.com\");",
+									"pm.environment.set( \"password\", \"example\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "426906bd-2c6e-4a41-9b2a-a2320a987395",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"pm.test(\"Verify that user is created with correct email\", function() {",
+									"    pm.expect(user.email).to.equal(pm.variables.get(\"email\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user without email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "eb601386-3f39-4f9b-a6a5-c5b988572155",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "909ae1d4-af9d-44ab-bbcf-0bda057b231d",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user without password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9748396f-0a54-4c3e-811f-bca0d4371de2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ffa69746-ff01-426e-a713-5c8d0a1cf7ed",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\": \"{{email}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user with first name and last name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5de1841f-ccba-413e-b660-a38b40e3d083",
+								"exec": [
+									"pm.variables.set( \"email\", \"testemail@test.com\");",
+									"pm.variables.set(\"password\", \"testpassword\");",
+									"pm.environment.set( \"first_name\", \"test_first_name\");",
+									"pm.environment.set( \"last_name\", \"test_last_name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1a9d6578-7c6d-4a58-a0c9-32c79857aed3",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"pm.test(\"Verify that user is created with correct email\", function() {",
+									"    pm.expect(user.email).to.equal(pm.variables.get(\"email\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is created with correct first name\", function() {",
+									"    pm.expect(user.first_name).to.equal(pm.variables.get(\"first_name\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is created with correct last name\", function() {",
+									"    pm.expect(user.last_name).to.equal(pm.variables.get(\"last_name\"));",
+									"});",
+									"pm.environment.set(\"user\", user);",
+									"pm.environment.set(\"user_id\", user._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d068d7d7-7739-4018-82b2-7b0a3ef3c80b",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "80c1821f-4809-46b9-8c81-b360c4c3c4b6",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"",
+									"pm.test(\"Verify that user is loged in\", function() {",
+									"    pm.expect(pm.variables.get(\"{{email}}\")).to.equal(user.email);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login without password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "719f2da0-80be-4b86-8cbe-a4c6cf825e02",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "65f72639-da7b-4190-afc2-721caae54f76",
+								"exec": [
+									"pm.test(\"User is not loged in without password\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login without email",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "39b8615b-6084-4219-b727-3451d19beab5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "33ac93b0-49bc-428b-bfba-86254e54b430",
+								"exec": [
+									"pm.test(\"User is not loged in without password\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "98e930bd-ece2-4355-b233-c0a04b23fc05",
+								"exec": [
+									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
+									"pm.variables.set(\"email\", \"newemail@email.com\");",
+									"pm.variables.set(\"first_name\",\"new_first_name\");",
+									"pm.variables.set(\"last_name\", \"new_last_name\");",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1871c331-8202-4e33-a426-cfe1b98461aa",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"",
+									"pm.test(\"Verify that user is updated with correct email\", function() {",
+									"    pm.expect(user.email).to.equal(pm.variables.get(\"email\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is updated with correct first name\", function() {",
+									"    pm.expect(user.first_name).to.equal(pm.variables.get(\"first_name\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is updated with correct last name\", function() {",
+									"    pm.expect(user.last_name).to.equal(pm.variables.get(\"last_name\"));",
+									"});",
+									"",
+									"pm.variables.set(\"user\", user);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"favourite_places\": [],\r\n    \"trips\": []\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user With partial dataset",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "123ddb70-eb06-4bb7-b9f2-c588e3c0e964",
+								"exec": [
+									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
+									"pm.variables.set(\"email\", \"newemail@email.com\");",
+									"pm.variables.set(\"first_name\",\"new_first_name\");",
+									"pm.variables.set(\"last_name\", \"new_last_name\");",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "1fa614ea-cead-4122-8fcc-67523cce60af",
+								"exec": [
+									"pm.test(\"User is not updated\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"favourite_places\": [],\r\n    \"trips\": []\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update only email and first name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9ea9787b-0716-43d2-85dd-a9ac6bac8c3b",
+								"exec": [
+									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
+									"pm.variables.set(\"email\", \"newsecondemail@email.com\");",
+									"pm.variables.set(\"first_name\",\"new_second_first_name\");",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "395d644b-f49a-41f0-84d4-f47d728e9327",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"",
+									"pm.test(\"Verify that user is updated with correct email\", function() {",
+									"    pm.expect(user.email).to.equal(pm.variables.get(\"email\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is updated with correct first name\", function() {",
+									"    pm.expect(user.first_name).to.equal(pm.variables.get(\"first_name\"));",
+									"});",
+									"",
+									"pm.variables.set(\"user\", user);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a27632b7-e631-402a-bb0d-b0372dcaeb35",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "27b3fc65-91af-4fda-84de-ef21c892c67c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Validate that user dataset is not empty\", function (){",
+									"    pm.expect(pm.response.json().users).to.be.not.empty;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user that doesn't exist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4333bc3f-a8e6-4dec-949f-e0479126fb44",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "dbc1617a-9890-483b-a8ca-98e90335d04f",
+								"exec": [
+									"pm.test(\"No users are returned\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/43124",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"43124"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a spesific user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b7dd5089-b205-4886-92d9-eb9c72ab6bb3",
+								"exec": [
+									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "900c5db5-c3b6-40d4-bc40-bd42e7c0bc74",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var user = pm.response.json();",
+									"",
+									"pm.test(\"Compare expected email to testUser name\", function (){",
+									"    pm.expect(pm.variables.get(\"user\").email).to.equal(user.email);",
+									"});",
+									"pm.test(\"Compare expected user id to testUser id\", function (){",
+									"    pm.expect(pm.variables.get(\"user\").id).to.equal(user.id);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a test trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4f06589-0a51-47b9-8978-bb5c59924843",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testTrip\", pm.response.json());\r",
+									"\r",
+									"\r",
+									"var tripName = \"Sandras Trip\";\r",
+									"var testTrip = pm.variables.get(\"testTrip\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testTrip.name).to.equal(tripName);\r",
+									"});\r",
+									"pm.environment.set(\"trip_id\", pm.variables.get(\"testTrip\")._id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "741f4e14-c022-4a30-98fb-e24798ebfe99",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"{{user_id}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4bfdc6ce-c9df-4633-a86d-f96682c79171",
+								"exec": [
+									"pm.test(\"Successful Added Trip request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var user = pm.response.json();\r",
+									"pm.test(\"Validate that a trip is added to the trip list\", function(){\r",
+									"    pm.expect(user.trips).to.contain(pm.variables.get(\"trip_id\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5c15b5a7-3df7-429a-a6b2-c19216da4a23",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n     \"trip\": \"{{trip_id}}\"\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a trip that already exists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f98e69f0-fe49-4a5a-993f-78d284aa00a0",
+								"exec": [
+									"pm.test(\"Fail to Add Trip that exists\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b6a6267e-8445-4bb3-9909-fa6f2a7844b4",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n     \"trip\": \"{{trip_id}}\"\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a trip by id'",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c228cb36-bdfd-40bc-943d-031a5bad9bed",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e9f5d7f-dca2-450a-b24b-77807028760e",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trips = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testTrip id\", function (){\r",
+									"    pm.expect(trips).to.not.contain(pm.variables.get(\"trip_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips/{{trip_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips",
+								"{{trip_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a trip Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5bf6962d-d190-4ec1-adf3-f1bcfdc6565f",
+								"exec": [
+									"pm.test(\"Successful Added Trip request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var user = pm.response.json();\r",
+									"pm.test(\"Validate that a trip is added to the trip list\", function(){\r",
+									"    pm.expect(user.trips).to.contain(pm.variables.get(\"trip_id\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d15a15c1-1511-4667-8b9e-b5c6a563fead",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n     \"trip\": \"{{trip_id}}\"\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all trips",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e9908962-ed78-4acb-a169-5a24493a2842",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "72e464dc-bb86-4c5a-8a36-8715f70f6488",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trips = pm.response.json();\r",
+									"pm.test(\"Validate that trips is empty\", function (){\r",
+									"    pm.expect(trips).to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a test trip",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "12c95867-1679-44c4-8dd3-8c0e98aade48",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "10169cce-fd1e-491c-9769-d7b0ead5703d",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trips = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testTrip id\", function (){\r",
+									"    pm.expect(trips._id).to.be.equal(pm.variables.get(\"trip_id\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{trip_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{trip_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d5fd41ec-7937-412f-b93f-94248f1c5db9",
+								"exec": [
+									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "196eaa2e-539f-4c8c-80b6-e00066e4123e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var user = pm.response.json();",
+									"pm.test(\"Compare expected email to testUser email\", function (){",
+									"    pm.expect(pm.variables.get(\"user\").email).to.equal(user.email);",
+									"});",
+									"pm.test(\"Compare expected user id to testUser id\", function (){",
+									"    pm.expect(pm.variables.get(\"user\").id).to.equal(user.id);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User That doesn't exist",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "feba1dd5-2662-400d-ba91-753c96e35230",
+								"exec": [
+									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a09bc916-82b4-4c15-bf94-bfbf87e6876d",
+								"exec": [
+									"pm.test(\"User is not updated\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/{{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Testing endpoints for User entity\n",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Trips",
+			"item": [
+				{
+					"name": "Create a new trip object",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a742046f-09ad-431d-9ba1-e93bbe22f96a",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testTrip\", pm.response.json());\r",
+									"pm.environment.set(\"tripId\", pm.response.json()._id);\r",
+									"\r",
+									"var tripName = \"Sandras Trip\";\r",
+									"var testTrip = pm.variables.get(\"testTrip\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testTrip.name).to.equal(tripName);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "30d5f3ab-23ef-471c-a046-58306c21abe8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of all trips",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0bced0b-c929-45bc-9b5a-d34876bd7982",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that database is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().trips).to.be.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific trip by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f47e3ffd-a8f5-4c47-a89d-ff072c6dbf1c",
+								"exec": [
+									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9060c4b9-7f2a-4a82-9e9f-472f7dad1865",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var expectedTrip = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Compare expected trip name to testTrip name\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").name).to.equal(expectedTrip.name);\r",
+									"});\r",
+									"pm.test(\"Compare expected trip id to testTrip id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").id).to.equal(expectedTrip.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a trip by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "dac5d7fb-9fc0-4e0c-87d0-1f651bc7a42b",
+								"exec": [
+									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b0e151c-cfa2-4de6-829a-b6b910f7ca8c",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate same ID\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\")._id).to.equal(pm.response.json()._id);\r",
+									"});\r",
+									"pm.test(\"Validate different values in object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").name).to.not.equal(pm.response.json().name);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Krasens Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a trip by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "86d11340-d795-43bf-9d9f-af07bd6f96b7",
+								"exec": [
+									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "86336a5c-a85e-40a3-b52a-423e07c3b7d1",
+								"exec": [
+									"pm.test(\"Successful PATCH request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate same ID\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\")._id).to.equal(pm.response.json()._id);\r",
+									"});\r",
+									"pm.test(\"Validate different values in object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").name).to.not.equal(pm.response.json().name);\r",
+									"});\r",
+									"pm.test(\"Validate same values in unchanged object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").user).to.equal(pm.response.json().user);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Some new trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create test place",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5bd06a0e-f386-4cb3-b187-eb513d4ad83c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9728ec5-0b5b-4e3d-a92e-461391dba649",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
+									"\r",
+									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place to trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfb69ace-7bcb-46fd-b792-b81cb66aada7",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trip = pm.response.json();\r",
+									"pm.test(\"Validate that a place is added to the trip's places\", function(){\r",
+									"    pm.expect(trip.places).to.contain(pm.variables.get(\"placeId\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d768e59a-cd63-4590-90dc-534081be9e45",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"places\": \"{{placeId}}\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place to trip which is already in the trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a9701f7-2606-4086-b1b4-1e435126a04c",
+								"exec": [
+									"pm.test(\"Place is not added\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c8c36262-83bf-4f94-b8a0-6069addf97a5",
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"places\": \"{{placeId}}\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of all places from a trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d3fdb312-9c58-4f2e-b7bf-c0ed266ae5cb",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that places is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one place from a trip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "20e5e3b4-0ed9-436a-9cf6-c967f96db839",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that place returned is not null\", function (){\r",
+									"    pm.expect(pm.response.json()).to.be.not.null;\r",
+									"});\r",
+									"pm.test(\"Validate that place has same Id\", function (){\r",
+									"    pm.expect(pm.response.json().place._id).to.equal(pm.variables.get(\"placeId\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete one place from a trip",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "527dd1f8-127d-44b3-bf0b-907aacbfddad",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4e857d7e-dc5b-4235-b8be-c5920c7ed003",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var placeId = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testPlace id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\")).to.not.contain(placeId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a place to trip Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c4207db-01a4-452c-9214-90bb36ca0348",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var trip = pm.response.json();\r",
+									"pm.test(\"Validate that a place is added to the trip's places\", function(){\r",
+									"    pm.expect(trip.places).to.contain(pm.variables.get(\"placeId\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"places\": \"{{placeId}}\"\r\n   }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all places from a trip",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ca84fc5c-69a3-46fa-ba6d-f60adaeba1c5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e5bcacb-b345-454d-b327-df95b0db75c3",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that places is empty\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").places).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a trip by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b3a92662-b97f-4812-beff-4c81e3f3d85e",
+								"exec": [
+									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "afdb7299-e6c2-46ec-9fff-a8709e415433",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var place = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testTrip id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testTrip\").id).to.equal(place.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/{{tripId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								"{{tripId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a place by id Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "847f14e4-c185-4b9e-ab94-59929f2c0bf2",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d404eda7-9f0d-443b-86f8-bc07c425b10e",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var place = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testPlace id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").id).to.equal(place.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create author",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a26ab534-4187-4eec-8c7e-2cf89f75d210",
+								"exec": [
+									"pm.variables.set( \"email\", \"testemail@test.com\");",
+									"pm.variables.set(\"password\", \"testpassword\");",
+									"pm.environment.set( \"first_name\", \"test_first_name\");",
+									"pm.environment.set( \"last_name\", \"test_last_name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a948f81e-60a1-4641-b6b2-1709509a0d9c",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var user = pm.response.json();",
+									"pm.test(\"Verify that user is created with correct email\", function() {",
+									"    pm.expect(user.email).to.equal(pm.variables.get(\"email\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is created with correct first name\", function() {",
+									"    pm.expect(user.first_name).to.equal(pm.variables.get(\"first_name\"));",
+									"});",
+									"",
+									"pm.test(\"Verify that user is created with correct last name\", function() {",
+									"    pm.expect(user.last_name).to.equal(pm.variables.get(\"last_name\"));",
+									"});",
+									"pm.environment.set(\"user\", user);",
+									"pm.environment.set(\"user_id\", user._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"first_name\": \"{{first_name}}\",\r\n    \"last_name\": \"{{last_name}}\",\r\n    \"password\": \"{{password}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "48ef6142-0b72-477a-b732-8e49c3a113da",
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "9674d47e-1fda-4d52-a76c-5b6b28d3ed59",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create duplicate post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "90b6fe2a-8664-4485-9b5e-b6f57aa57b38",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fbd191cf-eb0b-4419-9750-85f51c6f0054",
+								"exec": [
+									"pm.test(\"Title already created\", function(){\r",
+									"    pm.response.to.have.status(409);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Posts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e039a970-3187-4fdf-84b2-608c52c2afe1",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "07344cc9-9ef9-4816-bb3b-8d8f44ced9dc",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that database is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().posts).to.be.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get post by Id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7e063632-4edf-43c7-9116-b0d36ee34530",
+								"exec": [
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "505bed73-665c-4b86-90b6-7715d037118a",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var expectedPost = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Compare expected post title to testPost title\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPost\").title).to.equal(expectedPost.title);\r",
+									"});\r",
+									"pm.test(\"Compare expected post id to testPost id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPost\")._id).to.equal(expectedPost._id);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a post by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9130f3ab-926e-4756-89af-ecbca80423b7",
+								"exec": [
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);\r",
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b63289d3-a712-47c5-a304-a2155a3d4033",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"{{user_id}}\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a post by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e2a8623c-e4ae-4cad-bbcb-56eeba322a00",
+								"exec": [
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);\r",
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8cf725ea-70a1-4ee5-a1df-37e927b587b9",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"New text\",\r\n    \"author\": \"{{user_id}}\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a post by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7fe60700-20b9-4dfb-af65-3336706b8f37",
+								"exec": [
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "48bcab85-b3da-4c23-8178-2125d9e69c4a",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var post = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testPost id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPost\")._id).to.equal(post._id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/{{postId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"{{postId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Places",
+			"item": [
+				{
+					"name": "Create place object",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "37d101cf-623c-4f96-9637-d71ac379187e",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb8f1a46-db91-437c-a945-1a15e02058d3",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
+									"\r",
+									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all places",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fe4df60c-dd52-4f06-b448-c12cd8831ebc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8ac22b64-e604-4517-831e-fc5b9255b028",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that database is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get places pagination",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ac3cc33a-42c2-42ea-90aa-7dc7fd6e881a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "a666ffc0-4034-4e84-b027-c2b89cb3af4a",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var paginatedPlaces = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Validate that results are reseived and are not empty\", function (){\r",
+									"    pm.expect(paginatedPlaces.results).to.be.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places?page=1&limit=5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d411a47a-2c85-47d1-a8f0-5ccf019acc31",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6fdb346c-c422-427b-bea2-804d6e8a0fb4",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var expectedPlace = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Compare expected place name to testPlace name\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").name).to.equal(expectedPlace.name);\r",
+									"});\r",
+									"pm.test(\"Compare expected place id to testPlace id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").id).to.equal(expectedPlace.id);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Replace a place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fd0445f1-fd28-496d-a81b-e51f2ee9d165",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "76369a25-16d1-43a7-98d7-38838132216d",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate same ID\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\")._id).to.equal(pm.response.json()._id);\r",
+									"});\r",
+									"pm.test(\"Validate different values in object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").name).to.not.equal(pm.response.json().name);\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"Göteborgs stadshus\",\r\n      \"address\":{\r\n          \"city\":\"Gbg\",\r\n         \"road\":\"Gustaf Adolfs Torg\",\r\n         \"state\":\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"country_code\":\"se\",\r\n         \"house_number\":\"4A\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "bae42417-3940-4080-8e79-910756bd4e18",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "773aae43-db06-4246-ae0d-1c89c8c91127",
+								"exec": [
+									"pm.test(\"Successful PATCH request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate same ID\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\")._id).to.equal(pm.response.json()._id);\r",
+									"});\r",
+									"pm.test(\"Validate different values in object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").name).to.not.equal(pm.response.json().name);\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
+									"});\r",
+									"pm.test(\"Validate same values in unchanged object fields\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").title).to.equal(pm.response.json().title);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"Göteborgs new name\",\r\n      \"address\":{\r\n          \"city\":\"Gbg-test\",\r\n         \"road\":\"Gustaf Adolfs Torg- test\",\r\n         \"state\":\"Västra Götalands län - test\",\r\n         \"county\":\"Göteborg - test\",\r\n         \"suburb\":\"Nordstaden - test\",\r\n         \"country\":\"Sverige- test\",\r\n         \"postcode\":\"41106 - test\",\r\n         \"country_code\":\"se - test\",\r\n         \"house_number\":\"4A - test\",\r\n         \"city_district\":\"Centrum -  test\" \r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus  test\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9a91cf5e-928a-4924-a0cc-a251e486931b",
+								"exec": [
+									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8466bcc3-3a80-40f3-b7bc-bf30ec17d918",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var place = pm.response.json();\r",
+									"pm.test(\"Compare expected id to testPlace id\", function (){\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").id).to.equal(place.id);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/places/{{placeId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places",
+								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
 		{
 			"name": "GET /api",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b58d92ec-5214-450c-adb0-28e068aa71b9",
+						"id": "649bb4f4-a25d-40ef-810d-da3974807f06",
 						"exec": [
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6c9c7dc-9db6-4704-85b6-f0921f956e20",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -45,7 +3222,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "05864cff-5cba-4070-bac3-a59328954ebf",
+				"id": "2d8ba603-6ca5-4222-9e68-e1544b7e4e02",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -55,7 +3232,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e9c319be-3306-4fc5-ba34-fcf64391213a",
+				"id": "40fc2ecc-52c8-467b-b3ce-b21034c6487f",
 				"type": "text/javascript",
 				"exec": [
 					""

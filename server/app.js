@@ -6,12 +6,17 @@ var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
 
+var placesController = require('./controllers/places');
+var usersController = require('./controllers/users');
+var postsController = require('./controllers/posts');
+var tripsController = require('./controllers/trips');
+
 // Variables
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/explorezyDB';
 var port = process.env.PORT || 3000;
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, function(err) {
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, function(err) {
     if (err) {
         console.error(`Failed to connect to MongoDB with URI: ${mongoURI}`);
         console.error(err.stack);
@@ -34,6 +39,11 @@ app.use(cors());
 app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT341 backend ExpressJS project!'});
 });
+
+app.use('/api/places', placesController);
+app.use('/api/users', usersController);
+app.use('/api/posts', postsController);
+app.use('/api/trips', tripsController);
 
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
