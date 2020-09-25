@@ -17,9 +17,11 @@ router.post('/', function(req, res, next) {
                 message: 'There is already a post with this title'
             });
         }else{
+            var dateNow = new Date();
             var newPost = new Post({
                 title: req.body.title,
-                text: req.body.text || ''
+                text: req.body.text || '',
+                date: req.body.date || dateNow.getDate()
             });
         }
         newPost.save(function(err, post) {
@@ -99,7 +101,7 @@ router.patch('/:id', function(req, res) {
         post.title = req.body.title || post.title;
         post.text = req.body.text || post.text;
         post.author = req.body.author || post.author;
-        post.date = Date.now;
+        post.date = req.body.date || post.date;
         post.save();
         res.json(post);
     });

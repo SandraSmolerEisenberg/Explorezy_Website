@@ -3,6 +3,7 @@ var router = express.Router();
 
 var Trip = require('../models/trip');
 var Place = require('../models/place');
+const { mongo } = require('mongoose');
 
 //Creates a new trip object.
 router.post('/', function(req, res, next) {
@@ -44,10 +45,14 @@ router.put('/:id', function(req, res) {
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }
-        trip.name = req.body.name || trip.name;
-        trip.places = req.body.places || trip.places;
+        if (req.body.name && req.body.places){
+        trip.name = req.body.name;
+        trip.places = req.body.places;
         trip.save();
         res.json(trip);
+        } else{
+            res.status(404).json({'message': 'Input missing'});
+        }
     });
 });
 
@@ -87,8 +92,8 @@ router.post('/:id/places', function(req, res){
     var placeId = req.body.places;
     Trip.findById(id, function(err, trip) {
         if (err) { 
-            return res.status(409).json({'message': 'There is no trip with that name!', 'error': err})
-            ;}
+            return res.status(409).json({'message': 'There is no trip with that name!', 'error': err});
+        }
         if (trip === null) {
             return res.status(404).json({'message': 'Trip not found'});
         }

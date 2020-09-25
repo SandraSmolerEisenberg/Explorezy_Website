@@ -107,7 +107,6 @@ router.patch('/:id', function(req, res) {
     });
 });
 
-
 // Delete user
 router.delete('/:id', function(req, res) {
     var id = req.params.id;
@@ -117,54 +116,6 @@ router.delete('/:id', function(req, res) {
             return res.status(404).json({'message': 'User not found'});
         }
         res.json(user);
-    });
-});
-
-// Add favourite place
-router.post('/:id/favourite', function(req, res){
-    
-    var id = req.params.id;
-    var favourite_places = req.body.favourite_places;
-    User.findById(id, function(err, user){
-        if (err) {  return res.status(404).json({'message': 'User not found!', 'error': err}); }
-        if (user === null) {
-            return res.status(404).json({'message': 'User not found'});
-        }
-        if (favourite_places === null) {
-            return res.status(404).json({'message': 'Favourite place not found'});
-        }        
-        if(user.favourite_places.includes(favourite_places)){
-            return res.status(409).json({'message': 'Place already exists in favorite list'});
-        }
-        try{        
-            user.favourite_places.push(favourite_places);
-        }catch(err){
-            return res.status(409).json({'message': err});
-        }   
-        user.save();
-        res.json(user);
-
-    });
-});
-
-// Remove favourite place
-router.delete('/:id/favourite/:placeId', function(req, res) {
-    var id = req.params.id;
-    var placeId = req.params.placeId;
-    User.findById(id, function(err, user) {
-        if (err) {  return res.status(404).json({'message': 'User not found!', 'error': err});}
-        if (user === null) {
-            return res.status(404).json({'message': 'User not found'});
-        }
-        try{
-            let index = user.favourite_places.indexOf(placeId);
-            user.favourite_places.splice(index, 1);
-            user.save();
-            res.json(user);
-        }
-        catch(error){
-            return res.status(404).json({'message': 'Place ID not valid!', 'error': error});
-        }
     });
 });
 
@@ -239,6 +190,20 @@ router.post('/login', function(req, res ) {
             message: 'Please provide email and/or password'
         });
     }
+});
+
+//Delete all trips from a user.
+router.delete('/:id/trips', function(req, res) {
+    var id = req.params.id;
+    User.findById(id, function(err, user) {
+        if (err) {  return res.status(404).json({'message': 'User not found'}); }
+        if (user === null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        user.trips = [];
+        user.save();
+        res.json(user);
+    });
 });
 
 module.exports = router;
