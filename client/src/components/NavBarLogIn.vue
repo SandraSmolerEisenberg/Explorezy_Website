@@ -12,8 +12,8 @@
             <b-navbar-nav>
                 <b-nav-item><router-link to="/places">Places</router-link></b-nav-item>
                 <b-nav-item><router-link to="/posts">Posts</router-link></b-nav-item>
-                <b-nav-item><router-link to="/trips">My trips</router-link></b-nav-item>
-                <b-nav-item><router-link to="/myfav">My Favourites</router-link></b-nav-item>
+                <b-nav-item><router-link to="/mytrips">My Trips</router-link></b-nav-item>
+                <b-nav-item><router-link to="/myfavourites">My Favourites</router-link></b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
