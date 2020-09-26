@@ -1,29 +1,49 @@
 <template>
   <div>
-    <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-      </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <p>{{users}}</p>
+    <form name="form" @submit.prevent="login">
+        <div class="form-group">
+          <label for="username">Email</label>
+          <input
+            v-model="user.email"
+            type="text"
+            class="form-control"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            v-model="user.password"
+            type="password"
+            class="form-control"
+            name="password"
+          />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-info  btn-block">
+            <span class="text-white">Login</span>
+          </button>
+        </div>
+        <div v-if="message">
+          {{message}}
+        </div>
+      </form>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import { Api } from '@/Api'
+import User from '../models/User'
 
 export default {
   name: 'login',
   data() {
     return {
-      message: 'none'
+      message: '',
+      user: new User('', '', '', '', [], []),
+      users: []
     }
   },
   methods: {
@@ -35,8 +55,19 @@ export default {
         .catch(error => {
           this.message = error
         })
+    },
+    login() {
+      this.$store.dispatch('account/login', this.user).then(
+        () => {
+          this.$router.push('/profile')
+        },
+        error => {
+          this.message = error.toString()
+        }
+      )
     }
   }
+
 }
 </script>
 
