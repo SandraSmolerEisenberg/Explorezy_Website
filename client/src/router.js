@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store'
 import Home from './views/Home.vue'
 import Places from './views/Places.vue'
 import Posts from './views/Posts.vue'
@@ -11,7 +12,7 @@ import Register from './views/Register.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -57,3 +58,14 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const publicDomains = ['home', 'login', 'places', 'posts', 'register']
+  const privateDomains = ['mytrips', 'myfavourites', 'profile']
+  if (privateDomains.includes(to.name) && !store.state.account.status.loggedIn) next({ name: 'login' })
+  else if (privateDomains.includes(to.name) && store.state.account.status.loggedIn) next()
+  else if (publicDomains.includes(to.name)) next()
+  else next({ name: 'home' })
+})
+
+export default router
