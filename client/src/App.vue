@@ -16,7 +16,7 @@ export default {
     navigation: Navigationbar,
     navigationLogIn: NavigationbarLogIn
   },
-  computed: { currentUser() { return this.$store.state.loggedIn } }
+  computed: { currentUser() { return this.$store.state.account.status.loggedIn } }
 }
 </script>
 
