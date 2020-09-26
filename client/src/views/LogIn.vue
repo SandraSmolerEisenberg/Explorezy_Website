@@ -34,7 +34,6 @@
 
 <script>
 // @ is an alias to /src
-import { Api } from '@/Api'
 import User from '../models/User'
 
 export default {
@@ -47,15 +46,6 @@ export default {
     }
   },
   methods: {
-    getMessage() {
-      Api.get('login')
-        .then(response => {
-          this.message = response.data.message
-        })
-        .catch(error => {
-          this.message = error
-        })
-    },
     login() {
       this.$store.dispatch('account/login', this.user).then(
         () => {
