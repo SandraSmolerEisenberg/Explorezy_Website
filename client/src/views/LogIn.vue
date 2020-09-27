@@ -1,34 +1,30 @@
 <template>
   <div>
     <h2>Login Page</h2>
-    <ValidationObserver v-slot="{ login }">
-      <form @submit.prevent="login(onLogin)">
+    <ValidationObserver v-slot="{ invalid }">
+      <form @submit.prevent="onLogin">
 
         <!-- Email -->
         <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" v-model="user.email">
-            <span>{{ errors[0] }}</span>
+            <label for="email">Email</label>
+            <input name="email" type="email" class="form-control" v-model="user.email"/>
+            <div  v-if="errors[0]" class="alert-danger">{{ errors[0] }}</div>
           </div>
         </ValidationProvider>
-
         <!-- Password -->
         <ValidationProvider name="password" rules="required|max:12|min:6" v-slot="{ errors }">
           <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" v-model="user.password">
-            <span>{{ errors[0] }}</span>
+            <label for="password">Password</label>
+            <input type="password" class="form-control" v-model="user.password"/>
+            <div v-if="errors[0]" class="alert-danger"> {{ errors[0] }}</div>
           </div>
         </ValidationProvider>
-
         <!-- Button -->
-        <input type="submit" class="btn btn-primary mt-3">
-
+        <input type="submit" :disabled="invalid" class="btn btn-primary mt-3"/>
         <div v-if="message">
-          {{message}}
+         <div class="alert alert-danger">{{message}}</div>
         </div>
-
       </form>
     </ValidationObserver>
   </div>
@@ -49,10 +45,13 @@ export default {
     onLogin() {
       this.$store.dispatch('account/login', this.user).then(
         () => {
-          this.$router.push('/profile')
+          this.$router.push('/profile').catch(error => {
+            console.log(error.message)
+          })
         },
         error => {
-          this.message = error.toString()
+          console.log(error.toString())
+          this.message = 'Wrong password and/or username'
         }
       )
     }
