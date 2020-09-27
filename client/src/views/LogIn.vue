@@ -1,34 +1,36 @@
 <template>
   <div>
-    <p>{{users}}</p>
-    <form name="form" @submit.prevent="login">
-        <div class="form-group">
-          <label for="username">Email</label>
-          <input
-            v-model="user.email"
-            type="text"
-            class="form-control"
-            name="email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            v-model="user.password"
-            type="password"
-            class="form-control"
-            name="password"
-          />
-        </div>
-        <div class="form-group">
-          <button class="btn btn-info  btn-block">
-            <span class="text-white">Login</span>
-          </button>
-        </div>
+    <h2>Login Page</h2>
+    <ValidationObserver v-slot="{ login }">
+      <form @submit.prevent="login(onLogin)">
+
+        <!-- Email -->
+        <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" v-model="user.email">
+            <span>{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <!-- Password -->
+        <ValidationProvider name="password" rules="required|max:12|min:6" v-slot="{ errors }">
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control" v-model="user.password">
+            <span>{{ errors[0] }}</span>
+          </div>
+        </ValidationProvider>
+
+        <!-- Button -->
+        <input type="submit" class="btn btn-primary mt-3">
+
         <div v-if="message">
           {{message}}
         </div>
+
       </form>
+    </ValidationObserver>
   </div>
 </template>
 
@@ -37,16 +39,14 @@
 import User from '../models/User'
 
 export default {
-  name: 'login',
   data() {
     return {
       message: '',
-      user: new User('', '', '', '', [], []),
-      users: []
+      user: new User('', '', '', '', [], [])
     }
   },
   methods: {
-    login() {
+    onLogin() {
       this.$store.dispatch('account/login', this.user).then(
         () => {
           this.$router.push('/profile')

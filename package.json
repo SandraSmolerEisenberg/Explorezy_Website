@@ -5,5 +5,8 @@
   "main": "server/app.js",
   "scripts": {
     "postinstall": "npm install --prefix server && npm install --prefix client && npm install --only=dev --prefix client && npm run build --prefix client"
+  },
+  "dependencies": {
+    "vee-validate": "^3.4.0"
   }
 }
