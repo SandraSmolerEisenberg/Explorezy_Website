@@ -1,8 +1,8 @@
 import UserService from '../services/UserService.js'
 const user = JSON.parse(localStorage.getItem('user'))
 const initialState = user
-  ? { status: { loggedIn: true }, user }
-  : { status: { loggedIn: false }, user: null }
+  ? { status: { currentUser: true }, user }
+  : { status: { currentUser: false }, user: null }
 
 export const account = {
   namespaced: true,
@@ -11,26 +11,36 @@ export const account = {
     login({ commit }, user) {
       return UserService.login(user).then(
         user => {
-          commit('loginSuccess', user)
+          commit('loggedIn', user)
           return Promise.resolve(user)
         },
         error => {
-          commit('loginFailure')
+          commit('loggInFail')
           return Promise.reject(error)
         }
       )
+    },
+    loggOut({ commit }) {
+      UserService.loggOut()
+      commit('loggOut')
     }
   },
   mutations: {
 
-    loginSuccess(state, user) {
-      state.status.loggedIn = true
+    loggedIn(state, user) {
+      state.status.currentUser = true
       state.user = user
     },
-    loginFailure(state) {
-      state.status.loggedIn = false
+    loggInFail(state) {
+      state.status.currentUser = false
+      state.user = {}
+      localStorage.clear()
+    },
+    loggOut(state) {
+      state.status.currentUser = false
       state.user = {}
       localStorage.clear()
     }
+
   }
 }

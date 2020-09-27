@@ -14,6 +14,10 @@ class UserSevice {
       })
   }
 
+  loggOut() {
+    localStorage.removeItem('user')
+  }
+
   getAllUsers() {
     return Api.get('/users')
   }

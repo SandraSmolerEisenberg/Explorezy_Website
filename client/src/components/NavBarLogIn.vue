@@ -24,7 +24,7 @@
                         <em>{{currentUser}}</em>
                     </template>
                     <b-dropdown-item><router-link to="/profile">Profile</router-link></b-dropdown-item>
-                    <b-dropdown-item><router-link to="/">Log Out</router-link></b-dropdown-item>
+                    <b-dropdown-item @click="loggOut">Logg Out</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             </b-collapse>
@@ -35,6 +35,12 @@
 <script>
 export default {
   name: 'navigationBarLogIn',
-  computed: { currentUser() { return this.$store.state.account.user[0].first_name || 'Profile' } }
+  computed: { currentUser() { return this.$store.state.account.user[0].first_name || 'Profile' } },
+  methods: {
+    loggOut() {
+      this.$store.dispatch('account/loggOut')
+      this.$router.push('/')
+    }
+  }
 }
 </script>
