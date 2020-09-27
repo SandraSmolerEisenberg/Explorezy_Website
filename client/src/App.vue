@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-        <navigation v-if='!currentUser'></navigation>
-        <navigationLogIn v-if='currentUser'></navigationLogIn>
+        <navigation v-if='!loggedIn'></navigation>
+        <navigationLogIn v-if='loggedIn'></navigationLogIn>
 
         <!-- Render the content of the current page view -->
         <router-view/>
@@ -16,7 +16,7 @@ export default {
     navigation: Navigationbar,
     navigationLogIn: NavigationbarLogIn
   },
-  computed: { currentUser() { return this.$store.state.account.status.loggedIn } }
+  computed: { loggedIn() { return this.$store.state.account.status.currentUser } }
 }
 </script>
 

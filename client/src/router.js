@@ -62,8 +62,8 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   const publicDomains = ['home', 'login', 'places', 'posts', 'register']
   const privateDomains = ['mytrips', 'myfavourites', 'profile']
-  if (privateDomains.includes(to.name) && !store.state.account.status.loggedIn) next({ name: 'login' })
-  else if (privateDomains.includes(to.name) && store.state.account.status.loggedIn) next()
+  if (privateDomains.includes(to.name) && !store.state.account.status.currentUser) next({ name: 'login' })
+  else if (privateDomains.includes(to.name) && store.state.account.status.currentUser) next()
   else if (publicDomains.includes(to.name)) next()
   else next({ name: 'home' })
 })
