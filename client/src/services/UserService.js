@@ -14,6 +14,16 @@ class UserSevice {
       })
   }
 
+  async register(user) {
+    return await Api.post('/users', user)
+      .then(response => {
+        if (response.data) {
+          localStorage.setItem('account', response.data)
+        }
+        return response.data
+      })
+  }
+
   loggOut() {
     localStorage.removeItem('user')
   }

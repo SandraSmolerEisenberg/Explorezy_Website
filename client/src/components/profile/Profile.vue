@@ -8,7 +8,7 @@
       </p>
       <p>
         <strong>Last Name:</strong>
-        {{currentUser.first_name || 'N/A'}}
+        {{currentUser.last_name || 'N/A'}}
       </p>
       <p>
         <strong>Email:</strong>
@@ -31,7 +31,7 @@ export default {
   name: 'Profile',
   computed: {
     currentUser() {
-      return this.$store.state.account.user[0]
+      return this.$store.state.account.user
     }
   }
 

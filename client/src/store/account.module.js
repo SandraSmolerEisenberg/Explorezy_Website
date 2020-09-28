@@ -20,6 +20,18 @@ export const account = {
         }
       )
     },
+    register({ commit }, user) {
+      return UserService.register(user).then(
+        user => {
+          commit('registered', user)
+          return Promise.resolve(user)
+        },
+        error => {
+          commit('registrationFail')
+          return Promise.reject(error)
+        }
+      )
+    },
     loggOut({ commit }) {
       UserService.loggOut()
       commit('loggOut')
@@ -31,7 +43,16 @@ export const account = {
       state.status.currentUser = true
       state.user = user
     },
+    registered(state, user) {
+      state.status.currentUser = true
+      state.user = user
+    },
     loggInFail(state) {
+      state.status.currentUser = false
+      state.user = {}
+      localStorage.clear()
+    },
+    registrationFail(state) {
       state.status.currentUser = false
       state.user = {}
       localStorage.clear()

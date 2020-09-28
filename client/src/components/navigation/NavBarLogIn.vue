@@ -35,7 +35,7 @@
 <script>
 export default {
   name: 'navigationBarLogIn',
-  computed: { currentUser() { return this.$store.state.account.user[0].first_name || 'Profile' } },
+  computed: { currentUser() { return this.$store.state.account.user.first_name || 'Profile' } },
   methods: {
     loggOut() {
       this.$store.dispatch('account/loggOut')
