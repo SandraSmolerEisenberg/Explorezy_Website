@@ -75,7 +75,14 @@ router.put('/:id', function(req, res) {
             user.first_name = req.body.first_name;
             user.last_name = req.body.last_name;
             user.email = req.body.email;
-            user.password = req.body.password;
+            if (req.body.password){
+                bcrypt.hash(req.body.password,10,(err,hash) => {
+                    if(err){return res.status(500).json({error: err});}
+                    else{
+                        user.password = hash;
+                    }
+                });
+            }
             user.favourite_places = req.body.favourite_places;
             user.trips = req.body.trips;
             user.save();
@@ -99,7 +106,14 @@ router.patch('/:id', function(req, res) {
         user.first_name = req.body.first_name || user.first_name;
         user.last_name = req.body.last_name || user.last_name ;
         user.email = req.body.email || user.email;
-        user.password = req.body.password || user.password;
+        if (req.body.password){
+            bcrypt.hash(req.body.password,10,(err,hash) => {
+                if(err){return res.status(500).json({error: err});}
+                else{
+                    user.password = hash;
+                }
+            });
+        }
         user.favourite_places = req.body.favourite_places || user.favourite_places;
         user.trips = req.body.trips || user.trips;
         user.save();
