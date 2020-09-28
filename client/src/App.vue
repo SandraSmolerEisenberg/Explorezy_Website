@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Navigationbar from './components/NavBar'
-import NavigationbarLogIn from './components/NavBarLogIn'
+import Navigationbar from './components/navigation/NavBar'
+import NavigationbarLogIn from './components/navigation/NavBarLogIn'
 export default {
   components: {
     navigation: Navigationbar,

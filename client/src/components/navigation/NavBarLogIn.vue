@@ -3,7 +3,7 @@
         <b-navbar toggleable="lg" type="dark" variant="info">
             <b-navbar-brand>
             <router-link to="/">
-                <b-img id="navbarImg" :src="require('../assets/logo-and-text.png')"></b-img>
+                <b-img id="navbarImg" :src="require('../../assets/logo-and-text.png')"></b-img>
             </router-link>
             </b-navbar-brand>
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

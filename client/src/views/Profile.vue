@@ -1,13 +1,16 @@
 <template>
   <div>
-    <b-jumbotron header="User Profile" lead="hihihoho2">
-    </b-jumbotron>
+    <b-container class="col-md-6">
+      <h2>My Profile Page</h2>
+      <hr/>
+    <Profile></Profile>
+    </b-container>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { Api } from '@/Api'
+import Profile from '@/components/profile/Profile'
 
 export default {
   name: 'profile',
@@ -16,16 +19,8 @@ export default {
       message: 'none'
     }
   },
-  methods: {
-    getMessage() {
-      Api.get('/profile')
-        .then(response => {
-          this.message = response.data.message
-        })
-        .catch(error => {
-          this.message = error
-        })
-    }
+  components: {
+    Profile
   }
 }
 </script>
