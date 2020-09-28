@@ -296,7 +296,7 @@
 									"var user = pm.response.json();",
 									"",
 									"pm.test(\"Verify that user is loged in\", function() {",
-									"    pm.expect(pm.variables.get(\"{{email}}\")).to.equal(user.email);",
+									"    pm.expect(pm.variables.get(\"email\")).to.equal(user.email);",
 									"});",
 									""
 								],
