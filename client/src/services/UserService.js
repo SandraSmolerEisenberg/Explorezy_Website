@@ -24,6 +24,16 @@ class UserSevice {
       })
   }
 
+  async update(user) {
+    return await Api.patch('/users/' + user._id, user)
+      .then(response => {
+        if (response.data) {
+          localStorage.setItem('account', response.data)
+        }
+        return response.data
+      })
+  }
+
   loggOut() {
     localStorage.removeItem('user')
   }

@@ -1,4 +1,5 @@
 <template>
+  <div>
   <b-card>
     <b-card-header>{{currentUser.first_name || 'No name is added'}}</b-card-header>
     <b-card-body>
@@ -24,6 +25,8 @@
       </p>
     </b-card-body>
   </b-card>
+  <hr/>
+  </div>
 </template>
 
 <script>

@@ -32,6 +32,18 @@ export const account = {
         }
       )
     },
+    update({ commit }, user) {
+      return UserService.update(user).then(
+        user => {
+          commit('updated', user)
+          return Promise.resolve(user)
+        },
+        error => {
+          commit('updateFailed')
+          return Promise.reject(error)
+        }
+      )
+    },
     loggOut({ commit }) {
       UserService.loggOut()
       commit('loggOut')
@@ -44,6 +56,10 @@ export const account = {
       state.user = user
     },
     registered(state, user) {
+      state.status.currentUser = true
+      state.user = user
+    },
+    updated(state, user) {
       state.status.currentUser = true
       state.user = user
     },
