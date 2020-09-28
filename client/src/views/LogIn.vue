@@ -51,7 +51,7 @@ export default {
         },
         error => {
           console.log(error.toString())
-          this.message = 'Wrong password and/or username'
+          this.message = error.response.data.message
         }
       )
     }

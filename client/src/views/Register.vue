@@ -68,7 +68,7 @@ export default {
         },
         error => {
           console.log(error.toString())
-          this.message = 'Unable to create an account'
+          this.message = error.response.data.message
         }
       )
     }
