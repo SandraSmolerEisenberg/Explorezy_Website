@@ -1,30 +1,47 @@
 <template>
   <div>
-    <b-jumbotron header="Posts" lead="Cool ass posts ajsiojasd!">
-    </b-jumbotron>
+    <b-container>
+      <h2>Post Page</h2>
+      <hr/>
+      <b-button @click="createPostForm">{{buttonText}}</b-button>
+      <hr/>
+      <CreatePostForm v-if="form"></CreatePostForm></b-container>
+      <SinglePost v-for="post in posts" :key="post._id" :post="post"></SinglePost>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { Api } from '@/Api'
-
+import PostService from '@/services/PostService'
+import CreatePostForm from '@/components/post/CreatePostForm'
+import SinglePost from '@/components/post/SinglePost'
 export default {
   name: 'posts',
   data() {
     return {
-      message: 'none'
+      buttonText: '',
+      posts: [],
+      form: false
     }
   },
+  mounted() {
+    this.getAllPost()
+    this.buttonText = 'Create New Post'
+  },
+  components: {
+    CreatePostForm, SinglePost
+  },
   methods: {
-    getMessage() {
-      Api.get('/posts')
-        .then(response => {
-          this.message = response.data.message
-        })
-        .catch(error => {
-          this.message = error
-        })
+    getAllPost() {
+      PostService.getAllPosts().then(
+        responce => {
+          this.posts = responce.data.posts
+        }
+      )
+    },
+    createPostForm() {
+      this.form = !this.form
+      this.buttonText = this.form ? 'Minimize' : 'Create New Post'
     }
   }
 }
