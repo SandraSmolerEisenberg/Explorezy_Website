@@ -2,7 +2,7 @@
   <div>
     <b-card>
 <!--      <b-card-img :src=getImage></b-card-img>-->
-      <b-card-img :src="getImage"></b-card-img>>
+      <b-card-img class="image" :src="getImage"></b-card-img>>
       <b-card-header>{{place.name}}</b-card-header>
       <hr/>
       <b-card-text>
@@ -40,5 +40,7 @@ export default {
 </script>
 
 <style scoped>
-
+.image{
+  width: 20em;
+}
 </style>
