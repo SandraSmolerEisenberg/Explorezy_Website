@@ -1,7 +1,8 @@
 <template>
   <div>
     <b-card>
-      <b-card-img :src=place.image></b-card-img>
+<!--      <b-card-img :src=getImage></b-card-img>-->
+      <b-card-img :src="getImage"></b-card-img>>
       <b-card-header>{{place.name}}</b-card-header>
       <hr/>
       <b-card-text>
@@ -32,7 +33,7 @@ export default {
   props: ['place'],
   computed: {
     getImage() {
-      return this.place.image + ''
+      return this.place.image
     }
   }
 }
