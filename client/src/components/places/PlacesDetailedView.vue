@@ -34,7 +34,7 @@ export default {
   props: ['place'],
   computed: {
     getImage() {
-      return this.place.image + ''
+      return this.place.image
     }
   },
   methods: {

@@ -21,7 +21,8 @@ router.post('/', function(req, res, next) {
             var newPost = new Post({
                 title: req.body.title,
                 text: req.body.text || '',
-                date: req.body.date || dateNow.getDate()
+                date: req.body.date || dateNow.getDate(),
+                author: req.body.author
             });
         }
         newPost.save(function(err, post) {
