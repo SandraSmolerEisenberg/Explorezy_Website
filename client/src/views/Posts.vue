@@ -3,10 +3,13 @@
     <b-container>
       <h2>Post Page</h2>
       <hr/>
-      <b-button @click="createPostForm">{{buttonText}}</b-button>
-      <hr/>
-      <CreatePostForm v-if="form"></CreatePostForm></b-container>
-      <SinglePost v-for="post in posts" :key="post._id" :post="post"></SinglePost>
+      <div v-if="loggedIn">
+        <b-button @click="createPostForm">{{buttonText}}</b-button>
+        <hr/>
+        <CreatePostForm v-if="form" @update="getAllPost"></CreatePostForm>
+      </div>
+      <SinglePost v-for="post in posts" :key="post._id" :post="post"  @delete="deletePost"></SinglePost>
+    </b-container>
   </div>
 </template>
 
@@ -28,6 +31,7 @@ export default {
     this.getAllPost()
     this.buttonText = 'Create New Post'
   },
+  computed: { loggedIn() { return this.$store.state.account.status.currentUser } },
   components: {
     CreatePostForm, SinglePost
   },
@@ -42,6 +46,11 @@ export default {
     createPostForm() {
       this.form = !this.form
       this.buttonText = this.form ? 'Minimize' : 'Create New Post'
+    },
+    deletePost(post) {
+      PostService.deletePost(post).then(() => {
+        this.getAllPost()
+      })
     }
   }
 }

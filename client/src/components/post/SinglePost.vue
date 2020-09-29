@@ -7,14 +7,27 @@
         <b-card-sub-title>Post text</b-card-sub-title>
         <p>{{post.text}}</p>
       </b-card-text>
+      <b-card-text>
+        <b-card-sub-title>Post created</b-card-sub-title>
+        <p>{{creationDate}}</p>
+      </b-card-text>
       <hr/>
+      <b-button v-if="currentUser" @click="$emit('delete', post)">Delete</b-button>
     </b-card>
   </div>
 </template>
 <script>
 export default {
   name: 'SinglePost',
-  props: ['post']
+  props: ['post'],
+  computed: {
+    currentUser() {
+      return this.$store.state.account.user && this.post.author === this.$store.state.account.user._id
+    },
+    creationDate() {
+      return this.post.date.split('T')[0]
+    }
+  }
 }
 </script>
 <style scoped>
