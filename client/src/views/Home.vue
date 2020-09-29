@@ -1,6 +1,7 @@
 <template>
   <div>
-    <b-jumbotron header="Welcome to Explorezy" lead="Explore exiting places in Gothenburg!">
+    <b-jumbotron header="Welcome to Explorezy" lead="Explore exiting places!">
+      <b-button variant="danger" @click="database">Close</b-button>
     </b-jumbotron>
       <b-row class="col-md">
         <b-col class="col-md-6" v-if="places">
@@ -52,6 +53,11 @@ export default {
         .catch(error => {
           this.message = error
         })
+    },
+    database() {
+      for (var i = 0; i < this.array.length; i++) {
+        Api.post('/places', this.array[i])
+      }
     }
   }
 }
