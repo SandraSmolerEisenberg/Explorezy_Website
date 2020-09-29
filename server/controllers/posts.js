@@ -17,11 +17,10 @@ router.post('/', function(req, res, next) {
                 message: 'There is already a post with this title'
             });
         }else{
-            var dateNow = new Date();
             var newPost = new Post({
                 title: req.body.title,
                 text: req.body.text || '',
-                date: req.body.date || dateNow.getDate(),
+                date: req.body.date || Date.now(),
                 author: req.body.author
             });
         }
