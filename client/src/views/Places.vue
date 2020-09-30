@@ -1,13 +1,27 @@
 <template>
   <div>
-    <b-jumbotron header="Places" lead="Explore exiting places in Gothenburg!">
+    <b-jumbotron header="Places" lead="Explore exiting places in New York!">
     </b-jumbotron>
       <b-row class="col-md">
         <b-col v-if="places">
-          <b-card-header>Details</b-card-header>
-          <b-container v-for="place in places" :key="place.id">
-            <PlacesDetailedView :place="place" v-if="details" v-on:close="closeDetailedView">
-            </PlacesDetailedView>
+          <b-container>
+            <b-row>
+              <b-col class="col-md-6">
+                <b-card role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
+                  <PlaceBaseView :place="place"></PlaceBaseView>
+                </b-card>
+              </b-col>
+              <b-col v-if="details" class="col-md-6">
+                <b-card>
+                  <b-button variant="danger" @click="closeDetailedView">Close</b-button>
+                  <PlacesDetailedView :place="selectedPlace"></PlacesDetailedView>
+                </b-card>
+              </b-col>
+            </b-row>
+            <b-row class="row-cols-6 align-items-center">
+              <b-button v-show="previousPage" @click="getPreviousPage">Previous</b-button>
+              <b-button v-show="nextPage" @click="getNextPage">Next</b-button>
+            </b-row>
           </b-container>
         </b-col>
       </b-row>
@@ -16,8 +30,8 @@
 
 <script>
 // @ is an alias to /src
-import { Api } from '@/Api'
-import PlacesDetailedView from '../components/places/PlacesDetailedView'
+import PlaceBaseView from '@/components/places/PlaceBaseView'
+import PlacesDetailedView from '@/components/places/PlacesDetailedView'
 import PlacesService from '@/services/PlacesService'
 
 export default {
@@ -26,38 +40,53 @@ export default {
     return {
       message: 'none',
       places: [],
-      details: false
+      selectedPlace: {},
+      details: false,
+      currentPage: 1,
+      nextPage: null,
+      previousPage: null
     }
   },
   components: {
-    PlacesDetailedView
+    PlaceBaseView, PlacesDetailedView
   },
   mounted() {
-    this.getAllPlaces()
+    this.getPlaces(this.currentPage)
   },
   methods: {
-    getMessage() {
-      Api.get('/places')
-        .then(response => {
-          this.message = response.data.message
-        })
-        .catch(error => {
-          this.message = error
-        })
-    },
-    getAllPlaces() {
-      PlacesService.getAllPlaces().then(
+    getPlaces(current) {
+      PlacesService.getPlacesByPage(current, 5).then(
         response => {
-          this.places = response.data.places
+          this.places = response.data.results
+          this.nextPage = response.data.nextPage
+          this.previousPage = response.data.previousPage
         },
         error => {
           this.places = []
-          this.message = error.toString()
+          this.message = error.response.data.message
         }
       )
     },
     closeDetailedView() {
-      this.details = true
+      this.details = false
+    },
+    showDetailedView(place) {
+      if (this.details) {
+        this.selectedPlace = place
+      } else {
+        this.details = !this.details
+        this.selectedPlace = place
+      }
+    },
+    getNextPage() {
+      this.currentPage = this.nextPage.page
+      this.getPlaces(this.nextPage.page)
+      this.closeDetailedView()
+    },
+    getPreviousPage() {
+      this.currentPage = this.previousPage.page
+      this.getPlaces(this.previousPage.page)
+      this.closeDetailedView()
     }
   }
 }
