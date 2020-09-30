@@ -16,11 +16,22 @@
 
 <script>
 export default {
-  name: 'PlaceBaceView',
+  name: 'PlaceBaseView',
   props: ['place'],
   computed: {
     introText() {
-      return this.place.wikipedia_extracts.text.split('.')[0] + '.....'
+      return this.getIntroText()
+    }
+  },
+  methods: {
+    getIntroText() {
+      let introText = this.place.wikipedia_extracts.text
+      let result = introText.split(' ')
+      if (result.length > 10) {
+        result = result.slice(0, 10)
+        introText = result.join(' ') + '...'
+      }
+      return introText
     }
   }
 }
