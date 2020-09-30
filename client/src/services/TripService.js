@@ -5,12 +5,12 @@ class TripService {
     return await Api.get('/trips')
   }
 
-  async getPlaceByID(id) {
+  async getTripByID(id) {
     return await Api.get('/trips/' + id)
   }
 
-  async getPlacesByPage(currentPage, limit) {
-    return await Api.get('/trips?page=' + currentPage + '&limit=' + limit)
+  async createTrip(trip) {
+    return await Api.post('/trips', trip)
   }
 }
 

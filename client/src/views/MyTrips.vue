@@ -22,7 +22,7 @@ import TripService from '@/services/TripService'
 import CreateTripForm from '@/components/trips/CreateTripForm'
 import SingleTrip from '@/components/trips/SingleTrip'
 export default {
-  name: 'posts',
+  name: 'trips',
   data() {
     return {
       buttonText: '',
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     currentUser() {
-      return this.$store.state.account.user && this.post.author === this.$store.state.account.user._id
+      return this.$store.state.account.user && this.trip.user === this.$store.state.account.user._id
     },
     loggedIn() { return this.$store.state.account.status.currentUser }
   },
