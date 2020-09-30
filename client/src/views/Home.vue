@@ -6,10 +6,10 @@
       <b-row class="col-md">
         <b-col class="col-md-6" v-if="places">
           <b-card-header>Places</b-card-header>
-          <b-container v-for="place in places" :key="place.id">
-            <b-card>
-                {{place}}
-            </b-card>
+          <b-container v-for="place in places" :key="place._id">
+            <div>
+              <place-preview v-bind:place="place"></place-preview>
+            </div>
           </b-container>
         </b-col>
         <b-col class="col-md-6">Right</b-col>
@@ -21,8 +21,13 @@
 // @ is an alias to /src
 import { Api } from '@/Api'
 import PlacesService from '@/services/PlacesService'
+import PlacePreview from '@/components/places/PlacePreview.vue'
+
 export default {
   name: 'home',
+  components: {
+    PlacePreview
+  },
   data() {
     return {
       message: 'none',
