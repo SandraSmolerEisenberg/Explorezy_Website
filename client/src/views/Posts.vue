@@ -8,7 +8,10 @@
         <hr/>
         <CreatePostForm v-if="form" @update="getAllPost"></CreatePostForm>
       </div>
-      <SinglePost v-for="post in posts" :key="post._id" :post="post"  @delete="deletePost"></SinglePost>
+      <b-card v-for="post in posts" :key="post._id">
+        <SinglePost  :post="post"></SinglePost>
+        <b-button v-if="currentUser" @click="deletePost(post)">Delete</b-button>
+      </b-card>
     </b-container>
   </div>
 </template>
@@ -31,7 +34,12 @@ export default {
     this.getAllPost()
     this.buttonText = 'Create New Post'
   },
-  computed: { loggedIn() { return this.$store.state.account.status.currentUser } },
+  computed: {
+    currentUser() {
+      return this.$store.state.account.user && this.post.author === this.$store.state.account.user._id
+    },
+    loggedIn() { return this.$store.state.account.status.currentUser }
+  },
   components: {
     CreatePostForm, SinglePost
   },
