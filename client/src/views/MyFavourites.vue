@@ -1,13 +1,13 @@
 <template>
   <div>
-    <b-jumbotron header="My Favourites" lead="My favs!">
+    <b-jumbotron header="My Favourite Places">
     </b-jumbotron>
     <b-container>
       <b-card-header v-show="message">{{message}}</b-card-header>
       <b-row>
         <b-card v-for="place in places" :key="place._id">
           <b-button variant="danger" @click="removeFromList(place)">Remove from my Favourite</b-button>
-          <PlacesDetailedView :place="place"></PlacesDetailedView>
+          <FavoritePlaceList :place="place"></FavoritePlaceList>
         </b-card>
       </b-row>
     </b-container>
@@ -17,7 +17,7 @@
 <script>
 // @ is an alias to /src
 import PlacesService from '@/services/PlacesService'
-import PlacesDetailedView from '@/components/places/PlacesDetailedView'
+import FavoritePlaceList from '@/components/places/FavoritePlaceList'
 export default {
   name: 'myfavourites',
   data() {
@@ -28,7 +28,7 @@ export default {
     }
   },
   components: {
-    PlacesDetailedView
+    FavoritePlaceList
   },
   mounted() {
     this.loadFavouritePlace()
