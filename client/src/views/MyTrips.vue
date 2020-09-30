@@ -9,7 +9,7 @@
         <CreateTripForm v-if="form" @update="getAllTrips"></CreateTripForm>
       </div>
       <b-card v-for="trip in trips" :key="trip._id">
-        <single-trip  :trip="trip"></single-trip>
+        <SingleTrip  :trip="trip"></SingleTrip>
         <b-button v-if="currentUser" @click="deleteTrip(trip)">Delete</b-button>
       </b-card>
     </b-container>
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     currentUser() {
-      return this.$store.state.account.user && this.trip.user === this.$store.state.account.user._id
+      return this.$store.state.account.user && this.trips.user === this.$store.state.account.user._id
     },
     loggedIn() { return this.$store.state.account.status.currentUser }
   },

@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     currentUser() {
-      return this.$store.state.account.user && this.post.author === this.$store.state.account.user._id
+      return this.$store.state.account.user && this.posts.author === this.$store.state.account.user._id
     },
     loggedIn() { return this.$store.state.account.status.currentUser }
   },
