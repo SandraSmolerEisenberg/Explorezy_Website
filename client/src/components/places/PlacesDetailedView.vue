@@ -1,8 +1,8 @@
 <template>
   <div>
-      <b-button variant="primary" @click="addToFavourite" v-show="checkUser(place)">Add to favourites</b-button>
+      <b-button variant="primary" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
     <b-card>
-      <b-card-sub-title  v-show="!checkUser(place)">In my Favorite list</b-card-sub-title>
+      <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(place)">In my Favorite list</b-card-sub-title>
       <b-card-img :src=place.image class="img"></b-card-img>
       <b-card-header>{{place.name}}</b-card-header>
       <hr/>
@@ -54,6 +54,12 @@ export default {
     },
     checkUser(place) {
       return this.$store.state.account.status.currentUser && !this.$store.state.account.user.favourite_places.includes(place._id)
+    },
+    isLoggedIn() {
+      return this.$store.state.account.status.currentUser
+    },
+    hasFavPlace(place) {
+      return this.$store.state.account.user.favourite_places.includes(place._id)
     }
   }
 }
