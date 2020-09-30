@@ -13,7 +13,7 @@
               </b-col>
               <b-col v-if="details" class="col-md-6">
                 <b-card>
-                  <b-button variant="danger" @click="closeDetailedView">Close</b-button>
+                  <b-button-close @click="closeDetailedView"></b-button-close>
                   <PlacesDetailedView :place="selectedPlace"></PlacesDetailedView>
                 </b-card>
               </b-col>
