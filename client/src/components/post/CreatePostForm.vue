@@ -50,6 +50,7 @@ export default {
       PostService.createPost(this.post).then(
         () => {
           this.message = 'Your post has been added'
+          this.post = {}
         },
         error => {
           this.message = error.response.data.message

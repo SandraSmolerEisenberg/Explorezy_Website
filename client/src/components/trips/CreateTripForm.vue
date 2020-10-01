@@ -24,7 +24,7 @@
     </form>
     <div v-if="message">
       <div class="card-header">{{message}}</div>
-      <b-button @click="resetData()">Add Another Trip</b-button>
+      <b-button type=reset @click="resetData() ">Add Another Trip</b-button>
     </div>
     <hr/>
   </ValidationObserver>
@@ -51,6 +51,7 @@ export default {
       this.$store.dispatch('account/addTrip', payload).then(
         () => {
           this.message = 'Your trip has been added'
+          this.trip = {}
         },
         error => {
           this.message = error.response.data.message
