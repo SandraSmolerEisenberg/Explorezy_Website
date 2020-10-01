@@ -1081,9 +1081,9 @@
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"var trips = pm.response.json();\r",
+									"var user = pm.response.json();\r",
 									"pm.test(\"Compare expected id to testTrip id\", function (){\r",
-									"    pm.expect(trips).to.not.contain(pm.variables.get(\"trip_id\"));\r",
+									"    pm.expect(user.trips).to.not.contain(pm.variables.get(\"trip_id\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
