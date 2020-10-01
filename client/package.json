@@ -11,8 +11,11 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
+    "v-validate": "^0.1.4",
+    "vee-validate": "^3.4.0",
     "vue": "^2.6.12",
-    "vue-router": "^3.4.3"
+    "vue-router": "^3.4.3",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-eslint": "^4.5.4",
