@@ -25,6 +25,14 @@ class TripService {
   async addPlaceToTrip(tripID, placeID) {
     return await Api.post('/trips/' + tripID + '/places', { places: placeID })
   }
+
+  async deleteUserTrips(id) {
+    return await Api.delete('/trips?user=' + id)
+  }
+
+  async deleteOneTrip(id) {
+    return await Api.delete('/trips/' + id)
+  }
 }
 
 export default new TripService()

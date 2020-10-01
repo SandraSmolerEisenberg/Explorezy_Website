@@ -7,8 +7,10 @@
         <b-tab @click="getAllTrips" title="My Trips" active>
           <b-card v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
-          <b-button v-if="currentUser" @click="deleteTrip(trip)">Delete</b-button>
+          <b-button v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
           </b-card>
+          <b-button v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
+          <b-card-text v-if="message">{{message}}</b-card-text>
         </b-tab>
         <b-tab title="Create Trip" @click="clearMessage">
             <CreateTripForm ref="createTripTab"></CreateTripForm>
@@ -32,6 +34,7 @@ export default {
   name: 'trips',
   data() {
     return {
+      message: '',
       trips: [],
       form: false
     }
@@ -41,7 +44,7 @@ export default {
   },
   computed: {
     currentUser() {
-      return this.$store.state.account.user && this.trips.user === this.$store.state.account.user._id
+      return this.$store.state.account.status.currentUser && this.trips.length > 0
     },
     loggedIn() { return this.$store.state.account.status.currentUser }
   },
@@ -63,9 +66,31 @@ export default {
       )
     },
     deleteTrip(trip) {
-      TripService.deleteTrip(trip).then(() => {
-        this.getAllTrips()
-      })
+      const payload = {}
+      const id = this.$store.state.account.user._id
+      payload.userID = id
+      payload.tripID = trip._id
+      this.$store.dispatch('account/deleteOneTrip', payload).then(
+        () => {
+          this.message = 'Your trip have been deleted'
+          this.getAllTrips()
+        },
+        error => {
+          this.message = error.response.data.message
+        }
+      )
+    },
+    deleteAllTrips() {
+      const id = this.$store.state.account.user._id
+      this.$store.dispatch('account/deleteTrips', id).then(
+        () => {
+          this.message = 'Your trips have been deleted'
+          this.getAllTrips()
+        },
+        error => {
+          this.message = error.response.data.message
+        }
+      )
     }
   }
 }

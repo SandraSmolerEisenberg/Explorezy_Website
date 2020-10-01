@@ -32,6 +32,30 @@ export const account = {
         }
       )
     },
+    deleteOneTrip({ commit }, payload) {
+      return UserService.deleteUserOneTrip(payload).then(
+        user => {
+          commit('deleted', user)
+          return Promise.resolve(user)
+        },
+        error => {
+          commit('deletionFailed')
+          return Promise.reject(error)
+        }
+      )
+    },
+    deleteTrips({ commit }, id) {
+      return UserService.deleteUserTrips(id).then(
+        user => {
+          commit('deleted', user)
+          return Promise.resolve(user)
+        },
+        error => {
+          commit('deletionFailed')
+          return Promise.reject(error)
+        }
+      )
+    },
     register({ commit }, user) {
       return UserService.register(user).then(
         user => {
@@ -64,6 +88,10 @@ export const account = {
   mutations: {
 
     added(state, user) {
+      state.status.currentUser = true
+      state.user = user
+    },
+    deleted(state, user) {
       state.status.currentUser = true
       state.user = user
     },
