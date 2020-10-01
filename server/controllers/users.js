@@ -170,7 +170,7 @@ router.delete('/:id/trips/:tripId', function(req, res) {
             let index = user.trips.indexOf(tripId);
             user.trips.splice(index, 1);
             user.save();
-            res.json(user.trips);
+            res.json(user);
         }
         catch(error){
             return res.status(404).json({'message': 'Trip ID not valid!', 'error': error});
