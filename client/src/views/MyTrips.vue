@@ -3,7 +3,7 @@
       <h2>My Trips</h2>
       <hr/>
       <b-tabs content-class="mt-3">
-        <b-tab @click="getAllTrips" title="My Trips" active>
+        <b-tab @click="getAllUserTrips" title="My Trips" active>
           <b-card v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
           <b-button v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
@@ -39,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    this.getAllTrips()
+    this.getAllUserTrips()
   },
   computed: {
     currentUser() {
@@ -53,16 +53,22 @@ export default {
   methods: {
     clearMessagePlaceTab() {
       this.$refs.addPlaceTab.resetData()
+      this.getAllUserTrips()
     },
     clearMessage() {
       this.$refs.createTripTab.resetData()
+      this.getAllUserTrips()
     },
-    getAllTrips() {
-      TripService.getAllTrips().then(
-        response => {
-          this.trips = response.data.trips
-        }
-      )
+    getAllUserTrips() {
+      var userTrips = this.$store.state.account.user.trips
+      this.trips = []
+      for (var i = 0; i < userTrips.length; i++) {
+        TripService.getTripByID(userTrips[i]).then(
+          response => {
+            this.trips.push(response.data)
+          }
+        )
+      }
     },
     deleteTrip(trip) {
       const payload = {}
@@ -72,7 +78,7 @@ export default {
       this.$store.dispatch('account/deleteOneTrip', payload).then(
         () => {
           this.message = 'Your trip have been deleted'
-          this.getAllTrips()
+          this.getAllUserTrips()
         },
         error => {
           this.message = error.response.data.message
@@ -84,7 +90,7 @@ export default {
       this.$store.dispatch('account/deleteTrips', id).then(
         () => {
           this.message = 'Your trips have been deleted'
-          this.getAllTrips()
+          this.getAllUserTrips()
         },
         error => {
           this.message = error.response.data.message
