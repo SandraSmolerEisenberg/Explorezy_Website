@@ -1,5 +1,4 @@
 <template>
-  <div>
     <b-container>
       <h2>My Trips</h2>
       <hr/>
@@ -21,7 +20,7 @@
       </b-tabs>
 
     </b-container>
-  </div>
+
 </template>
 
 <script>
