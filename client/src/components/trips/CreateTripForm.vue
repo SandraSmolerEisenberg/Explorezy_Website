@@ -9,6 +9,13 @@
           <div  v-if="errors[0]" class="alert-danger">{{ errors[0] }}</div>
         </div>
       </ValidationProvider>
+      <ValidationProvider name="status"  v-slot="{ errors }">
+        <div class="form-group">
+          <label for="status">Public</label>
+          <input name="status" type="checkbox" class="form-control" placeholder="name" v-model="trip.public"/>
+          <div  v-if="errors[0]" class="alert-danger">{{ errors[0] }}</div>
+        </div>
+      </ValidationProvider>
       <!-- Button -->
       <input type="submit" :disabled="invalid" class="btn btn-primary mt-3"/>
       <div v-if="message">
@@ -17,13 +24,13 @@
     </form>
     <div v-if="message">
       <div class="card-header">{{message}}</div>
+      <b-button @click="resetData()">Add Another Trip</b-button>
     </div>
     <hr/>
   </ValidationObserver>
 </template>
 
 <script>
-import TripService from '@/services/TripService'
 export default {
   name: 'CreateTripForm',
   data() {
@@ -33,12 +40,17 @@ export default {
     }
   },
   methods: {
+    resetData() {
+      this.message = ''
+    },
     createTrip() {
       this.trip.user = this.$store.state.account.user._id
-      TripService.createTrip(this.trip).then(
+      var payload = {}
+      payload.user = this.$store.state.account.user
+      payload.trip = this.trip
+      this.$store.dispatch('account/addTrip', payload).then(
         () => {
           this.message = 'Your trip has been added'
-          this.$emit('update')
         },
         error => {
           this.message = error.response.data.message
