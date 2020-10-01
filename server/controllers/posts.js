@@ -17,11 +17,11 @@ router.post('/', function(req, res, next) {
                 message: 'There is already a post with this title'
             });
         }else{
+            var dateNow = new Date();
             var newPost = new Post({
                 title: req.body.title,
                 text: req.body.text || '',
-                date: req.body.date || Date.now(),
-                author: req.body.author
+                date: req.body.date || dateNow.getDate()
             });
         }
         newPost.save(function(err, post) {
@@ -31,27 +31,20 @@ router.post('/', function(req, res, next) {
     });
 });
 
-//Get a list of all posts
-router.get('/', function(req, res, next) {
-    if (req.query.user) {
-        var id = req.query.user;
-        Post.find({author: id}, function(err, posts) {
-            if (err) {
-                return res.status(409).json({'message': 'There is no post for this user!', 'error': err});
-            }
-            if (posts === null) {
-                return res.status(404).json({'message': 'Posts not found'});
-            }
-            res.json(posts);
-        });
-    }else {
-        Post.find(function(err, posts) {
-            if (err) { return next(err); }
-            res.json({'posts': posts });
-
-        });
-    }
-
+//Get a list of all posts with pagination.
+router.get('/', function(req, res, next) {     
+    Post.find(function(err, posts) {         
+        if (err) { return next(err); }         
+        const pageNumber = req.query.pageNumber;         
+        const limit = req.query.limit;         
+        if(pageNumber && limit){             
+            let startIndex  = (pageNumber - 1) * limit;             
+            let endIndex = pageNumber * limit;             
+            res.json(posts.slice(startIndex, endIndex));         
+        }else {             
+            res.json({'posts': posts });         
+        }     
+    }); 
 });
 
 //Get a specific post by id.

@@ -3,6 +3,8 @@ var router = express.Router();
 
 var Trip = require('../models/trip');
 var Place = require('../models/place');
+const { mongo } = require('mongoose');
+
 //Creates a new trip object.
 router.post('/', function(req, res, next) {
     var trip = new Trip(req.body);
@@ -13,20 +15,11 @@ router.post('/', function(req, res, next) {
 });
 
 //Get a list of all trips.
-router.get('/', function(req, res) {
-    if (req.query.public){
-        Trip.find({public: req.query.public}, function(err, trips) {
-            if (err) {return res.status(404).json({'message': 'Trip not found!' , 'error': err});}
-            res.json({'trips': trips });
-        });
-    }
-    else {
-        Trip.find(function(err, trips) {
-            if (err) { return res.status(404).json({'message': 'Trip not found!' , 'error': err});}
-            res.json({'trips': trips });
-        });
-    }
-
+router.get('/', function(req, res, next) {
+    Trip.find(function(err, trips) {
+        if (err) { return next(err); }
+        res.json({'trips': trips });
+    });
 });
 
 //Get a specific trip by id.
@@ -53,11 +46,10 @@ router.put('/:id', function(req, res) {
             return res.status(404).json({'message': 'Trip not found'});
         }
         if (req.body.name && req.body.places){
-            trip.name = req.body.name;
-            trip.places = req.body.places;
-            trip.public = req.body.public;
-            trip.save();
-            res.json(trip);
+        trip.name = req.body.name;
+        trip.places = req.body.places;
+        trip.save();
+        res.json(trip);
         } else{
             res.status(404).json({'message': 'Input missing'});
         }
@@ -75,7 +67,6 @@ router.patch('/:id', function(req, res) {
         }
         trip.name = req.body.name || trip.name;
         trip.places = req.body.places || trip.places;
-        trip.public = req.body.public || trip.public;
         trip.save();
         res.json(trip);
     });
@@ -85,19 +76,6 @@ router.patch('/:id', function(req, res) {
 router.delete('/:id', function(req, res) {
     var id = req.params.id;
     Trip.findOneAndDelete({_id: id}, function(err, trip) {
-        if (err) {
-            return res.status(409).json({'message': 'There is no trip with that name!', 'error': err});
-        }
-        if (trip === null) {
-            return res.status(404).json({'message': 'Trip not found'});
-        }
-        res.json(trip);
-    });
-});
-
-router.delete('/', function(req, res) {
-    var id = req.query.user;
-    Trip.deleteMany({user: id}, function(err, trip) {
         if (err) {
             return res.status(409).json({'message': 'There is no trip with that name!', 'error': err});
         }

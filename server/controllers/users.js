@@ -44,12 +44,9 @@ router.post('/', function(req, res) {
 });
 
 // Get all users
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     User.find(function(err, users) {
-        if (err) { return res.status(404).json({'message': 'Users not found!', 'error': err}); }
-        if (users === null) {
-            return res.status(404).json({'message': 'Users not found!'});
-        }
+        if (err) { return next(err); }
         res.json({'users': users });
     });
 });
@@ -78,14 +75,7 @@ router.put('/:id', function(req, res) {
             user.first_name = req.body.first_name;
             user.last_name = req.body.last_name;
             user.email = req.body.email;
-            if (req.body.password){
-                bcrypt.hash(req.body.password,10,(err,hash) => {
-                    if(err){return res.status(500).json({error: err});}
-                    else{
-                        user.password = hash;
-                    }
-                });
-            }
+            user.password = req.body.password;
             user.favourite_places = req.body.favourite_places;
             user.trips = req.body.trips;
             user.save();
@@ -109,14 +99,7 @@ router.patch('/:id', function(req, res) {
         user.first_name = req.body.first_name || user.first_name;
         user.last_name = req.body.last_name || user.last_name ;
         user.email = req.body.email || user.email;
-        if (req.body.password){
-            bcrypt.hash(req.body.password,10,(err,hash) => {
-                if(err){return res.status(500).json({error: err});}
-                else{
-                    user.password = hash;
-                }
-            });
-        }
+        user.password = req.body.password || user.password;
         user.favourite_places = req.body.favourite_places || user.favourite_places;
         user.trips = req.body.trips || user.trips;
         user.save();
@@ -170,7 +153,7 @@ router.delete('/:id/trips/:tripId', function(req, res) {
             let index = user.trips.indexOf(tripId);
             user.trips.splice(index, 1);
             user.save();
-            res.json(user);
+            res.json(user.trips);
         }
         catch(error){
             return res.status(404).json({'message': 'Trip ID not valid!', 'error': error});
@@ -196,7 +179,7 @@ router.post('/login', function(req, res ) {
                     });
                 }
                 if(result){
-                    return res.status(200).json(user[0]);
+                    return res.status(200).json(user);
                 }
                 return res.status(401).json({
                     message: 'Login failed'
@@ -207,19 +190,6 @@ router.post('/login', function(req, res ) {
             message: 'Please provide email and/or password'
         });
     }
-});
-
-// Get all trips from user
-router.get('/:id/trips', function(req, res) {
-    var id = req.params.id;
-    User.findById(id, function(err, user) {
-        if (err) {return res.status(404).json({'message': 'User not found', 'error': err});
-        }
-        if (user === null) {
-            return res.status(404).json({'message': 'User not found'});
-        }
-        res.json({'trips': user.trips});
-    });
 });
 
 //Delete all trips from a user.
