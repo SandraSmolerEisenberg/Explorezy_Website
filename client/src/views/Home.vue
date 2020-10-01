@@ -24,6 +24,9 @@ import SinglePostLessText from '@/components/post/SinglePostLessText'
 
 export default {
   name: 'home',
+  components: {
+    PlacePreview
+  },
   data() {
     return {
       message: 'none',

@@ -3,6 +3,11 @@
     <b-jumbotron header="Places" lead="Explore exiting places in New York!">
     </b-jumbotron>
       <b-row class="col-md">
+          <b-container v-for="place in places" :key="place._id">
+            <div>
+              <place-preview v-bind:place="place"></place-preview>
+            </div>
+          </b-container>
         <b-col v-if="places">
           <b-container>
             <b-row>
@@ -33,6 +38,7 @@
 import PlaceBaseView from '@/components/places/PlaceBaseView'
 import PlacesDetailedView from '@/components/places/PlacesDetailedView'
 import PlacesService from '@/services/PlacesService'
+import PlacePreview from '@/components/places/PlacePreview.vue'
 
 export default {
   name: 'places',
