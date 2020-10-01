@@ -20,6 +20,18 @@ export const account = {
         }
       )
     },
+    addTrip({ commit }, payload) {
+      return UserService.addTrip(payload).then(
+        user => {
+          commit('added', user)
+          return Promise.resolve(user)
+        },
+        error => {
+          commit('addingFailed')
+          return Promise.reject(error)
+        }
+      )
+    },
     register({ commit }, user) {
       return UserService.register(user).then(
         user => {
@@ -51,6 +63,10 @@ export const account = {
   },
   mutations: {
 
+    added(state, user) {
+      state.status.currentUser = true
+      state.user = user
+    },
     loggedIn(state, user) {
       state.status.currentUser = true
       state.user = user
