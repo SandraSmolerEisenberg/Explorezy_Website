@@ -12,6 +12,7 @@
             <b-navbar-nav>
                 <b-nav-item><router-link to="/places">Places</router-link></b-nav-item>
                 <b-nav-item><router-link to="/posts">Posts</router-link></b-nav-item>
+                <b-nav-item><router-link to="/trips">Trips</router-link></b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->

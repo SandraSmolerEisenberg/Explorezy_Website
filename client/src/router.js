@@ -9,6 +9,7 @@ import MyFavourites from './views/MyFavourites.vue'
 import LogIn from './views/LogIn.vue'
 import Profile from './views/Profile.vue'
 import Register from './views/Register.vue'
+import Trips from '@/views/Trips'
 
 Vue.use(Router)
 
@@ -55,12 +56,17 @@ const router = new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/trips',
+      name: 'trips',
+      component: Trips
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  const publicDomains = ['home', 'login', 'places', 'posts', 'register']
+  const publicDomains = ['home', 'login', 'places', 'posts', 'register', 'trips']
   const privateDomains = ['mytrips', 'myfavourites', 'profile']
   if (privateDomains.includes(to.name) && !store.state.account.status.currentUser) next({ name: 'login' })
   else if (privateDomains.includes(to.name) && store.state.account.status.currentUser) next()

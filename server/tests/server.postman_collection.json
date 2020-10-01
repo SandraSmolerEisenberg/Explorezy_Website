@@ -962,6 +962,8 @@
 								],
 								"type": "text/javascript"
 							}
+
+
 						}
 					],
 					"request": {
@@ -1079,9 +1081,9 @@
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"var trips = pm.response.json();\r",
+									"var user = pm.response.json();\r",
 									"pm.test(\"Compare expected id to testTrip id\", function (){\r",
-									"    pm.expect(trips).to.not.contain(pm.variables.get(\"trip_id\"));\r",
+									"    pm.expect(user.trips).to.not.contain(pm.variables.get(\"trip_id\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1585,7 +1587,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Krasens Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
+							"raw": "{\r\n\t\"name\": \"Krasens Trip\",\r\n\t\"places\": [], \r\n\t\"public\": true\n, \r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

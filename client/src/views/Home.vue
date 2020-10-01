@@ -1,27 +1,26 @@
 <template>
   <div>
     <b-jumbotron header="Welcome to Explorezy" lead="Explore exiting places!">
-      <b-button variant="danger" @click="database">Close</b-button>
     </b-jumbotron>
       <b-row class="col-md">
-        <b-col class="col-md-6" v-if="places">
+        <b-col  v-show="places">
           <b-card-header>Places</b-card-header>
-          <b-container v-for="place in places" :key="place._id">
-            <div>
-              <place-preview v-bind:place="place"></place-preview>
-            </div>
-          </b-container>
+          <PlaceBaseView v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
         </b-col>
-        <b-col class="col-md-6">Right</b-col>
+        <b-col v-show="posts" >
+          <b-card-header>Posts</b-card-header>
+          <SinglePostLessText v-for="post in posts" :key="post._id" :post="post"></SinglePostLessText>
+        </b-col>
       </b-row>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { Api } from '@/Api'
 import PlacesService from '@/services/PlacesService'
-import PlacePreview from '@/components/places/PlacePreview.vue'
+import PlaceBaseView from '@/components/places/PlaceBaseView'
+import PostService from '@/services/PostService'
+import SinglePostLessText from '@/components/post/SinglePostLessText'
 
 export default {
   name: 'home',
@@ -35,8 +34,12 @@ export default {
       posts: []
     }
   },
+  components: {
+    PlaceBaseView, SinglePostLessText
+  },
   mounted() {
     this.getAllPlaces()
+    this.getAllPosts()
   },
   methods: {
     getAllPlaces() {
@@ -50,19 +53,12 @@ export default {
         }
       )
     },
-    getMessage() {
-      Api.get('/')
-        .then(response => {
-          this.message = response.data.message
-        })
-        .catch(error => {
-          this.message = error
-        })
-    },
-    database() {
-      for (var i = 0; i < this.array.length; i++) {
-        Api.post('/places', this.array[i])
-      }
+    getAllPosts() {
+      PostService.getAllPosts().then(
+        response => {
+          this.posts = response.data.posts
+        }
+      )
     }
   }
 }

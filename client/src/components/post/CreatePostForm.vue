@@ -41,13 +41,16 @@ export default {
     }
   },
   methods: {
+    clearData() {
+      this.message = ''
+    },
     createPost() {
       this.post.author = this.$store.state.account.user._id
       this.post.date = Date.now()
       PostService.createPost(this.post).then(
         () => {
           this.message = 'Your post has been added'
-          this.$emit('update')
+          this.post = {}
         },
         error => {
           this.message = error.response.data.message
