@@ -4,6 +4,7 @@
       <hr/>
       <b-tabs v-if="loggedIn" content-class="mt-3">
         <b-tab @click="getAllPost" title="Posts" active>
+          <b-card-text v-if="message">{{message}}</b-card-text>
           <b-card v-for="post in posts" :key="post._id">
             <SinglePost :post="post"></SinglePost>
             <b-button v-if="currentUser"  @click="deletePost(post)">Delete</b-button>
@@ -19,6 +20,7 @@
         </b-tab>
       </b-tabs>
       <b-container v-if="!loggedIn">
+        <b-card-text v-if="message">{{message}}</b-card-text>
         <b-card v-for="post in posts" :key="post._id">
         <SinglePost  :post="post"></SinglePost>
         <b-button v-if="currentUser" @click="deletePost(post)">Delete</b-button>
@@ -39,6 +41,7 @@ export default {
   name: 'posts',
   data() {
     return {
+      message: '',
       posts: []
     }
   },
@@ -57,8 +60,13 @@ export default {
   methods: {
     getAllPost() {
       PostService.getAllPosts().then(
-        responce => {
-          this.posts = responce.data.posts
+        response => {
+          this.posts = response.data.posts
+          if (this.posts.length === 0) {
+            this.message = 'There are currently no posts'
+          } else {
+            this.message = ''
+          }
         }
       )
     },

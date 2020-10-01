@@ -31,14 +31,12 @@ export default {
     this.checkTrips()
   },
   methods: {
-    checkTrips() {
-      if (this.trips.length <= 0) {
-        this.message = 'There are no trips, log in and add trips to the list'
-      }
-    },
     getTrips() {
       TripService.getAllPublicTrips().then(response => {
         this.trips = response.data.trips
+        if (this.trips.length === 0) {
+          this.message = 'There are currently no public trips'
+        }
       }).catch(() => {
         this.message = 'Trips are not avaliable at this time'
       })
