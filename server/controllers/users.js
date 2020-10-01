@@ -44,9 +44,12 @@ router.post('/', function(req, res) {
 });
 
 // Get all users
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     User.find(function(err, users) {
-        if (err) { return next(err); }
+        if (err) { return res.status(404).json({'message': 'Users not found!', 'error': err}); }
+        if (users === null) {
+            return res.status(404).json({'message': 'Users not found!'});
+        }
         res.json({'users': users });
     });
 });
@@ -204,6 +207,19 @@ router.post('/login', function(req, res ) {
             message: 'Please provide email and/or password'
         });
     }
+});
+
+// Get all trips from user
+router.get('/:id/trips', function(req, res) {
+    var id = req.params.id;
+    User.findById(id, function(err, user) {
+        if (err) {return res.status(404).json({'message': 'User not found', 'error': err});
+        }
+        if (user === null) {
+            return res.status(404).json({'message': 'User not found'});
+        }
+        res.json({'trips': user.trips});
+    });
 });
 
 //Delete all trips from a user.
