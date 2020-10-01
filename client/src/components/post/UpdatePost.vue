@@ -6,7 +6,7 @@
       {{ post.title }}
     </option>
   </b-form-select>
-  <b-container v-show="postSelected">
+  <b-container v-if="postSelected">
     <ValidationObserver  v-slot="{ invalid }">
       <form v-if="!message" @submit.prevent="updatePost">
         <!-- Email -->
@@ -47,7 +47,7 @@ export default {
   name: 'UpdatePost',
   data() {
     return {
-      postSelected: {},
+      postSelected: false,
       posts: [],
       post: {},
       message: ''
@@ -59,6 +59,7 @@ export default {
         response => {
           this.posts = response.data
           this.message = ''
+          this.postSelected = false
         }
       )
     },
