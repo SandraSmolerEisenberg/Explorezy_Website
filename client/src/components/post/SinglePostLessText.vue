@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-container>
     <b-card>
       <b-card-header>{{post.title}}</b-card-header>
       <hr/>
@@ -9,7 +9,7 @@
       </b-card-text>
       <hr/>
     </b-card>
-  </div>
+  </b-container>
 </template>
 <script>
 export default {

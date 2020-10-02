@@ -1,7 +1,8 @@
 <template>
-  <div>
-  <b-jumbotron header="Trips" lead="Public trips!">
-  </b-jumbotron>
+  <b-container>
+    <h2>Trips</h2>
+    <h3>Trips shared by other users</h3>
+    <hr/>
     <b-container>
       <b-card-text v-show="message">{{message}}</b-card-text>
       <b-card v-for="trip in trips" :key="trip._id">
@@ -9,7 +10,7 @@
       </b-card>
     </b-container>
 
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -28,7 +29,6 @@ export default {
   },
   mounted() {
     this.getTrips()
-    this.checkTrips()
   },
   methods: {
     getTrips() {
@@ -38,7 +38,7 @@ export default {
           this.message = 'There are currently no public trips'
         }
       }).catch(() => {
-        this.message = 'Trips are not avaliable at this time'
+        this.message = 'Trips are not available at this time'
       })
     }
   }

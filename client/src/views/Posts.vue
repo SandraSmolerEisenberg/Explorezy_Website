@@ -86,7 +86,5 @@ export default {
 </script>
 
 <style>
-.btn_message {
-  margin-bottom: 1em;
-}
+
 </style>

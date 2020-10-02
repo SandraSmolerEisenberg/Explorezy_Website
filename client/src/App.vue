@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-        <navigation v-if='!loggedIn'></navigation>
+        <navigation  v-if='!loggedIn'></navigation>
         <navigationLogIn v-if='loggedIn'></navigationLogIn>
 
         <!-- Render the content of the current page view -->
@@ -31,5 +31,9 @@ export default {
 #navbarImg {
   max-width: 5em;
   height: auto;
+}
+.router-link-text{
+  color: #2c3e50 !important;
+  font-size: large;
 }
 </style>

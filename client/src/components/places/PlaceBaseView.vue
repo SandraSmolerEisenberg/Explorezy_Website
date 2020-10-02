@@ -1,5 +1,5 @@
 <template>
-<div>
+<b-container>
   <b-card>
     <b-card-header>{{place.name}}</b-card-header>
     <hr/>
@@ -11,7 +11,7 @@
     </b-card-text>
     <hr/>
   </b-card>
-</div>
+</b-container>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <b-jumbotron header="Places" lead="Explore exiting places in New York!">
-    </b-jumbotron>
+  <b-container>
+    <h2>Explore exiting places in New York!</h2>
+    <hr/>
       <b-row class="col-md">
         <b-col v-if="places">
           <b-container>
@@ -25,7 +25,7 @@
           </b-container>
         </b-col>
       </b-row>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -93,7 +93,5 @@ export default {
 </script>
 
 <style>
-.btn_message {
-  margin-bottom: 1em;
-}
+
 </style>

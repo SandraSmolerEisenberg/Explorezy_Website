@@ -12,9 +12,9 @@
     <hr/>
   </div>
   <b-row v-show="selected">
-    <b-card role="button" @click="addToTrip(place)" class="card-size" v-for="place in places" :key="place._id">
+    <b-card role="button" v-show="placesList(place)" @click="addToTrip(place)" class="card-size" v-for="place in places" :key="place._id">
       <b-card-header>{{place.name}}</b-card-header>
-      <b-img class="plain" :src=place.image></b-img>
+      <b-img class="img" :src=place.image></b-img>
     </b-card>
   </b-row>
 </b-container>
@@ -35,7 +35,9 @@ export default {
   },
   computed: {
     selected() {
-      return this.trips.find(obj => { return obj.name === this.tripSelected })
+      return this.trips.find(obj => {
+        return obj.name === this.tripSelected
+      })
     }
   },
   mounted() {
@@ -47,6 +49,10 @@ export default {
         this.places = response.data.places
       })
     },
+
+    placesList(place) {
+      return (this.places && this.selected) ? !this.selected.places.includes(place._id) : true
+    },
     resetData() {
       this.message = ''
     },
@@ -54,6 +60,11 @@ export default {
       const trip = this.trips.find(obj => { return obj.name === this.tripSelected })
       TripService.addPlaceToTrip(trip._id, place._id).then(response => {
         if (response) {
+          this.trips.find(obj => {
+            if (obj.name === this.tripSelected) {
+              obj.places.push(place._id)
+            }
+          })
           this.message = 'Added ' + place.name
         }
       })
@@ -65,5 +76,11 @@ export default {
 <style scoped>
 .card-size {
   max-width: 20em;
+}
+.img{
+  align-content: center;
+  max-width: 18em;
+  max-height: 20em;
+
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-container>
     <b-container class="col-md-6">
       <h2>My Profile Page</h2>
       <hr/>
@@ -7,7 +7,7 @@
       <UpdateProfile v-if="updating"></UpdateProfile>
       <b-button @click="update()">{{getButtonText}}</b-button>
     </b-container>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -39,7 +39,5 @@ export default {
 </script>
 
 <style>
-.btn_message {
-  margin-bottom: 1em;
-}
+
 </style>

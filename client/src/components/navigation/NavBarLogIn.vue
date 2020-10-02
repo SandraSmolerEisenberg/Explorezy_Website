@@ -9,12 +9,12 @@
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
-                <b-nav-item><router-link to="/places">Places</router-link></b-nav-item>
-                <b-nav-item><router-link to="/posts">Posts</router-link></b-nav-item>
-                <b-nav-item><router-link to="/trips">Trips</router-link></b-nav-item>
-                <b-nav-item><router-link to="/mytrips">My Trips</router-link></b-nav-item>
-                <b-nav-item><router-link to="/myfavourites">My Favourites</router-link></b-nav-item>
+            <b-navbar-nav >
+                <b-nav-item><router-link class="router-link-text" to="/places">Places</router-link></b-nav-item>
+                <b-nav-item><router-link class="router-link-text" to="/posts">Posts</router-link></b-nav-item>
+                <b-nav-item><router-link class="router-link-text" to="/trips">Trips</router-link></b-nav-item>
+                <b-nav-item><router-link class="router-link-text" to="/mytrips">My Trips</router-link></b-nav-item>
+                <b-nav-item><router-link class="router-link-text" to="/myfavourites">My Favourites</router-link></b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
@@ -22,10 +22,10 @@
                 <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
                     <template v-slot:button-content>
-                        <em>{{currentUser}}</em>
+                        <em class="router-link-text">{{currentUser}}</em>
                     </template>
-                    <b-dropdown-item><router-link to="/profile">Profile</router-link></b-dropdown-item>
-                    <b-dropdown-item @click="loggOut">Logg Out</b-dropdown-item>
+                    <b-dropdown-item><router-link class="router-link-text" to="/profile">Profile</router-link></b-dropdown-item>
+                    <b-dropdown-item class="router-link-text" @click="loggOut">Logg Out</b-dropdown-item>
                 </b-nav-item-dropdown>
             </b-navbar-nav>
             </b-collapse>
@@ -45,3 +45,6 @@ export default {
   }
 }
 </script>
+<style>
+
+</style>

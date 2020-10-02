@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-container>
       <b-button variant="primary" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
     <b-card>
       <b-card-img :src=place.image class="img"></b-card-img>
@@ -23,7 +23,7 @@
         {{place.wikipedia}}
       </b-link>
     </b-card>
-  </div>
+  </b-container>
 
 </template>
 
@@ -63,6 +63,6 @@ export default {
 
 <style scoped>
 .img{
-  width: 28em;
+  max-width: 28em;
 }
 </style>

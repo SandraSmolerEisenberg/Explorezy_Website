@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <b-container>
     <h2>Registration Page</h2>
+    <hr/>
     <ValidationObserver v-slot="{ invalid }">
       <form @submit.prevent="onRegister">
 
@@ -37,13 +38,13 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid" class="btn btn-primary mt-3"/>
+        <input type="submit" :disabled="invalid" value="Submit" class="btn btn-primary mt-3"/>
         <div v-if="message">
          <div class="alert alert-danger">{{message}}</div>
         </div>
       </form>
     </ValidationObserver>
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -77,7 +78,5 @@ export default {
 </script>
 
 <style>
-.btn_message {
-  margin-bottom: 1em;
-}
+
 </style>

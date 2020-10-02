@@ -18,7 +18,7 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" :disabled="invalid" class="btn btn-primary mt-3"/>
+      <input type="submit" :disabled="invalid" value="Submit" class="btn btn-primary mt-3"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>

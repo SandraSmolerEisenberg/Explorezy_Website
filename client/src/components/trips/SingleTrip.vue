@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-container>
     <b-card>
       <b-card-header>{{trip.name}}</b-card-header>
       <hr/>
@@ -8,14 +8,14 @@
         <b-row>
        <b-card class="card-size-my-trips" v-for="place in places" :key="place._id">
          <b-card-header>{{place.name}}</b-card-header>
-         <b-img :src=place.image></b-img>
+         <b-img class="img" :src=place.image></b-img>
          <b-card-text>{{place.wikipedia_extracts.text}}</b-card-text>
        </b-card>
         </b-row>
       </b-card-text>
       <hr/>
     </b-card>
-  </div>
+  </b-container>
 </template>
 <script>
 import TripService from '@/services/TripService'
@@ -47,5 +47,10 @@ export default {
 <style scoped>
 .card-size-my-trips {
   max-width: 30em;
+}
+.img{
+  max-width: 28em;
+  max-height: 30em;
+
 }
 </style>

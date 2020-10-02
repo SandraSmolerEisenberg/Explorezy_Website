@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <b-jumbotron header="My Favourite Places">
-    </b-jumbotron>
-    <b-container>
+  <b-container>
+      <h2>My Favourite Places</h2>
+      <hr/>
       <b-card-header v-show="message">{{message}}</b-card-header>
       <b-row>
         <b-card v-for="place in places" :key="place._id">
@@ -11,7 +10,6 @@
         </b-card>
       </b-row>
     </b-container>
-  </div>
 </template>
 
 <script>
@@ -83,7 +81,5 @@ export default {
 </script>
 
 <style>
-.btn_message {
-  margin-bottom: 1em;
-}
+
 </style>
