@@ -119,7 +119,7 @@ router.delete('/:id', function(req, res) {
     var id = req.params.id;
     Post.findOneAndDelete({_id: id}, function(err, post) {
         if (err) {       return res.status(409).json({
-            message: 'Post not updated!', 'error': err
+            message: 'Post not deleted!', 'error': err
         }); }
         if (post === null) {
             return res.status(404).json({'message': 'Post not found'});
@@ -128,5 +128,18 @@ router.delete('/:id', function(req, res) {
     });
 });
 
+//Deletes all posts
+router.delete('/', function(req, res) {
+    Post.deleteMany({}, function(err, posts) {
+        if (err) {
+            return res.status(409).json({
+                message: 'Posts not deleted!', 'error': err
+            }); }
+        if (posts === null) {
+            return res.status(404).json({'message': 'Posts not deleted'});
+        }
+        res.json(posts);
+    });
+});
 
 module.exports = router;

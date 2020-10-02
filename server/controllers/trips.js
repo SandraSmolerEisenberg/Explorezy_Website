@@ -94,18 +94,32 @@ router.delete('/:id', function(req, res) {
         res.json(trip);
     });
 });
-
+//Delete all trips whit an option for a specific user
 router.delete('/', function(req, res) {
-    var id = req.query.user;
-    Trip.deleteMany({user: id}, function(err, trip) {
-        if (err) {
-            return res.status(409).json({'message': 'There is no trip with that name!', 'error': err});
-        }
-        if (trip === null) {
-            return res.status(404).json({'message': 'Trip not found'});
-        }
-        res.json(trip);
-    });
+    if (req.query.user) {
+        var id = req.query.user;
+        Trip.deleteMany({user: id}, function(err, trip) {
+            if (err) {
+                return res.status(409).json({'message': 'There is no trip with that name!', 'error': err});
+            }
+            if (trip === null) {
+                return res.status(404).json({'message': 'Trip not found'});
+            }
+            res.json(trip);
+        });
+    }
+    else {
+        Trip.deleteMany({}, function (err, trips) {
+            if (err) {
+                return res.status(409).json({'message': 'Unable to delete', 'error': err});
+            }
+            if (trips === null) {
+                return res.status(409).json({'message': 'Unable to delete', 'error': err});
+            }
+            res.json(trips);
+        });
+    }
+
 });
 
 //Add a place to trip.
