@@ -7,7 +7,7 @@
           <b-card-text v-if="message">{{message}}</b-card-text>
           <b-card v-for="post in posts" :key="post._id">
             <SinglePost :post="post"></SinglePost>
-            <b-button v-if="currentUser"  @click="deletePost(post)">Delete</b-button>
+            <b-button v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
           </b-card>
         </b-tab>
         <b-tab title="Create Post" @click="clearData">
@@ -23,7 +23,6 @@
         <b-card-text v-if="message">{{message}}</b-card-text>
         <b-card v-for="post in posts" :key="post._id">
         <SinglePost  :post="post"></SinglePost>
-        <b-button v-if="loggedIn && currentUser" @click="deletePost(post)">Delete</b-button>
         </b-card>
       </b-container>
 
@@ -49,15 +48,15 @@ export default {
     this.getAllPost()
   },
   computed: {
-    currentUser() {
-      return this.$store.state.account.user && this.posts.author === this.$store.state.account.status.currentUser._id
-    },
     loggedIn() { return this.$store.state.account.status.currentUser }
   },
   components: {
     CreatePostForm, SinglePost, UpdatePost
   },
   methods: {
+    currentUser(post) {
+      return post.author === this.$store.state.account.user._id
+    },
     getAllPost() {
       PostService.getAllPosts().then(
         response => {
