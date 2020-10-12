@@ -21,19 +21,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#navbarImg {
-  max-width: 5em;
-  height: auto;
-}
-.router-link-text{
-  color: #2c3e50 !important;
-  font-size: large;
-}
+@import "./assets/StyleSheet.css";
 </style>

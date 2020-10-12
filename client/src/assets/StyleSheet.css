@@ -1,0 +1,32 @@
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+.router-link-text {
+    color: #2c3e50 !important;
+    font-size: large;
+}
+#navbarImg {
+    max-width: 5em;
+    height: auto;
+}
+h2 {
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+#jumbotron {
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    margin-top: 1em;
+}
+.buttonColor {
+    background-color: #32c6f3!important;
+    color: #2c3e50 !important;
+}
