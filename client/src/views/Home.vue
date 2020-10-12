@@ -10,8 +10,9 @@
         </b-col>
         <b-col v-show="posts" >
           <b-card-header>Posts</b-card-header>
+          <b-card-text v-if="postMessage">{{postMessage}}</b-card-text>
           <SinglePostLessText v-for="post in posts" :key="post._id" :post="post"></SinglePostLessText>
-          <b-button @click="viewPosts">View All Posts</b-button>
+          <b-button v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
         </b-col>
       </b-row>
   </div>
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       message: 'none',
+      postMessage: '',
       places: [],
       posts: []
     }
@@ -67,7 +69,11 @@ export default {
       PostService.getAllPosts().then(
         response => {
           this.posts = response.data.posts
-          this.posts = this.posts.slice(0, 10)
+          if (this.posts.length <= 0) {
+            this.postMessage = 'There are no posts written yet'
+          } else {
+            this.posts = this.posts.slice(0, 10)
+          }
         }
       )
     }
