@@ -6,10 +6,13 @@
         <b-col  v-show="places">
           <b-card-header>Places</b-card-header>
           <PlaceBaseView v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
+          <b-button @click="viewPlaces">View All Places</b-button>
         </b-col>
         <b-col v-show="posts" >
           <b-card-header>Posts</b-card-header>
+          <b-card-text v-if="postMessage">{{postMessage}}</b-card-text>
           <SinglePostLessText v-for="post in posts" :key="post._id" :post="post"></SinglePostLessText>
+          <b-button v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
         </b-col>
       </b-row>
   </div>
@@ -27,6 +30,7 @@ export default {
   data() {
     return {
       message: 'none',
+      postMessage: '',
       places: [],
       posts: []
     }
@@ -39,10 +43,21 @@ export default {
     this.getAllPosts()
   },
   methods: {
+    viewPlaces() {
+      this.$router.push('/places').catch(error => {
+        console.log(error.message)
+      })
+    },
+    viewPosts() {
+      this.$router.push('/posts').catch(error => {
+        console.log(error.message)
+      })
+    },
     getAllPlaces() {
       PlacesService.getAllPlaces().then(
         response => {
           this.places = response.data.places
+          this.places = this.places.slice(0, 10)
         },
         error => {
           this.places = []
@@ -54,6 +69,11 @@ export default {
       PostService.getAllPosts().then(
         response => {
           this.posts = response.data.posts
+          if (this.posts.length <= 0) {
+            this.postMessage = 'There are no posts written yet'
+          } else {
+            this.posts = this.posts.slice(0, 10)
+          }
         }
       )
     }

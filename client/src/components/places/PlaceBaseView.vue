@@ -27,8 +27,8 @@ export default {
     getIntroText() {
       let introText = this.place.wikipedia_extracts.text
       let result = introText.split(' ')
-      if (result.length > 10) {
-        result = result.slice(0, 10)
+      if (result.length > 20) {
+        result = result.slice(0, 20)
         introText = result.join(' ') + '...'
       }
       return introText

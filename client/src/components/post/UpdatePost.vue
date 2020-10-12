@@ -67,6 +67,7 @@ export default {
       const postToEdit = this.posts.find(obj => { return obj.title === this.postSelected })
       postToEdit.title = this.post.title
       postToEdit.text = this.post.text
+      postToEdit.date = Date.now()
       PostService.updatePost(postToEdit).then(() => {
         this.message = 'Post Updated'
       })
