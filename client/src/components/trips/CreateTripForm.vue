@@ -17,14 +17,14 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" :disabled="invalid" value="Submit" class="btn btn-primary mt-3"/>
+      <input type="submit" :disabled="invalid" value="Submit" class="buttonColor"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>
     </form>
     <div v-if="message">
       <div class="card-header">{{message}}</div>
-      <b-button type=reset @click="resetData() ">Add Another Trip</b-button>
+      <b-button class="buttonColor" type=reset @click="resetData() ">Add Another Trip</b-button>
     </div>
     <hr/>
   </ValidationObserver>

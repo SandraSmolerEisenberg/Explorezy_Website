@@ -5,7 +5,7 @@
       <b-card-header v-show="message">{{message}}</b-card-header>
       <b-row>
         <b-card v-for="place in places" :key="place._id">
-          <b-button variant="danger" @click="removeFromList(place)">Remove from my Favourite</b-button>
+          <b-button class="buttonColor" variant="danger" @click="removeFromList(place)">Remove from my Favourite</b-button>
           <FavoritePlaceList :place="place"></FavoritePlaceList>
         </b-card>
       </b-row>

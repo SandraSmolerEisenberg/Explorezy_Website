@@ -26,7 +26,7 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid && postSelected" value="Submit" class="btn btn-primary mt-3"/>
+        <input type="submit" :disabled="invalid && postSelected" value="Submit" class="buttonColor"/>
         <div v-if="message">
           <div class="alert alert-danger">{{message}}</div>
         </div>

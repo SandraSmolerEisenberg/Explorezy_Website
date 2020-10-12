@@ -6,9 +6,9 @@
         <b-tab @click="getAllUserTrips" title="My Trips" active>
           <b-card v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
-          <b-button v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
+          <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
           </b-card>
-          <b-button v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
+          <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
           <b-card-text v-if="message">{{message}}</b-card-text>
         </b-tab>
         <b-tab title="Create Trip" @click="clearMessage">

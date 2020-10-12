@@ -5,7 +5,7 @@
       <hr/>
     <Profile v-if="!updating"></Profile>
       <UpdateProfile v-if="updating"></UpdateProfile>
-      <b-button @click="update()">{{getButtonText}}</b-button>
+      <b-button class="buttonColor" @click="update()">{{getButtonText}}</b-button>
     </b-container>
   </b-container>
 </template>

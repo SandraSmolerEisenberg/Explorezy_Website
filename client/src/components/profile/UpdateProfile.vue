@@ -34,7 +34,7 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" value="Submit" :disabled="invalid" class="btn btn-primary mt-3"/>
+      <input type="submit" value="Submit" :disabled="invalid" class="buttonColor"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>

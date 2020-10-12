@@ -1,18 +1,18 @@
 <template>
   <div>
-    <b-jumbotron header="Welcome to Explorezy" lead="Explore exiting places!">
-    </b-jumbotron>
+    <b-jumbotron id="jumbotron" header="Welcome to Explorezy" lead="Explore exiting places!">
+    </b-jumbotron >
       <b-row class="col-md">
         <b-col  v-show="places">
           <b-card-header>Places</b-card-header>
           <PlaceBaseView v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
-          <b-button @click="viewPlaces">View All Places</b-button>
+          <b-button class="buttonColor" @click="viewPlaces">View All Places</b-button>
         </b-col>
         <b-col v-show="posts" >
           <b-card-header>Posts</b-card-header>
           <b-card-text v-if="postMessage">{{postMessage}}</b-card-text>
           <SinglePostLessText v-for="post in posts" :key="post._id" :post="post"></SinglePostLessText>
-          <b-button v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
+          <b-button class="buttonColor" v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
         </b-col>
       </b-row>
   </div>
@@ -82,4 +82,5 @@ export default {
 </script>
 
 <style>
+
 </style>

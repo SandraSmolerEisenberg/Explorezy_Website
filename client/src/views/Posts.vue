@@ -7,7 +7,7 @@
           <b-card-text v-if="message">{{message}}</b-card-text>
           <b-card v-for="post in posts" :key="post._id">
             <SinglePost :post="post"></SinglePost>
-            <b-button v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
+            <b-button class="buttonColor" v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
           </b-card>
         </b-tab>
         <b-tab title="Create Post" @click="clearData">
