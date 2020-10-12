@@ -124,6 +124,18 @@ router.delete('/:id', function(req, res) {
         res.json(place);
     });
 });
-
+//Deletes all places
+router.delete('/', function(req, res) {
+    Place.deleteMany({}, function(err, places) {
+        if (err) {
+            return res.status(409).json({
+                message: 'Places not deleted!', 'error': err
+            }); }
+        if (places === null) {
+            return res.status(404).json({'message': 'Places not found'});
+        }
+        res.json(places);
+    });
+});
 
 module.exports = router;
