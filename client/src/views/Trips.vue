@@ -1,7 +1,6 @@
 <template>
   <b-container>
-    <h2>Trips</h2>
-    <h3>Trips shared by other users</h3>
+    <h2>Trips shared by other users</h2>
     <hr/>
     <b-container>
       <b-card-text v-show="message">{{message}}</b-card-text>
