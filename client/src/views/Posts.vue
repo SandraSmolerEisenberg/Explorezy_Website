@@ -21,9 +21,9 @@
       </b-tabs>
       <b-container v-if="!loggedIn">
         <b-card-text v-if="message">{{message}}</b-card-text>
-        <b-card v-for="post in posts" :key="post._id">
-        <SinglePost  :post="post"></SinglePost>
-        </b-card>
+        <b-container v-for="post in posts" :key="post._id">
+        <SinglePost class="postsDesign" :post="post"></SinglePost>
+        </b-container>
       </b-container>
 
     </b-container>
