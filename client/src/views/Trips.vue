@@ -3,9 +3,9 @@
     <h2>Trips shared by other users</h2>
     <hr/>
       <b-card-text v-show="message">{{message}}</b-card-text>
-      <b-card v-for="trip in trips" :key="trip._id">
+      <b-container v-for="trip in trips" :key="trip._id">
         <SingleTrip class="tripDesign" :trip="trip"></SingleTrip>
-      </b-card>
+      </b-container>
   </b-container>
 </template>
 
