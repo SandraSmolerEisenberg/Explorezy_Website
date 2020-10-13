@@ -1,27 +1,28 @@
 <template>
   <b-container>
-    <b-card>
+    <b-container>
       <b-card-img :src=place.image class="img"></b-card-img>
-      <b-card-header>{{place.name}}</b-card-header>
-      <hr/>
+      <br>
+      <span class="placeHeading">{{place.name}}</span>
+      <br><br>
       <b-card-text>
-        <b-card-sub-title>Address</b-card-sub-title>
+        <span class="placeHeading">Address</span>
         <p>City: {{place.address.county}}
           Post Code: {{place.address.postcode}}
           Address: {{place.address.address29}}
           District: {{place.address.city_district}}</p>
       </b-card-text>
-      <hr/>
+      <br>
       <b-card-text>
-        <b-card-sub-title>Information</b-card-sub-title>
-        <hr/>
+        <span class="placeHeading">Information</span>
+        <br>
         {{place.wikipedia_extracts.text}}
       </b-card-text>
-      <hr/>
-      <b-link>Wikipedia:
-        {{place.wikipedia}}
-      </b-link>
-    </b-card>
+      <br>
+      <span class="placeHeading">Wikipedia</span>
+      <br>
+      <a v-bind:href="place.wikipedia" target="_blank">View Wikipedia Article</a>
+    </b-container>
   </b-container>
 
 </template>

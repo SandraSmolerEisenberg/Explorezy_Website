@@ -4,10 +4,10 @@
       <hr/>
       <b-card-header v-show="message">{{message}}</b-card-header>
       <b-row>
-        <b-card v-for="place in places" :key="place._id">
-          <b-button class="buttonColor" variant="danger" @click="removeFromList(place)">Remove from my Favourite</b-button>
+        <b-container  class="placeDetailedView" v-for="place in places" :key="place._id">
+          <b-button class="buttonColor" @click="removeFromList(place)">Remove from Favourites</b-button>
           <FavoritePlaceList :place="place"></FavoritePlaceList>
-        </b-card>
+        </b-container>
       </b-row>
     </b-container>
 </template>
