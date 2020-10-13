@@ -1,11 +1,5 @@
 <template>
   <b-container>
-      <b-button variant="primary" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
-    <hr/>
-    <b-card-text v-if="message">
-      {{message}}
-      <hr/>
-    </b-card-text>
     <b-card>
       <b-card-img :src=place.image class="img"></b-card-img>
       <b-card-header>{{place.name}}</b-card-header>
@@ -41,31 +35,6 @@ export default {
     getImage() {
       return this.place.image
     }
-  },
-  methods: {
-    addToFavourite() {
-      var user = this.$store.state.account.user
-      console.log(this.place._id)
-      user.favourite_places.push(this.place._id)
-      console.log(user.favourite_places)
-      this.$store.dispatch('account/update', user).then(
-        response => {
-          console.log('Added to favourite places')
-        },
-        error => {
-          console.log(error.response.data.message)
-        }
-      ).catch(error => {
-        this.message = 'Your request could not be prosed at this time'
-        console.log(error.toString())
-      })
-    }
-  },
-  isLoggedIn() {
-    return this.$store.state.account.status.currentUser
-  },
-  hasFavPlace(place) {
-    return this.$store.state.account.user.favourite_places.includes(place._id)
   }
 
 }
