@@ -1,21 +1,21 @@
 <template>
   <b-container>
-    <b-card>
-      <b-card-header>{{trip.name}}</b-card-header>
+      <span class="placeHeading">{{trip.name}}</span>
       <hr/>
       <b-card-text v-if="message">{{message}}</b-card-text>
       <b-card-text>
-        <b-card-sub-title>Places on trip</b-card-sub-title>
+        <span class="placeHeading">Places added to {{trip.name}}</span>
+        <hr>
         <b-row>
        <b-card class="card-size-my-trips" v-for="place in places" :key="place._id">
-         <b-card-header>{{place.name}}</b-card-header>
-         <b-img class="img" :src=place.image></b-img>
+         <span class="placeHeading">{{place.name}}</span>
+         <br>
+         <b-img class="tinyImgClass" :src=place.image></b-img>
          <b-card-text>{{place.wikipedia_extracts.text}}</b-card-text>
        </b-card>
         </b-row>
       </b-card-text>
       <hr/>
-    </b-card>
   </b-container>
 </template>
 <script>
@@ -53,12 +53,5 @@ export default {
 }
 </script>
 <style scoped>
-.card-size-my-trips {
-  max-width: 30em;
-}
-.img{
-  max-width: 28em;
-  max-height: 30em;
 
-}
 </style>

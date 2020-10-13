@@ -19,6 +19,7 @@ h2, h3 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .placeHeading {
+    margin-top: 1.5em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: large;
@@ -73,10 +74,6 @@ h2, h3 {
     border: solid;
     border-style: groove;
 }
-b-card {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
 .placeDetailedView {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
@@ -90,4 +87,25 @@ b-card {
     width: 20em;
     height: 20em;
     object-fit: cover;
+}
+.tinyImgClass{
+    width: 15em;
+    height: 15em;
+    object-fit: cover;
+  
+}
+.card-size-my-trips {
+    
+    max-width: 33.33%;
+  }
+.tripDesign {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border: solid;
+    border-style: groove;
+}
+@media screen and (max-width: 768px) {   
+    .card-size-my-trips {     
+        max-width: 100%;  
+    }
 }
