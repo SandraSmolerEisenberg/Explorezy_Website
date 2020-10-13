@@ -186,25 +186,25 @@ router.post('/login', function(req, res ) {
             }
             if(user.length < 1){
                 return res.status(401).json({
-                    message: 'Login failed'
+                    message: 'Please provide valid email and/or password'
                 });
             }
             bcrypt.compare(req.body.password, user[0].password, function(err, result){
                 if(err){
                     return res.status(401).json({
-                        message: 'Login failed'
+                        message: 'Please provide valid email and/or password'
                     });
                 }
                 if(result){
                     return res.status(200).json(user[0]);
                 }
                 return res.status(401).json({
-                    message: 'Login failed'
+                    message: 'Please provide valid email and/or password'
                 });
             });
         });} else{
         return res.status(401).json({
-            message: 'Please provide email and/or password'
+            message: 'Please provide valid email and/or password'
         });
     }
 });

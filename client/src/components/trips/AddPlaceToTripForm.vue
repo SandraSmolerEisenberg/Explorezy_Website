@@ -67,6 +67,9 @@ export default {
           })
           this.message = 'Added ' + place.name
         }
+      }).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
       })
     }
   }

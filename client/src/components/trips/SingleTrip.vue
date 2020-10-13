@@ -3,6 +3,7 @@
     <b-card>
       <b-card-header>{{trip.name}}</b-card-header>
       <hr/>
+      <b-card-text v-if="message">{{message}}</b-card-text>
       <b-card-text>
         <b-card-sub-title>Places on trip</b-card-sub-title>
         <b-row>
@@ -33,12 +34,19 @@ export default {
   },
   methods: {
     getPlaces() {
+      var errorCounter = 0
       for (let i = 0; i < this.trip.places.length; i++) {
         TripService.getPlaceFromTrip(this.trip._id, this.trip.places[i]).then(
           response => {
             this.places.push(response.data.place)
           }
-        )
+        ).catch(error => {
+          console.log(error.toString())
+          errorCounter++
+        })
+        if (errorCounter > 0) {
+          this.message = 'Your request could not be prosed at this time'
+        }
       }
     }
   }

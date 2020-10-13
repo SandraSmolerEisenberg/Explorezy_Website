@@ -2,7 +2,9 @@
   <b-container>
     <h2>Explore exiting places in New York!</h2>
     <hr/>
-      <b-row class="col-md">
+    <b-card-text v-if="message">{{message}}</b-card-text>
+
+    <b-row class="col-md">
         <b-col v-if="places">
           <b-container>
             <b-row>
@@ -40,7 +42,7 @@ export default {
   name: 'places',
   data() {
     return {
-      message: 'none',
+      message: '',
       places: [],
       selectedPlace: {},
       details: false,
@@ -67,7 +69,10 @@ export default {
           this.places = []
           this.message = error.response.data.message
         }
-      )
+      ).catch(error => {
+        this.message = 'Could not retrieve the places in New York at this point'
+        console.log(error.toString())
+      })
     },
     closeDetailedView() {
       this.details = false

@@ -36,8 +36,9 @@ export default {
         if (this.trips.length === 0) {
           this.message = 'There are currently no public trips'
         }
-      }).catch(() => {
-        this.message = 'Trips are not available at this time'
+      }).catch(error => {
+        this.message = 'Could not retrieve the trips at this time'
+        console.log(error.toString())
       })
     }
   }

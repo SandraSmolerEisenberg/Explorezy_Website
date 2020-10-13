@@ -67,7 +67,10 @@ export default {
             this.message = ''
           }
         }
-      )
+      ).catch(error => {
+        this.message = 'Could not retrieve the posts at this time'
+        console.log(error.toString())
+      })
     },
     loadUserPost() {
       this.$refs.updatePost.getUsersPosts()

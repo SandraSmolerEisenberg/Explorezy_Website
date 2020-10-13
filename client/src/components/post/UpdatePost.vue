@@ -70,6 +70,9 @@ export default {
       postToEdit.date = Date.now()
       PostService.updatePost(postToEdit).then(() => {
         this.message = 'Post Updated'
+      }).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
       })
     }
   }

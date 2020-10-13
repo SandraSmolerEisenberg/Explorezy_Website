@@ -8,8 +8,9 @@
           <SingleTrip  :trip="trip"></SingleTrip>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
           </b-card>
-          <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
+          <hr/>
           <b-card-text v-if="message">{{message}}</b-card-text>
+          <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
         </b-tab>
         <b-tab title="Create Trip" @click="clearMessage">
             <CreateTripForm ref="createTripTab"></CreateTripForm>
@@ -62,12 +63,19 @@ export default {
     getAllUserTrips() {
       var userTrips = this.$store.state.account.user.trips
       this.trips = []
+      let errorCounter = 0
       for (var i = 0; i < userTrips.length; i++) {
         TripService.getTripByID(userTrips[i]).then(
           response => {
             this.trips.push(response.data)
           }
-        )
+        ).catch(error => {
+          console.log(error.toString())
+          errorCounter++
+        })
+        if (errorCounter > 0) {
+          this.message = 'Could not get all trips'
+        }
       }
     },
     deleteTrip(trip) {
@@ -83,7 +91,10 @@ export default {
         error => {
           this.message = error.response.data.message
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
+      })
     },
     deleteAllTrips() {
       const id = this.$store.state.account.user._id
@@ -95,7 +106,10 @@ export default {
         error => {
           this.message = error.response.data.message
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
+      })
     }
   }
 }

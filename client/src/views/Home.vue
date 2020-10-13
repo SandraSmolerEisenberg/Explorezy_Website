@@ -5,8 +5,9 @@
       <b-row class="col-md">
         <b-col  v-show="places">
           <b-card-header>Places</b-card-header>
+          <b-card-text v-if="message">{{message}}</b-card-text>
           <PlaceBaseView v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
-          <b-button class="buttonColor" @click="viewPlaces">View All Places</b-button>
+          <b-button class="buttonColor" v-if="!message" @click="viewPlaces">View All Places</b-button>
         </b-col>
         <b-col v-show="posts" >
           <b-card-header>Posts</b-card-header>
@@ -29,7 +30,7 @@ export default {
   name: 'home',
   data() {
     return {
-      message: 'none',
+      message: '',
       postMessage: '',
       places: [],
       posts: []
@@ -58,12 +59,12 @@ export default {
         response => {
           this.places = response.data.places
           this.places = this.places.slice(0, 10)
-        },
-        error => {
-          this.places = []
-          this.message = error.toString()
         }
-      )
+      ).catch(error => {
+        this.places = []
+        this.message = 'Could not retrieve the places in New York'
+        console.log(error.toString())
+      })
     },
     getAllPosts() {
       PostService.getAllPosts().then(
@@ -75,7 +76,10 @@ export default {
             this.posts = this.posts.slice(0, 10)
           }
         }
-      )
+      ).catch(error => {
+        this.postMessage = 'Could not retrieve the posts'
+        console.log(error.toString())
+      })
     }
   }
 }
