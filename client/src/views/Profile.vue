@@ -2,7 +2,6 @@
   <b-container>
     <b-container class="col-md-6">
       <h2>My Profile Page</h2>
-      <hr/>
     <Profile v-if="!updating"></Profile>
       <UpdateProfile v-if="updating"></UpdateProfile>
       <b-button class="buttonColor" @click="update()">{{getButtonText}}</b-button>

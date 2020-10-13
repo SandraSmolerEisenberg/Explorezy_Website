@@ -4,6 +4,7 @@
       <hr/>
       <b-tabs class="tabsDesign" content-class="mt-3">
         <b-tab :title-link-class="'tabText'" @click="getAllUserTrips" title="My Trips" active>
+          <b-card-text v-if="message">{{message}}</b-card-text>
           <b-card v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
@@ -72,12 +73,12 @@ export default {
             this.trips.push(response.data)
           }
         ).catch(error => {
-          console.log(error.toString())
           errorCounter++
+          console.log(error.toString())
         })
-        if (errorCounter > 0) {
-          this.message = 'Could not get all trips'
-        }
+      }
+      if (errorCounter > 0) {
+        this.message = 'Could not get all trips'
       }
     },
     deleteTrip(trip) {

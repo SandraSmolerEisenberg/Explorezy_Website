@@ -1,5 +1,5 @@
 <template>
-<b-container>
+<b-container class="formDesign"  >
   <label class="col-md-3">Choose a post:</label>
   <b-form-select class="custom-select my-1 col-md-8" v-model="postSelected" >
     <option v-for="post in posts" :key="post._id">
@@ -7,6 +7,7 @@
     </option>
   </b-form-select>
   <b-container v-if="postSelected">
+    <hr/>
     <ValidationObserver  v-slot="{ invalid }">
       <form v-if="!message" @submit.prevent="updatePost">
         <!-- Email -->

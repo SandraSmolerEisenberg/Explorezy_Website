@@ -1,6 +1,9 @@
 <template>
-  <ValidationObserver v-slot="{ invalid }">
-    <form v-if="!message" @submit.prevent="onUpdate">
+  <b-container class="formDesign">
+    <hr/>
+    <ValidationObserver v-slot="{ invalid }">
+    <form v-if="!message"  @submit.prevent="onUpdate">
+
       <!-- Email -->
       <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
         <div class="form-group">
@@ -44,6 +47,8 @@
     </div>
     <hr/>
   </ValidationObserver>
+  </b-container>
+
 </template>
 
 <script>
