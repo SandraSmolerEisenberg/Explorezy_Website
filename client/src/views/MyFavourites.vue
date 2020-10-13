@@ -71,19 +71,15 @@ export default {
       }
     },
     getFavoritePlaces() {
-      let errorCounter = 0
       for (let i = 0; i < this.userFavourite.length; i++) {
         PlacesService.getPlaceByID(this.userFavourite[i]).then(
           response => {
             this.places.push(response.data)
           }
         ).catch(error => {
-          errorCounter++
           console.log(error.toString())
-        })
-        if (errorCounter > 0) {
           this.message = 'Your request could not be prosed at this time'
-        }
+        })
       }
     }
   }

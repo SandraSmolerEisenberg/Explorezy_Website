@@ -27,7 +27,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('addingFailed')
           return Promise.reject(error)
         }
       )
@@ -39,7 +38,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('deletionFailed')
           return Promise.reject(error)
         }
       )
@@ -51,7 +49,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('deletionFailed')
           return Promise.reject(error)
         }
       )
@@ -75,7 +72,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('updateFailed')
           return Promise.reject(error)
         }
       )
