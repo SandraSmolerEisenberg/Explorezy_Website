@@ -5,10 +5,10 @@
       <b-tabs class="tabsDesign" content-class="mt-3">
         <b-tab :title-link-class="'tabText'" @click="getAllUserTrips" title="My Trips" active>
           <b-card-text v-if="message">{{message}}</b-card-text>
-          <b-card v-for="trip in trips" :key="trip._id">
+          <b-container class="tripDesign" v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
-          </b-card>
+          </b-container>
           <hr/>
           <b-card-text v-if="message">{{message}}</b-card-text>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
