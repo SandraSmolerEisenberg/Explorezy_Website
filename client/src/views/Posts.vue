@@ -2,20 +2,20 @@
     <b-container>
       <h2>Post Page</h2>
       <hr/>
-      <b-tabs v-if="loggedIn" content-class="mt-3">
-        <b-tab @click="getAllPost" title="Posts" active>
+      <b-tabs class="tabsDesign" v-if="loggedIn" content-class="mt-3">
+        <b-tab :title-link-class="'tabText'" @click="getAllPost" title="Posts" active>
           <b-card-text v-if="message">{{message}}</b-card-text>
           <b-card v-for="post in posts" :key="post._id">
             <SinglePost :post="post"></SinglePost>
             <b-button class="buttonColor" v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
           </b-card>
         </b-tab>
-        <b-tab title="Create Post" @click="clearData">
-          <b-card v-if="loggedIn">
+        <b-tab :title-link-class="'tabText'" class="tabsColor" title="Create Post" @click="clearData">
+          <b-container v-if="loggedIn">
             <CreatePostForm ref="createPost" @update="getAllPost"></CreatePostForm>
-          </b-card>
+          </b-container>
         </b-tab>
-        <b-tab @click="loadUserPost" title="Edit Post">
+        <b-tab :title-link-class="'tabText'" @click="loadUserPost" title="Edit Post">
           <UpdatePost ref="updatePost"></UpdatePost>
         </b-tab>
       </b-tabs>

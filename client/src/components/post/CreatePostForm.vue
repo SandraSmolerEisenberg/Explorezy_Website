@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver v-slot="{ invalid }">
-    <form v-if="!message" @submit.prevent="createPost">
+    <form class="formDesign" v-if="!message" @submit.prevent="createPost">
       <!-- Email -->
       <ValidationProvider name="title" rules="required" v-slot="{ errors }">
         <div class="form-group">

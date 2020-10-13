@@ -2,8 +2,8 @@
     <b-container>
       <h2>My Trips</h2>
       <hr/>
-      <b-tabs content-class="mt-3">
-        <b-tab @click="getAllUserTrips" title="My Trips" active>
+      <b-tabs class="tabsDesign" content-class="mt-3">
+        <b-tab :title-link-class="'tabText'" @click="getAllUserTrips" title="My Trips" active>
           <b-card v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
@@ -12,10 +12,12 @@
           <b-card-text v-if="message">{{message}}</b-card-text>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
         </b-tab>
-        <b-tab title="Create Trip" @click="clearMessage">
+        <b-tab :title-link-class="'tabText'" title="Create Trip" @click="clearMessage">
+          <b-container>
             <CreateTripForm ref="createTripTab"></CreateTripForm>
+          </b-container>
         </b-tab>
-        <b-tab title="Add Places to trip" @click="clearMessagePlaceTab">
+        <b-tab :title-link-class="'tabText'" title="Add Places to trip" @click="clearMessagePlaceTab">
           <AddPlaceToTripForm ref="addPlaceTab" :trips="trips"></AddPlaceToTripForm>
         </b-tab>
       </b-tabs>

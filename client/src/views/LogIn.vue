@@ -1,6 +1,7 @@
 <template>
   <b-container>
     <h2>Login Page</h2>
+    <b-container class="formDesign">
     <hr/>
     <ValidationObserver v-slot="{ invalid }">
       <form @submit.prevent="onLogin">
@@ -28,6 +29,7 @@
         </div>
       </form>
     </ValidationObserver>
+    </b-container>
   </b-container>
 </template>
 

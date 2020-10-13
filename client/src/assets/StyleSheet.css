@@ -29,4 +29,26 @@ h2 {
 .buttonColor {
     background-color: #32c6f3!important;
     color: #2c3e50 !important;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+.buttonColor:disabled,
+.buttonColor[disabled]{
+    background-color: #f7f7f7 !important;
+}
+.formDesign {
+    background-color:  #f7f7f7!important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+.tabsDesign {
+    background-color:  #f7f7f7!important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 2em;
+}
+.tabText {
+    color: #2c3e50;
+}
+.tabText:hover {
+    color: #2c3e50;
 }

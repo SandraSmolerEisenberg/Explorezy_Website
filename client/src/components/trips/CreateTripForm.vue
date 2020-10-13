@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver v-slot="{ invalid }">
-    <form v-if="!message" @submit.prevent="createTrip">
+    <form class="formDesign" v-if="!message" @submit.prevent="createTrip">
       <!-- Trip name -->
       <ValidationProvider name="name" rules="required|alpha_spaces" v-slot="{ errors }">
         <div class="form-group">

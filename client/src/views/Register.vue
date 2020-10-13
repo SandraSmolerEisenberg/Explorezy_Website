@@ -1,9 +1,10 @@
 <template>
   <b-container>
     <h2>Registration Page</h2>
-    <hr/>
+    <b-container class="formDesign">
+      <hr/>
     <ValidationObserver v-slot="{ invalid }">
-      <form @submit.prevent="onRegister">
+      <form class="formDesign" @submit.prevent="onRegister">
 
         <!-- Email -->
         <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
@@ -44,6 +45,7 @@
         </div>
       </form>
     </ValidationObserver>
+    </b-container>
   </b-container>
 </template>
 
