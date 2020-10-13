@@ -1,8 +1,9 @@
 <template>
   <b-container>
-      <span class="placeHeading">{{post.title}}</span>
-      <hr/>
+    <br>
+      <span class="placeHeading" >{{post.title}}</span>
       <b-card-text>
+        <br>
         <span class="placeHeading">Post text</span>
         <p>{{post.text}}</p>
       </b-card-text>
@@ -10,7 +11,6 @@
         <span class="placeHeading">Last updated on:</span>
         <p>{{creationDate}}</p>
       </b-card-text>
-      <hr/>
   </b-container>
 </template>
 <script>

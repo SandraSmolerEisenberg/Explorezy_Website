@@ -8,7 +8,7 @@
       <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(place)">In my Favorite list</b-card-sub-title>
       <b-card-img :src=place.image class="imageClass"></b-card-img>
       <span class="placeHeading">{{place.name}}</span>
-      <hr/>
+      <br><br>
       <b-card-text>
         <span class="placeHeading">Address</span>
         <p>City: {{place.address.county}}
@@ -16,10 +16,10 @@
           Address: {{place.address.address29}}
           District: {{place.address.city_district}}</p>
       </b-card-text>
-      <hr/>
+      <br>
       <b-card-text>
         <span class="placeHeading">Information</span>
-        <hr/>
+        <br>
         {{place.wikipedia_extracts.text}}
       </b-card-text>
       <hr/>

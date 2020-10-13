@@ -1,13 +1,13 @@
 <template>
 <b-container>
+    <br>
     <span class="placeHeading">{{place.name}}</span>
-    <hr/>
+    <br><br>
     <b-card-text>
       <span class="placeHeading">Information</span>
-      <hr/>
+      <br/>
       {{introText}}
     </b-card-text>
-    <hr/>
 </b-container>
 </template>
 
