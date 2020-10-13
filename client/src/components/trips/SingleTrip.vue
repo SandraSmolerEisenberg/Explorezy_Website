@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     getPlaces() {
+      var errorCounter = 0
       for (let i = 0; i < this.trip.places.length; i++) {
         TripService.getPlaceFromTrip(this.trip._id, this.trip.places[i]).then(
           response => {
@@ -41,8 +42,11 @@ export default {
           }
         ).catch(error => {
           console.log(error.toString())
-          this.message = 'Your request could not be prosed at this time'
+          errorCounter++
         })
+        if (errorCounter > 0) {
+          this.message = 'Your request could not be prosed at this time'
+        }
       }
     }
   }
