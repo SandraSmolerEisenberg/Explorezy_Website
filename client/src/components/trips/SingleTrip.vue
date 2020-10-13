@@ -1,11 +1,11 @@
 <template>
   <b-container>
-      <span class="placeHeading">{{trip.name}}</span>
-      <hr/>
+      <h3>{{trip.name}}</h3>
+      <br/>
       <b-card-text v-if="message">{{message}}</b-card-text>
       <b-card-text>
         <span class="placeHeading">Places added to {{trip.name}}</span>
-        <hr>
+        <br><br>
         <b-row>
        <b-card class="card-size-my-trips" v-for="place in places" :key="place._id">
          <span class="placeHeading">{{place.name}}</span>
@@ -15,7 +15,7 @@
        </b-card>
         </b-row>
       </b-card-text>
-      <hr/>
+      <br/>
   </b-container>
 </template>
 <script>
