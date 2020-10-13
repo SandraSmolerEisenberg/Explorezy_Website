@@ -6,18 +6,17 @@
 
     <b-row class="col-md">
         <b-col v-if="places">
-          <b-container>
             <b-row>
               <b-col class="col-md">
-                <b-card role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
-                  <PlaceBaseView :place="place"></PlaceBaseView>
-                </b-card>
+                <b-container role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
+                  <PlaceBaseView class="tinyPlaceDesign" :place="place"></PlaceBaseView>
+                </b-container>
               </b-col>
               <b-col v-if="details" class="col-md">
-                <b-card>
-                  <b-button-close class="buttonColor" @click="closeDetailedView"></b-button-close>
+                <b-container class="placeDetailedView">
+                  <b-button-close @click="closeDetailedView"></b-button-close>
                   <PlacesDetailedView :place="selectedPlace"></PlacesDetailedView>
-                </b-card>
+                </b-container>
               </b-col>
             </b-row>
             <b-row>
@@ -26,7 +25,6 @@
                 <b-button class="buttonColor" v-show="nextPage" @click="getNextPage">Next</b-button>
               </b-col>
             </b-row>
-          </b-container>
         </b-col>
       </b-row>
   </b-container>

@@ -1,14 +1,12 @@
 <template>
-  <b-container>
-    <b-card>
-      <b-card-header>{{post.title}}</b-card-header>
+  <b-container class="tinyPlaceDesign">
+      <span class="placeHeading">{{post.title}}</span>
       <hr/>
       <b-card-text>
-        <b-card-sub-title>Post text</b-card-sub-title>
+        <span class="placeHeading">Post text</span>
         <p>{{introText}}</p>
       </b-card-text>
       <hr/>
-    </b-card>
   </b-container>
 </template>
 <script>

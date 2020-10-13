@@ -1,18 +1,16 @@
 <template>
-  <b-container>
-      <b-button variant="primary" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
-    <hr/>
+  <b-container class="paddingClass">
+      <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
     <b-card-text v-if="message">
       {{message}}
     <hr/>
     </b-card-text>
-    <b-card>
       <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(place)">In my Favorite list</b-card-sub-title>
-      <b-card-img :src=place.image class="img"></b-card-img>
-      <b-card-header>{{place.name}}</b-card-header>
+      <b-card-img :src=place.image class="imageClass"></b-card-img>
+      <span class="placeHeading">{{place.name}}</span>
       <hr/>
       <b-card-text>
-        <b-card-sub-title>Address</b-card-sub-title>
+        <span class="placeHeading">Address</span>
         <p>City: {{place.address.county}}
           Post Code: {{place.address.postcode}}
           Address: {{place.address.address29}}
@@ -20,15 +18,14 @@
       </b-card-text>
       <hr/>
       <b-card-text>
-        <b-card-sub-title>Information</b-card-sub-title>
+        <span class="placeHeading">Information</span>
         <hr/>
         {{place.wikipedia_extracts.text}}
       </b-card-text>
       <hr/>
-      <b-link>Wikipedia:
-        {{place.wikipedia}}
-      </b-link>
-    </b-card>
+      <span class="placeHeading">Wikipedia</span>
+      <br>
+      <a v-bind:href="place.wikipedia" target="_blank">View Wikipedia Article</a>
   </b-container>
 
 </template>
@@ -75,7 +72,5 @@ export default {
 </script>
 
 <style scoped>
-.img{
-  max-width: 28em;
-}
+
 </style>
