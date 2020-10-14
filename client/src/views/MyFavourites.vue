@@ -45,6 +45,9 @@ export default {
             this.message = 'Place has been removed'
             const placeIndex = this.places.indexOf(place)
             this.places.splice(placeIndex, 1)
+            window.setInterval(() => {
+              this.message = ''
+            }, 3000)
           }
         },
         error => {
