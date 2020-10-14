@@ -118,6 +118,9 @@ hr {
     border: solid;
     border-style: groove;
 }
+.underline:hover {
+    text-decoration: underline;
+}
 @media screen and (max-width: 768px) {   
     .card-size-my-trips {     
         max-width: 100%;  

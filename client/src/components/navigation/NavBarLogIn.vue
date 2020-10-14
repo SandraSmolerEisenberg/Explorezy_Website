@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="light" fixed="top">
+        <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
             <b-navbar-brand>
             <router-link to="/">
                 <b-img id="navbarImg" :src="require('../../assets/logo-and-text.png')"></b-img>
@@ -19,14 +19,9 @@
 
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
-                <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-                    <template v-slot:button-content>
-                        <em class="router-link-text">{{currentUser}}</em>
-                    </template>
-                    <b-dropdown-item><router-link class="router-link-text" to="/profile">Profile</router-link></b-dropdown-item>
-                    <b-dropdown-item class="router-link-text" @click="loggOut">Logg Out</b-dropdown-item>
-                </b-nav-item-dropdown>
+                    <b-nav-item><router-link class="router-link-text" to="/profile">{{currentUser}}</router-link></b-nav-item>
+              <b-nav-item @click="loggOut">
+                <span class="router-link-text underline">Logout</span></b-nav-item>
             </b-navbar-nav>
             </b-collapse>
         </b-navbar>
