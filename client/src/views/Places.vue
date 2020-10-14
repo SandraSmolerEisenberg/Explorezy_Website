@@ -30,8 +30,8 @@
           <b-container>
             <div v-for="place in places" :key="place._id" role="tablist">
               <b-card no-body class="mb-1">
-                <b-card-header header-tag="header" class="p-1" role="tab">
-                  <b-button block href="#" v-b-toggle="'accordion-' + place._id" variant="info">{{place.name}}</b-button>
+                <b-card-header class="p-0" role="tab">
+                  <b-button block href="#" v-b-toggle="'accordion-' + place._id" class="accordionStyle">{{place.name}}</b-button>
                 </b-card-header>
                 <b-collapse :id="'accordion-' + place._id" accordion="my-accordion" role="tabpanel">
                   <b-card-body>
@@ -42,8 +42,8 @@
                         Post Code: {{place.address.postcode}}
                         Address: {{place.address.address29}}
                         District: {{place.address.city_district}}</p>
-                    <br>
                     </b-card-text>
+                    <span class="placeHeading">Information</span>
                     <b-card-text>{{ place.wikipedia_extracts.text }}</b-card-text>
                   </b-card-body>
                 </b-collapse>

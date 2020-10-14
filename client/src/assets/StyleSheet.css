@@ -134,8 +134,10 @@ hr {
         display: none;
     }
 }
-
-
 .offset {
     padding-top: 3em;
+}
+.accordionStyle{
+    background-color: #31c9f7 !important;
+    color: #2c3e50 !important;
 }
