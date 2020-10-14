@@ -10,7 +10,6 @@
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
           </b-container>
           <hr/>
-          <b-card-text v-if="message">{{message}}</b-card-text>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
         </b-tab>
         <b-tab :title-link-class="'tabText'" title="Create" @click="clearMessage">
@@ -88,14 +87,14 @@ export default {
       payload.tripID = trip._id
       this.$store.dispatch('account/deleteOneTrip', payload).then(
         () => {
-          this.message = 'Your trip have been deleted'
+          this.message = 'Your trip has been deleted'
           this.getAllUserTrips()
         },
         error => {
           this.message = error.response.data.message
         }
       ).catch(error => {
-        this.message = 'Your request could not be prosed at this time'
+        this.message = 'Your request could not be processed at this time'
         console.log(error.toString())
       })
     },
@@ -103,14 +102,14 @@ export default {
       const id = this.$store.state.account.user._id
       this.$store.dispatch('account/deleteTrips', id).then(
         () => {
-          this.message = 'Your trips have been deleted'
+          this.message = 'Your trips has been deleted'
           this.getAllUserTrips()
         },
         error => {
           this.message = error.response.data.message
         }
       ).catch(error => {
-        this.message = 'Your request could not be prosed at this time'
+        this.message = 'Your request could not be processed at this time'
         console.log(error.toString())
       })
     }
