@@ -75,8 +75,10 @@ hr {
     max-height: 12em;
     overflow: hidden;
 }
+
 .postsDesign {
     margin-top: 1.5em;
+    background:  white!important;
     margin-bottom: 1.5em;
     border: solid;
     border-style: groove;
@@ -108,6 +110,7 @@ hr {
 .tripDesign {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+    background:  white!important;
     border: solid;
     border-style: groove;
 }
