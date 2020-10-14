@@ -10,12 +10,12 @@
             <b-button class="buttonColor" v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
           </b-container>
         </b-tab>
-        <b-tab :title-link-class="'tabText'" class="tabsColor" title="Create Post" @click="clearData">
+        <b-tab :title-link-class="'tabText'" class="tabsColor" title="Create" @click="clearData">
           <b-container v-if="loggedIn">
             <CreatePostForm ref="createPost" @update="getAllPost"></CreatePostForm>
           </b-container>
         </b-tab>
-        <b-tab :title-link-class="'tabText'" @click="loadUserPost" title="Edit Post">
+        <b-tab :title-link-class="'tabText'" @click="loadUserPost" title="Edit">
           <UpdatePost ref="updatePost"></UpdatePost>
         </b-tab>
       </b-tabs>

@@ -3,7 +3,7 @@
     <br><br>
     <b-jumbotron id="jumbotron" header="Welcome to Explorezy" lead="Explore exiting places!"></b-jumbotron >
     <b-img class="mobile-homepage-img" :src="require('../assets/text.png')"></b-img>
-      <b-row class="col-md">
+      <b-row align-content="center" class="col-md">
         <b-col  v-show="places">
           <h3>Places</h3>
           <hr>

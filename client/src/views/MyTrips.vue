@@ -13,12 +13,12 @@
           <b-card-text v-if="message">{{message}}</b-card-text>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
         </b-tab>
-        <b-tab :title-link-class="'tabText'" title="Create Trip" @click="clearMessage">
+        <b-tab :title-link-class="'tabText'" title="Create" @click="clearMessage">
           <b-container>
             <CreateTripForm ref="createTripTab"></CreateTripForm>
           </b-container>
         </b-tab>
-        <b-tab :title-link-class="'tabText'" title="Add Places to trip" @click="clearMessagePlaceTab">
+        <b-tab :title-link-class="'tabText'" title="Add Places" @click="clearMessagePlaceTab">
           <AddPlaceToTripForm ref="addPlaceTab" :trips="trips"></AddPlaceToTripForm>
         </b-tab>
       </b-tabs>
