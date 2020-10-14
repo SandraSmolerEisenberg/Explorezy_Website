@@ -1,10 +1,6 @@
 <template>
   <b-container class="paddingClass">
       <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
-    <b-card-text v-if="message">
-      {{message}}
-    <hr/>
-    </b-card-text>
       <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(place)">In my Favorite list</b-card-sub-title>
       <b-card-img :src=place.image class="imageClass"></b-card-img>
       <span class="placeHeading">{{place.name}}</span>
@@ -33,7 +29,6 @@
 <script>
 export default {
   name: 'PlacesDetailedView',
-  message: '',
   props: ['place'],
   computed: {
     getImage() {
@@ -54,7 +49,6 @@ export default {
           console.log(error.response.data.message)
         }
       ).catch(error => {
-        this.message = 'Your request could not be prosed at this time'
         console.log(error.toString())
       })
     },
