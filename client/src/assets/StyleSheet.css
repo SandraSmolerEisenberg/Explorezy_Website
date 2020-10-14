@@ -26,7 +26,6 @@ hr {
     background:#8fdd3c;
 }
 .placeHeading {
-    margin-top: 1.5em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: large;
@@ -131,6 +130,9 @@ hr {
         max-width: 100%;  
     }
     .mobileView {
+        display: none;
+    }
+    .homePagePosts {
         display: none;
     }
 }

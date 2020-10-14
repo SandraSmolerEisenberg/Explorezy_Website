@@ -11,7 +11,7 @@
           <PlaceBaseView class="tinyPlaceDesign" v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
           <b-button class="buttonColor" v-if="!message" @click="viewPlaces">View All Places</b-button>
         </b-col>
-        <b-col v-show="posts" >
+        <b-col class="homePagePosts" v-show="posts" >
           <h3>Posts</h3>
           <hr>
           <b-card-text v-if="postMessage">{{postMessage}}</b-card-text>
