@@ -119,3 +119,6 @@ hr {
         max-width: 100%;  
     }
 }
+.offset {
+    padding-top: 3em;
+}

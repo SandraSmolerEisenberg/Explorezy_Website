@@ -4,7 +4,7 @@
         <navigationLogIn v-if='loggedIn'></navigationLogIn>
 
         <!-- Render the content of the current page view -->
-        <router-view/>
+        <router-view class="offset" />
   </div>
 </template>
 
