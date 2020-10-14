@@ -42,7 +42,7 @@ export default {
       this.$store.dispatch('account/update', newUser).then(
         response => {
           if (response._id === newUser._id) {
-            this.message = 'Profile has been updated'
+            this.message = 'Place has been removed'
             const placeIndex = this.places.indexOf(place)
             this.places.splice(placeIndex, 1)
           }
