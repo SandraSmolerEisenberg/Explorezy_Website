@@ -125,10 +125,7 @@ hr {
         max-width: 50%;  
     }
 }
-@media screen and (max-width: 768px) {   
-    .card-size-my-trips {     
-        max-width: 100%;  
-    }
+@media screen and (max-width: 768px) {
     .mobileView {
         display: none;
     }
@@ -136,7 +133,12 @@ hr {
         display: none;
     }
 }
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 575px) {
+    .card-size-my-trips {
+        max-width: 100%;
+    }
+}
+    @media screen and (min-width: 768px) {
     .showMobileView {
         display: none;
     }
