@@ -121,6 +121,11 @@ hr {
 .underline:hover {
     text-decoration: underline;
 }
+@media screen and (max-width: 995px) {
+    .card-size-my-trips {     
+        max-width: 50%;  
+    }
+}
 @media screen and (max-width: 768px) {   
     .card-size-my-trips {     
         max-width: 100%;  
@@ -133,6 +138,13 @@ hr {
     .showMobileView {
         display: none;
     }
+}
+@media screen and (max-width: 320px) {
+    .tinyImgClass{
+        width: 8em;
+        height: 8em;
+        object-fit: cover;
+    } 
 }
 .offset {
     padding-top: 3em;
