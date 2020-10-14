@@ -9,7 +9,7 @@
             <b-row>
               <b-col class="col-md">
                 <b-container role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
-                  <PlaceBaseView class="tinyPlaceDesign" :place="place"></PlaceBaseView>
+                  <PlaceBaseView class="tinyPlaceDesign tinyPlaceHover" :place="place"></PlaceBaseView>
                 </b-container>
               </b-col>
               <b-col v-if="details" class="col-md">

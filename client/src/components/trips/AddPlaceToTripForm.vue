@@ -6,15 +6,15 @@
       {{ trip.name }}
     </option>
   </b-form-select>
-  <hr/>
+  <br>
   <div v-show="message">
-    <b-card-header>{{message}}</b-card-header>
-    <hr/>
+    <span>{{message}}</span>
+    <br>
   </div>
   <b-row v-show="selected">
-    <b-card role="button" v-show="placesList(place)" @click="addToTrip(place)" class="card-size" v-for="place in places" :key="place._id">
-      <b-card-header>{{place.name}}</b-card-header>
-      <b-img class="img" :src=place.image></b-img>
+    <b-card role="button" v-show="placesList(place)" @click="addToTrip(place)" class="card-size-my-trips" v-for="place in places" :key="place._id">
+      <span class="placeHeading">{{place.name}}</span>
+      <b-img class="tinyImgClass" :src=place.image></b-img>
     </b-card>
   </b-row>
 </b-container>
@@ -77,13 +77,4 @@ export default {
 </script>
 
 <style scoped>
-.card-size {
-  max-width: 20em;
-}
-.img{
-  align-content: center;
-  max-width: 18em;
-  max-height: 20em;
-
-}
 </style>
