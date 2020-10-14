@@ -43,7 +43,7 @@
       </div>
     </form>
     <div v-if="message">
-      <div class="card-header">{{message}}</div>
+      <div>{{message}}</div>
     </div>
     <hr/>
   </ValidationObserver>
