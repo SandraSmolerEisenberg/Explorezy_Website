@@ -6,10 +6,10 @@
       {{ trip.name }}
     </option>
   </b-form-select>
-  <hr/>
+  <br>
   <div v-show="message">
     <span>{{message}}</span>
-    <hr/>
+    <br>
   </div>
   <b-row v-show="selected">
     <b-card role="button" v-show="placesList(place)" @click="addToTrip(place)" class="card-size-my-trips" v-for="place in places" :key="place._id">

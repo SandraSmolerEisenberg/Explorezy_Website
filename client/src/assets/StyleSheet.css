@@ -76,6 +76,9 @@ hr {
     max-height: 12em;
     overflow: hidden;
 }
+.tinyPlaceHover:hover {
+    background-color: #f7f7f7;
+}
 
 .postsDesign {
     margin-top: 1.5em;
