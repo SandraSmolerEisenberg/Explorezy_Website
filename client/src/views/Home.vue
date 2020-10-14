@@ -1,8 +1,8 @@
 <template>
   <div>
     <br><br>
-    <b-jumbotron id="jumbotron" header="Welcome to Explorezy" lead="Explore exiting places!">
-    </b-jumbotron >
+    <b-jumbotron id="jumbotron" header="Welcome to Explorezy" lead="Explore exiting places!"></b-jumbotron >
+    <b-img class="mobile-homepage-img" :src="require('../assets/text.png')"></b-img>
       <b-row class="col-md">
         <b-col  v-show="places">
           <h3>Places</h3>
