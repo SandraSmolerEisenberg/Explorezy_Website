@@ -38,10 +38,10 @@
                     <b-card-img :src=place.image class="tinyImgClass"></b-card-img>
                     <b-card-text>
                       <span class="placeHeading">Address</span>
-                      <p>City: {{place.address.county}}
-                        Post Code: {{place.address.postcode}}
-                        Address: {{place.address.address29}}
-                        District: {{place.address.city_district}}</p>
+                      <p>City: {{place.address.county}};
+                        Post Code: {{place.address.postcode}};
+                        Road: {{place.address.road}};
+                        County: {{place.address.county}}</p>
                     </b-card-text>
                     <span class="placeHeading">Information</span>
                     <b-card-text>{{ place.wikipedia_extracts.text }}</b-card-text>

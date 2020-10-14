@@ -11,10 +11,10 @@
       <br><br>
       <b-card-text>
         <span class="placeHeading">Address</span>
-        <p>City: {{place.address.county}}
-          Post Code: {{place.address.postcode}}
-          Address: {{place.address.address29}}
-          District: {{place.address.city_district}}</p>
+        <p>City: {{place.address.county}};
+          Post Code: {{place.address.postcode}};
+          Road: {{place.address.road}};
+          County: {{place.address.county}}</p>
       </b-card-text>
       <br>
       <b-card-text>
