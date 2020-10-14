@@ -125,7 +125,17 @@ hr {
     .card-size-my-trips {     
         max-width: 100%;  
     }
+    .mobileView {
+        display: none;
+    }
 }
+@media screen and (min-width: 768px) {
+    .showMobileView {
+        display: none;
+    }
+}
+
+
 .offset {
     padding-top: 3em;
 }

@@ -5,7 +5,7 @@
     <b-card-text v-if="message">{{message}}</b-card-text>
 
     <b-row class="col-md">
-        <b-col v-if="places">
+        <b-col v-if="places" class="mobileView">
             <b-row>
               <b-col class="col-md">
                 <b-container role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
@@ -25,6 +25,37 @@
                 <b-button class="buttonColor" v-show="nextPage" @click="getNextPage">Next</b-button>
               </b-col>
             </b-row>
+        </b-col>
+        <b-col class="showMobileView">
+          <b-container>
+            <div v-for="place in places" :key="place._id" role="tablist">
+              <b-card no-body class="mb-1">
+                <b-card-header header-tag="header" class="p-1" role="tab">
+                  <b-button block href="#" v-b-toggle="'accordion-' + place._id" variant="info">{{place.name}}</b-button>
+                </b-card-header>
+                <b-collapse :id="'accordion-' + place._id" accordion="my-accordion" role="tabpanel">
+                  <b-card-body>
+                    <b-card-img :src=place.image class="tinyImgClass"></b-card-img>
+                    <b-card-text>
+                      <span class="placeHeading">Address</span>
+                      <p>City: {{place.address.county}}
+                        Post Code: {{place.address.postcode}}
+                        Address: {{place.address.address29}}
+                        District: {{place.address.city_district}}</p>
+                    <br>
+                    </b-card-text>
+                    <b-card-text>{{ place.wikipedia_extracts.text }}</b-card-text>
+                  </b-card-body>
+                </b-collapse>
+              </b-card>
+            </div>
+          </b-container>
+          <b-row>
+            <b-col>
+              <b-button class="buttonColor" v-show="previousPage" @click="getPreviousPage">Previous</b-button>
+              <b-button class="buttonColor" v-show="nextPage" @click="getNextPage">Next</b-button>
+            </b-col>
+          </b-row>
         </b-col>
       </b-row>
   </b-container>
