@@ -30,6 +30,7 @@ hr {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: large;
+    display: inline-block;
 }
 #jumbotron {
     background-image: url("logo.png");
