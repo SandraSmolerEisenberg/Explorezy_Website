@@ -1,5 +1,6 @@
 <template>
   <div>
+    <br><br>
     <b-jumbotron id="jumbotron" header="Welcome to Explorezy" lead="Explore exiting places!">
     </b-jumbotron >
       <b-row class="col-md">
