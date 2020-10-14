@@ -15,6 +15,8 @@
               <b-col v-if="details" class="col-md">
                 <b-container class="placeDetailedView">
                   <b-button-close @click="closeDetailedView"></b-button-close>
+                  <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
+                  <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
                   <PlacesDetailedView :place="selectedPlace"></PlacesDetailedView>
                 </b-container>
               </b-col>
@@ -33,7 +35,7 @@
                 <b-card-header class="p-0" role="tab">
                   <b-button block href="#" v-b-toggle="'accordion-' + place._id" class="accordionStyle">{{place.name}}</b-button>
                 </b-card-header>
-                <b-collapse :id="'accordion-' + place._id" accordion="my-accordion" role="tabpanel">
+                <b-collapse :id="'accordion-' + place._id" accordion="my-accordion" role="tabpanel" @show="showDetailedView(place)">
                   <b-card-body>
                     <b-card-img :src=place.image class="tinyImgClass"></b-card-img>
                     <b-card-text>
@@ -45,6 +47,8 @@
                     </b-card-text>
                     <span class="placeHeading">Information</span>
                     <b-card-text>{{ place.wikipedia_extracts.text }}</b-card-text>
+                    <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
+                    <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
                   </b-card-body>
                 </b-collapse>
               </b-card>
@@ -123,6 +127,28 @@ export default {
       this.currentPage = this.previousPage.page
       this.getPlaces(this.previousPage.page)
       this.closeDetailedView()
+    },
+    addToFavourite() {
+      var user = this.$store.state.account.user
+      console.log(this.selectedPlace._id)
+      user.favourite_places.push(this.selectedPlace._id)
+      console.log(user.favourite_places)
+      this.$store.dispatch('account/update', user).then(
+        response => {
+          console.log('Added to favourite places')
+        },
+        error => {
+          console.log(error.response.data.message)
+        }
+      ).catch(error => {
+        console.log(error.toString())
+      })
+    },
+    isLoggedIn() {
+      return this.$store.state.account.status.currentUser
+    },
+    hasFavPlace(selectedPlace) {
+      return this.$store.state.account.user.favourite_places.includes(selectedPlace._id)
     }
   }
 }

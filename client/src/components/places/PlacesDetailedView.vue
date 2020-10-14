@@ -1,7 +1,5 @@
 <template>
   <b-container class="paddingClass">
-      <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(place)">Add to favourites</b-button>
-      <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(place)">In my Favorite list</b-card-sub-title>
       <b-card-img :src=place.image class="imageClass"></b-card-img>
       <span class="placeHeading">{{place.name}}</span>
       <br><br>
@@ -36,30 +34,8 @@ export default {
     }
   },
   methods: {
-    addToFavourite() {
-      var user = this.$store.state.account.user
-      console.log(this.place._id)
-      user.favourite_places.push(this.place._id)
-      console.log(user.favourite_places)
-      this.$store.dispatch('account/update', user).then(
-        response => {
-          console.log('Added to favourite places')
-        },
-        error => {
-          console.log(error.response.data.message)
-        }
-      ).catch(error => {
-        console.log(error.toString())
-      })
-    },
     checkUser(place) {
       return this.$store.state.account.status.currentUser && !this.$store.state.account.user.favourite_places.includes(place._id)
-    },
-    isLoggedIn() {
-      return this.$store.state.account.status.currentUser
-    },
-    hasFavPlace(place) {
-      return this.$store.state.account.user.favourite_places.includes(place._id)
     }
   }
 }
