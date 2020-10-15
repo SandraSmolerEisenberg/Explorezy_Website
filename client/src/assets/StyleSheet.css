@@ -106,8 +106,10 @@ hr {
     object-fit: cover;
   
 }
+.imgFavourite{
+    max-width: 28em;
+}
 .card-size-my-trips {
-    
     max-width: 33.33%;
   }
 .tripDesign {
@@ -135,13 +137,11 @@ hr {
     #jumbotron {
         display:none
     }
-}
-@media screen and (max-width: 575px) {
     .card-size-my-trips {
-        max-width: 100%;
+             max-width: 100%;
     }
-
 }
+
     @media screen and (min-width: 768px) {
     .showMobileView {
         display: none;
@@ -155,7 +155,10 @@ hr {
         width: 8em;
         height: 8em;
         object-fit: cover;
-    } 
+    }
+    .tabText {
+        font-size: 0.9em;
+    }
 }
 .offset {
     padding-top: 3em;
