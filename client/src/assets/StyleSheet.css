@@ -1,3 +1,4 @@
+/* ID CSS */
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -5,14 +6,19 @@
     text-align: center;
     color: #2c3e50;
 }
-.router-link-text {
-    color: #2c3e50 !important;
-    font-size: large;
-}
 #navbarImg {
     max-width: 5em;
     height: auto;
 }
+#jumbotron {
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    margin-top: 1em;
+}
+/* Element CSS */
 h2, h3 {
     padding-top: 1.5em;
     padding-bottom: 1em;
@@ -25,20 +31,18 @@ hr {
     height:2px;
     background:#8fdd3c;
 }
+/* Class CSS */
+.router-link-text {
+    color: #2c3e50 !important;
+    font-size: large;
+}
 .placeHeading {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: large;
     display: inline-block;
 }
-#jumbotron {
-    background-image: url("logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    background-color: white;
-    margin-top: 1em;
-}
+
 .buttonColor {
     background-color: #31c9f7!important;
     color: #2c3e50 !important;
@@ -122,6 +126,14 @@ hr {
 .underline:hover {
     text-decoration: underline;
 }
+.offset {
+    padding-top: 3em;
+}
+.accordionStyle{
+    background-color: #31c9f7 !important;
+    color: #2c3e50 !important;
+}
+/* Media Queries */
 @media screen and (max-width: 995px) {
     .card-size-my-trips {     
         max-width: 50%;  
@@ -141,8 +153,7 @@ hr {
              max-width: 100%;
     }
 }
-
-    @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .showMobileView {
         display: none;
     }
@@ -159,11 +170,4 @@ hr {
     .tabText {
         font-size: 0.9em;
     }
-}
-.offset {
-    padding-top: 3em;
-}
-.accordionStyle{
-    background-color: #31c9f7 !important;
-    color: #2c3e50 !important;
 }
