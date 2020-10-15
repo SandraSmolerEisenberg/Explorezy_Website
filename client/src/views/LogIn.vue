@@ -54,7 +54,9 @@ export default {
         },
         error => {
           console.log(error.toString())
-          this.message = error.response.data.message
+          if (error.response) {
+            this.message = error.response.data.message
+          }
         }
       ).catch(error => {
         this.message = 'Your request could not be prosed at this time'

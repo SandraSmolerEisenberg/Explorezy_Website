@@ -9,7 +9,7 @@
         <div class="form-group">
           <label for="email">New Email</label>
           <input name="email" type="email" class="form-control" placeholder="email" v-model="newUser.email"/>
-          <div  v-if="errors[0]" class="alert-danger">{{ errors[0] }}</div>
+          <div  v-if="errors[0]" class="alert-danger">Email is required to update profile</div>
         </div>
       </ValidationProvider>
       <!-- Password -->
@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" class="form-control" placeholder="password" v-model="newUser.password"/>
-          <div v-if="errors[0]" class="alert-danger"> {{ errors[0] }}</div>
+          <div  v-if="errors[0]" class="alert-danger">Password is required to update profile</div>
         </div>
       </ValidationProvider>
       <!-- First Name -->
@@ -75,13 +75,14 @@ export default {
           if (response._id === this.newUser._id) {
             this.message = 'Profile has been updated'
           }
-        },
-        error => {
-          this.message = error.response.data.message
         }
       ).catch(error => {
-        this.message = 'Your request could not be prosed at this time'
-        console.log(error.toString())
+        if (error.response) {
+          this.message = error.response.data.message
+        } else {
+          this.message = 'Your request could not be prosed at this time'
+          console.log(error.toString())
+        }
       })
     }
   }
