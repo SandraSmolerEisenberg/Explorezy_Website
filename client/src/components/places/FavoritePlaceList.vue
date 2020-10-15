@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <b-container>
-      <b-card-img :src=place.image class="img"></b-card-img>
+      <b-card-img :src=place.image class="imgFavourite"></b-card-img>
       <br>
       <span class="placeHeading">{{place.name}}</span>
       <br><br>
@@ -42,7 +42,4 @@ export default {
 </script>
 
 <style scoped>
-.img{
-  max-width: 28em;
-}
 </style>
