@@ -4,7 +4,7 @@
       <h2>My Profile Page</h2>
     <Profile v-if="!updating"></Profile>
       <UpdateProfile v-if="updating"></UpdateProfile>
-      <b-button class="buttonColor" @click="update()">{{getButtonText}}</b-button>
+      <b-button class="button-styling" @click="update()">{{getButtonText}}</b-button>
     </b-container>
   </b-container>
 </template>

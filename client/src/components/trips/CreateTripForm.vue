@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver v-slot="{ invalid }">
-    <form class="formDesign" v-if="!message" @submit.prevent="createTrip">
+    <form class="form-styling" v-if="!message" @submit.prevent="createTrip">
       <!-- Trip name -->
       <ValidationProvider name="name" rules="required|alpha_spaces" v-slot="{ errors }">
         <div class="form-group">
@@ -17,14 +17,14 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" :disabled="invalid" value="Submit" class="buttonColor"/>
+      <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>
     </form>
     <div v-if="message">
       <div class="card-header">{{message}}</div>
-      <b-button class="buttonColor" type=reset @click="resetData() ">Add Another Trip</b-button>
+      <b-button class="button-styling" type=reset @click="resetData() ">Add Another Trip</b-button>
     </div>
     <hr/>
   </ValidationObserver>

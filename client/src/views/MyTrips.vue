@@ -2,16 +2,16 @@
     <b-container>
       <h2>My Trips</h2>
       <hr/>
-      <b-tabs class="tabsDesign" content-class="mt-3">
+      <b-tabs class="tabs-styling" content-class="mt-3">
         <b-tab :title-link-class="'tabText'" @click="reloadData()" title="My Trips" active>
           <b-card-text v-if="errorMessage">{{errorMessage}}</b-card-text>
           <b-card-text v-if="message">{{message}}</b-card-text>
-          <b-container class="tripDesign" v-for="trip in trips" :key="trip._id">
+          <b-container class="trip-styling" v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
-          <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
+          <b-button class="button-styling" v-if="currentUser" @click="deleteTrip(trip)">Delete</b-button>
           </b-container>
           <hr/>
-          <b-button class="buttonColor" v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
+          <b-button class="button-styling" v-if="currentUser" @click="deleteAllTrips()">Delete All Trips</b-button>
         </b-tab>
         <b-tab :title-link-class="'tabText'" title="Create" @click="clearMessage">
           <b-container>

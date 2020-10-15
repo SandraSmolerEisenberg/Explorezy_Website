@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver v-slot="{ invalid }">
-    <form class="formDesign" v-if="!message" @submit.prevent="createPost">
+    <form class="form-styling" v-if="!message" @submit.prevent="createPost">
       <!-- Email -->
       <ValidationProvider name="title" rules="required" v-slot="{ errors }">
         <div class="form-group">
@@ -18,7 +18,7 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" :disabled="invalid" value="Submit" class="buttonColor"/>
+      <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>

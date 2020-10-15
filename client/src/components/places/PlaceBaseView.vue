@@ -1,10 +1,10 @@
 <template>
 <b-container>
     <br>
-    <span class="placeHeading">{{place.name}}</span>
+    <span class="heading">{{place.name}}</span>
     <br><br>
     <b-card-text>
-      <span class="placeHeading">Information</span>
+      <span class="heading">Information</span>
       <br/>
       {{introText}}
     </b-card-text>

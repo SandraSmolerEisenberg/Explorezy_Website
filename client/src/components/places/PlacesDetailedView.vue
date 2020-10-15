@@ -1,10 +1,10 @@
 <template>
-  <b-container class="paddingClass">
-      <b-card-img :src=place.image class="imageClass"></b-card-img>
-      <span class="placeHeading">{{place.name}}</span>
+  <b-container class="padding">
+      <b-card-img :src=place.image class="img"></b-card-img>
+      <span class="heading">{{place.name}}</span>
       <br><br>
       <b-card-text>
-        <span class="placeHeading">Address</span>
+        <span class="heading">Address</span>
         <p>City: {{place.address.county}};
           Post Code: {{place.address.postcode}};
           Road: {{place.address.road}};
@@ -12,12 +12,12 @@
       </b-card-text>
       <br>
       <b-card-text>
-        <span class="placeHeading">Information</span>
+        <span class="heading">Information</span>
         <br>
         {{place.wikipedia_extracts.text}}
       </b-card-text>
       <hr/>
-      <span class="placeHeading">Wikipedia</span>
+      <span class="heading">Wikipedia</span>
       <br>
       <a v-bind:href="place.wikipedia" target="_blank">View Wikipedia Article</a>
   </b-container>

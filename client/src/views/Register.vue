@@ -1,10 +1,10 @@
 <template>
   <b-container>
     <h2>Registration Page</h2>
-    <b-container class="formDesign">
+    <b-container class="form-styling">
       <hr/>
     <ValidationObserver v-slot="{ invalid }">
-      <form class="formDesign" @submit.prevent="onRegister">
+      <form class="form-styling" @submit.prevent="onRegister">
 
         <!-- Email -->
         <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
@@ -39,7 +39,7 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid" value="Submit" class="buttonColor"/>
+        <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
         <div v-if="message">
          <div class="alert alert-danger">{{message}}</div>
         </div>

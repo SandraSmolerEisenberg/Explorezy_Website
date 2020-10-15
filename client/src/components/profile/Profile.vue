@@ -2,7 +2,7 @@
   <b-container>
     <hr/>
   <b-card>
-    <span class="placeHeading">{{currentUser.first_name || 'No name is added'}}</span>
+    <span class="heading">{{currentUser.first_name || 'No name is added'}}</span>
     <br>
     <b-card-body>
       <p>

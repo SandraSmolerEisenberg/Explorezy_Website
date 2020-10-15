@@ -9,22 +9,22 @@
             <b-row>
               <b-col class="col-md">
                 <b-container role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
-                  <PlaceBaseView class="tinyPlaceDesign tinyPlaceHover" :place="place"></PlaceBaseView>
+                  <PlaceBaseView class="tiny-place-styling tiny-place-hover" :place="place"></PlaceBaseView>
                 </b-container>
               </b-col>
               <b-col v-if="details" class="col-md">
-                <b-container class="placeDetailedView">
+                <b-container class="place-detailed-view-styling">
                   <b-button-close @click="closeDetailedView"></b-button-close>
-                  <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
-                  <b-card-sub-title class="paddingClass" v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
+                  <b-button class="button-styling" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
+                  <b-card-sub-title class="padding" v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
                   <PlacesDetailedView :place="selectedPlace"></PlacesDetailedView>
                 </b-container>
               </b-col>
             </b-row>
             <b-row>
               <b-col>
-                <b-button class="buttonColor" v-show="previousPage" @click="getPreviousPage">Previous</b-button>
-                <b-button class="buttonColor" v-show="nextPage" @click="getNextPage">Next</b-button>
+                <b-button class="button-styling" v-show="previousPage" @click="getPreviousPage">Previous</b-button>
+                <b-button class="button-styling" v-show="nextPage" @click="getNextPage">Next</b-button>
               </b-col>
             </b-row>
         </b-col>
@@ -33,21 +33,21 @@
             <div v-for="place in places" :key="place._id" role="tablist">
               <b-card no-body class="mb-1">
                 <b-card-header class="p-0" role="tab">
-                  <b-button block href="#" v-b-toggle="'accordion-' + place._id" class="accordionStyle">{{place.name}}</b-button>
+                  <b-button block href="#" v-b-toggle="'accordion-' + place._id" class="accordion-styling">{{place.name}}</b-button>
                 </b-card-header>
                 <b-collapse :id="'accordion-' + place._id" accordion="my-accordion" role="tabpanel" @show="showDetailedView(place)">
                   <b-card-body>
-                    <b-card-img :src=place.image class="tinyImgClass"></b-card-img>
+                    <b-card-img :src=place.image class="tiny-img"></b-card-img>
                     <b-card-text>
-                      <span class="placeHeading">Address</span>
+                      <span class="heading">Address</span>
                       <p>City: {{place.address.county}};
                         Post Code: {{place.address.postcode}};
                         Road: {{place.address.road}};
                         County: {{place.address.county}}</p>
                     </b-card-text>
-                    <span class="placeHeading">Information</span>
+                    <span class="heading">Information</span>
                     <b-card-text>{{ place.wikipedia_extracts.text }}</b-card-text>
-                    <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
+                    <b-button class="button-styling" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
                     <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
                   </b-card-body>
                 </b-collapse>
@@ -56,8 +56,8 @@
           </b-container>
           <b-row>
             <b-col>
-              <b-button class="buttonColor" v-show="previousPage" @click="getPreviousPage">Previous</b-button>
-              <b-button class="buttonColor" v-show="nextPage" @click="getNextPage">Next</b-button>
+              <b-button class="button-styling" v-show="previousPage" @click="getPreviousPage">Previous</b-button>
+              <b-button class="button-styling" v-show="nextPage" @click="getNextPage">Next</b-button>
             </b-col>
           </b-row>
         </b-col>

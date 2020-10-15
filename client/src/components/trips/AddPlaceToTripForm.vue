@@ -13,8 +13,8 @@
   </div>
   <b-row v-show="selected">
     <b-card role="button" v-show="placesList(place)" @click="addToTrip(place)" class="card-size-my-trips" v-for="place in places" :key="place._id">
-      <span class="placeHeading card-text">{{place.name}}</span>
-      <b-img class="tinyImgClass card-img" :src=place.image></b-img>
+      <span class="heading card-text">{{place.name}}</span>
+      <b-img class="tiny-img card-img" :src=place.image></b-img>
     </b-card>
   </b-row>
 </b-container>

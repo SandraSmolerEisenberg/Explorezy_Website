@@ -4,7 +4,7 @@
     <hr/>
       <b-card-text v-show="message">{{message}}</b-card-text>
       <b-container v-for="trip in trips" :key="trip._id">
-        <SingleTrip class="tripDesign" :trip="trip"></SingleTrip>
+        <SingleTrip class="trip-styling" :trip="trip"></SingleTrip>
       </b-container>
   </b-container>
 </template>

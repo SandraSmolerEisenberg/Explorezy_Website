@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <h2>Login Page</h2>
-    <b-container class="formDesign">
+    <b-container class="form-styling">
     <hr/>
     <ValidationObserver v-slot="{ invalid }">
       <form @submit.prevent="onLogin">
@@ -23,7 +23,7 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid" value="Submit" class="buttonColor"/>
+        <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
         <div v-if="message">
          <div class="alert alert-danger">{{message}}</div>
         </div>

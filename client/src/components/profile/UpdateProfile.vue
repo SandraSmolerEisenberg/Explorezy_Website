@@ -1,5 +1,5 @@
 <template>
-  <b-container class="formDesign">
+  <b-container class="form-styling">
     <hr/>
     <ValidationObserver v-slot="{ invalid }">
     <form v-if="!message"  @submit.prevent="onUpdate">
@@ -37,7 +37,7 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" value="Submit" :disabled="invalid" class="buttonColor"/>
+      <input type="submit" value="Submit" :disabled="invalid" class="button-styling"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>

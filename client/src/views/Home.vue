@@ -8,15 +8,15 @@
           <h3>Places</h3>
           <hr>
           <b-card-text v-if="message">{{message}}</b-card-text>
-          <PlaceBaseView class="tinyPlaceDesign" v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
-          <b-button class="buttonColor" v-if="!message" @click="viewPlaces">View All Places</b-button>
+          <PlaceBaseView class="tiny-place-styling" v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
+          <b-button class="button-styling" v-if="!message" @click="viewPlaces">View All Places</b-button>
         </b-col>
         <b-col class="homePagePosts" v-show="posts" >
           <h3>Posts</h3>
           <hr>
           <b-card-text v-if="postMessage">{{postMessage}}</b-card-text>
           <SinglePostLessText v-for="post in posts" :key="post._id" :post="post"></SinglePostLessText>
-          <b-button class="buttonColor" v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
+          <b-button class="button-styling" v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
         </b-col>
       </b-row>
   </div>

@@ -1,10 +1,10 @@
 <template>
-  <b-container class="tinyPlaceDesign">
+  <b-container class="tiny-place-styling">
     <br>
-      <span class="placeHeading">{{post.title}}</span>
+      <span class="heading">{{post.title}}</span>
       <br><br>
       <b-card-text>
-        <span class="placeHeading">Post text</span>
+        <span class="heading">Post text</span>
         <p>{{introText}}</p>
       </b-card-text>
       <br>

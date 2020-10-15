@@ -1,14 +1,14 @@
 <template>
   <b-container>
     <br>
-      <span class="placeHeading" >{{post.title}}</span>
+      <span class="heading" >{{post.title}}</span>
       <b-card-text>
         <br>
-        <span class="placeHeading">Post text</span>
+        <span class="heading">Post text</span>
         <p>{{post.text}}</p>
       </b-card-text>
       <b-card-text>
-        <span class="placeHeading">Last updated on:</span>
+        <span class="heading">Last updated on:</span>
         <p>{{creationDate}}</p>
       </b-card-text>
   </b-container>

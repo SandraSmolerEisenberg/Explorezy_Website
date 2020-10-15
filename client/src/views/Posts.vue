@@ -2,12 +2,12 @@
     <b-container>
       <h2>Post Page</h2>
       <hr/>
-      <b-tabs class="tabsDesign" v-if="loggedIn" content-class="mt-3">
+      <b-tabs class="tabs-styling" v-if="loggedIn" content-class="mt-3">
         <b-tab :title-link-class="'tabText'" @click="getAllPost" title="Posts" active>
           <b-card-text v-if="message">{{message}}</b-card-text>
-          <b-container class="postsDesign" v-for="post in posts" :key="post._id">
+          <b-container class="post-styling" v-for="post in posts" :key="post._id">
             <SinglePost :post="post"></SinglePost>
-            <b-button class="buttonColor" v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
+            <b-button class="button-styling" v-if="currentUser(post)" @click="deletePost(post)">Delete</b-button>
           </b-container>
         </b-tab>
         <b-tab :title-link-class="'tabText'" class="tabsColor" title="Create" @click="clearData">
@@ -22,7 +22,7 @@
       <b-container v-if="!loggedIn">
         <b-card-text v-if="message">{{message}}</b-card-text>
         <b-container v-for="post in posts" :key="post._id">
-        <SinglePost class="postsDesign" :post="post"></SinglePost>
+        <SinglePost class="post-styling" :post="post"></SinglePost>
         </b-container>
       </b-container>
 

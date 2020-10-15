@@ -36,40 +36,40 @@ hr {
     color: #2c3e50 !important;
     font-size: large;
 }
-.placeHeading {
+.heading {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     font-size: large;
     display: inline-block;
 }
 
-.buttonColor {
+.button-styling {
     background-color: #31c9f7!important;
     color: #2c3e50 !important;
     margin-top: 1.5em;
     margin-bottom: 1em;
 }
-.buttonColor:disabled,
-.buttonColor[disabled]{
+.button-styling:disabled,
+.button-styling[disabled]{
     background-color: #f7f7f7 !important;
 }
-.formDesign {
+.form-styling {
     background-color:  #f7f7f7!important;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
 }
-.tabsDesign {
+.tabs-styling {
     background-color:  #f7f7f7!important;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-top: 2em;
 }
-.tabText {
+.tab-text {
     color: #2c3e50;
 }
-.tabText:hover {
+.tab-text:hover {
     color: #2c3e50;
 }
-.tinyPlaceDesign {
+.tiny-place-styling {
     padding-bottom: 1em;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
@@ -79,49 +79,45 @@ hr {
     max-height: 12em;
     overflow: hidden;
 }
-.tinyPlaceHover:hover {
+.tiny-place-hover:hover {
     background-color: #f7f7f7;
 }
 
-.postsDesign {
+.post-styling {
     margin-top: 1.5em;
     background:  white!important;
     margin-bottom: 1.5em;
     border: solid;
-    border-style: groove;
 }
-.placeDetailedView {
+.place-detailed-view-styling {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     border: solid;
-    border-style: groove;
 }
-.paddingClass {
+.padding {
     padding-top: 1em;
 }
-.imageClass {
+.img {
     width: 20em;
     height: 20em;
     object-fit: cover;
 }
-.tinyImgClass{
+.tiny-img{
     width: 15em;
     height: 15em;
     object-fit: cover;
-  
 }
-.imgFavourite{
+.favourite-img{
     max-width: 28em;
 }
 .card-size-my-trips {
     max-width: 33.33%;
   }
-.tripDesign {
+.trip-styling {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background:  white!important;
     border: solid;
-    border-style: groove;
 }
 .underline:hover {
     text-decoration: underline;
@@ -129,7 +125,7 @@ hr {
 .offset {
     padding-top: 3em;
 }
-.accordionStyle{
+.accordion-styling{
     background-color: #31c9f7 !important;
     color: #2c3e50 !important;
 }
@@ -162,12 +158,12 @@ hr {
     }
 }
 @media screen and (max-width: 320px) {
-    .tinyImgClass{
+    .tiny-img{
         width: 8em;
         height: 8em;
         object-fit: cover;
     }
-    .tabText {
+    .tab-text {
         font-size: 0.9em;
     }
 }
