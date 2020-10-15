@@ -43,6 +43,7 @@ export default {
   methods: {
     clearData() {
       this.message = ''
+      this.post = {}
     },
     createPost() {
       this.post.author = this.$store.state.account.user._id

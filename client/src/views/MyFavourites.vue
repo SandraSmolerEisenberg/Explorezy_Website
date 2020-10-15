@@ -58,12 +58,12 @@ export default {
         console.log(error.toString())
       })
     },
-    removeItemFormList(arr, value) {
-      const index = arr.indexOf(value)
+    removeItemFormList(places, itemToRemove) {
+      const index = places.indexOf(itemToRemove)
       if (index > -1) {
-        arr.splice(index, 1)
+        places.splice(index, 1)
       }
-      return arr
+      return places
     },
     loadFavouritePlace() {
       this.userFavourite = this.$store.state.account.user.favourite_places
@@ -74,19 +74,15 @@ export default {
       }
     },
     getFavoritePlaces() {
-      let errorCounter = 0
       for (let i = 0; i < this.userFavourite.length; i++) {
         PlacesService.getPlaceByID(this.userFavourite[i]).then(
           response => {
             this.places.push(response.data)
           }
         ).catch(error => {
-          errorCounter++
           console.log(error.toString())
-        })
-        if (errorCounter > 0) {
           this.message = 'Your request could not be prosed at this time'
-        }
+        })
       }
     }
   }

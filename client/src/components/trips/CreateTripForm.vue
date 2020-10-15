@@ -42,6 +42,7 @@ export default {
   methods: {
     resetData() {
       this.message = ''
+      this.trip = {}
     },
     createTrip() {
       this.trip.user = this.$store.state.account.user._id
