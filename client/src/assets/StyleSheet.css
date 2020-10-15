@@ -32,6 +32,12 @@ hr {
     background:#8fdd3c;
 }
 /* Class CSS */
+.headingHomePage {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    padding-top: 0em;
+}
 .router-link-text {
     color: #2c3e50 !important;
     font-size: large;
@@ -153,6 +159,9 @@ hr {
         display: none;
     }
     .mobile-homepage-img{
+        display: none;
+    }
+    .headingHomePage {
         display: none;
     }
 }
