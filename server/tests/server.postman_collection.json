@@ -2870,7 +2870,7 @@
 							"script": {
 								"id": "6548e8f2-0e9d-4c1d-a6f1-beaeef10de49",
 								"exec": [
-									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -2954,7 +2954,7 @@
 									"pm.environment.set(\"testPlace\", pm.response.json());\r",
 									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
 									"\r",
-									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var placeName = \"LaFayette Park\";\r",
 									"var testPlace = pm.variables.get(\"testPlace\");\r",
 									"\r",
 									"pm.test(\"Successful name validation\", function(){\r",
@@ -2977,7 +2977,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"raw": "   {\r\n      \"name\":\"LaFayette Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Elk Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"house_number\":\"33\",\r\n         \"neighbourhood\":\"Sheridan Hollow\"\r\n      },\r\n      \"wikipedia\":\"https://en.wikipedia.org/wiki/Lafayette%20Park%20Historic%20District\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Elk_Street_Albany.jpg/400px-Elk_Street_Albany.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"en:Lafayette Park Historic District\",\r\n         \"text\":\"The Lafayette Park Historic District is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.\",\r\n         \"html\":\"<p>The <b>Lafayette Park Historic District</b> is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.755806,\r\n         \"lat\":42.653233\r\n      }\r\n   }\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3018,8 +3018,13 @@
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"var places = pm.response.json().places;\r",
+									"\r",
 									"pm.test(\"Validate that database is not empty\", function (){\r",
-									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"    pm.expect(places).to.be.not.empty;\r",
+									"\tpm.expect(places.length).to.be.equal(1);\r",
+									"\tpm.expect(places[0].name).to.be.equal(\"LaFayette Park\")\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3085,6 +3090,13 @@
 									"\r",
 									"pm.test(\"Validate that results are reseived and are not empty\", function (){\r",
 									"    pm.expect(paginatedPlaces.results).to.be.not.empty;\r",
+									"});\r",
+									"\r",
+									"var places = pm.response.json().results;\r",
+									"\r",
+									"pm.test(\"Validate that place is in database\", function (){\r",
+									"\tpm.expect(places.length).to.be.equal(1);\r",
+									"\tpm.expect(places[0].name).to.be.equal(\"LaFayette Park\")\r",
 									"});\r",
 									""
 								],
@@ -3238,7 +3250,7 @@
 									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
 									"});\r",
 									"\r",
-									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
 									""
 								],
 								"type": "text/javascript"
@@ -3256,7 +3268,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Göteborgs stadshus\",\r\n      \"address\":{\r\n          \"city\":\"Gbg\",\r\n         \"road\":\"Gustaf Adolfs Torg\",\r\n         \"state\":\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"country_code\":\"se\",\r\n         \"house_number\":\"4A\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
+							"raw": "{\r\n      \"name\":\"Academy Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Eagle Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"neighbourhood\":\"Downtown\"\r\n      },\r\n      \"wikipedia\":\"https://ce.wikipedia.org/wiki/%3AAcademy%20Park%20%28parke%20sa%20Tinipong%20Bansa%2C%20New%20York%29\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USA_location_map.svg/400px-USA_location_map.svg.png\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"ceb:Academy Park (parke sa Tinipong Bansa, New York)\",\r\n         \"text\":\"Parke ang Academy Park sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.\",\r\n         \"html\":\"<p>Parke ang <b>Academy Park</b> sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.754883,\r\n         \"lat\":42.652645\r\n      }\r\n   }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3306,7 +3318,7 @@
 									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
 									"});\r",
 									"pm.test(\"Validate same values in unchanged object fields\", function (){\r",
-									"    pm.expect(pm.variables.get(\"testPlace\").title).to.equal(pm.response.json().title);\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").wikipedia_extracts.title).to.equal(pm.response.json().wikipedia_extracts.title);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3318,7 +3330,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Göteborgs new name\",\r\n      \"address\":{\r\n          \"city\":\"Gbg-test\",\r\n         \"road\":\"Gustaf Adolfs Torg- test\",\r\n         \"state\":\"Västra Götalands län - test\",\r\n         \"county\":\"Göteborg - test\",\r\n         \"suburb\":\"Nordstaden - test\",\r\n         \"country\":\"Sverige- test\",\r\n         \"postcode\":\"41106 - test\",\r\n         \"country_code\":\"se - test\",\r\n         \"house_number\":\"4A - test\",\r\n         \"city_district\":\"Centrum -  test\" \r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus  test\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
+							"raw": "{\r\n      \"name\":\"Academy Test Park\",\r\n      \"address\":{\r\n         \"city\":\"Test\",\r\n         \"road\":\"Test\",\r\n         \"state\":\"Test York\",\r\n         \"county\":\"Test County\",\r\n         \"country\":\"Test States of America\",\r\n         \"postcode\":\"1234556\",\r\n         \"country_code\":\"Test\",\r\n         \"neighbourhood\":\"Test\"\r\n      },\r\n      \"wikipedia\":\"https://ce.wikipedia.org/wiki/%3AAcademy%20Park%20%28parke%20sa%20Tinipong%20Bansa%2C%20New%20York%29\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USA_location_map.svg/400px-USA_location_map.svg.png\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"ceb:Academy Park (parke sa Tinipong Bansa, New York)\",\r\n         \"text\":\"Parke ang Academy Park sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.\",\r\n         \"html\":\"<p>Parke ang <b>Academy Park</b> sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.754883,\r\n         \"lat\":42.652645\r\n      }\r\n   }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3381,6 +3393,203 @@
 								"api",
 								"places",
 								"{{placeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create place object 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "031f5db2-5db2-4f8c-80de-c6fee4a785e6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f99a350-5ee8-4a67-9fb6-6fa351d7ad41",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
+									"\r",
+									"var placeName = \"LaFayette Park\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"LaFayette Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Elk Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"house_number\":\"33\",\r\n         \"neighbourhood\":\"Sheridan Hollow\"\r\n      },\r\n      \"wikipedia\":\"https://en.wikipedia.org/wiki/Lafayette%20Park%20Historic%20District\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Elk_Street_Albany.jpg/400px-Elk_Street_Albany.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"en:Lafayette Park Historic District\",\r\n         \"text\":\"The Lafayette Park Historic District is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.\",\r\n         \"html\":\"<p>The <b>Lafayette Park Historic District</b> is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.755806,\r\n         \"lat\":42.653233\r\n      }\r\n   }\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create place object 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "9f3d741d-62d5-43ee-aff3-e3e7c8ae3f81",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9bd8790-234d-43b0-ae50-98c6dee886de",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
+									"\r",
+									"var placeName = \"Academy Park\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\":\"Academy Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Eagle Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"neighbourhood\":\"Downtown\"\r\n      },\r\n      \"wikipedia\":\"https://ce.wikipedia.org/wiki/%3AAcademy%20Park%20%28parke%20sa%20Tinipong%20Bansa%2C%20New%20York%29\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USA_location_map.svg/400px-USA_location_map.svg.png\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"ceb:Academy Park (parke sa Tinipong Bansa, New York)\",\r\n         \"text\":\"Parke ang Academy Park sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.\",\r\n         \"html\":\"<p>Parke ang <b>Academy Park</b> sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.754883,\r\n         \"lat\":42.652645\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all places in database",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0fee1f0e-a503-4337-b2bf-ffb6a738e0bc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c407c55-b1a6-4052-af70-c20365dc16c4",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check deleted places count\", function () {\r",
+									"\tpm.expect(pm.response.json().deletedCount).to.equal(2)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
 							]
 						}
 					},
