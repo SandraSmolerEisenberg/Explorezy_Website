@@ -82,8 +82,9 @@ hr {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     border: solid;
-    min-height: 12em;
-    max-height: 12em;
+    border-style: groove;
+    min-height: 13em;
+    max-height: 13em;
     overflow: hidden;
 }
 .tiny-place-hover:hover {
