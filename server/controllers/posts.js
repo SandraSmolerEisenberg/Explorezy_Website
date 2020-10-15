@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
         });
     }else {
         Post.find(function(err, posts) {
-            if (err) { return next(err); }
+            if (err) {  return res.status(409).json({'message': 'There are no posts!', 'error': err}); }
             res.json({'posts': posts });
 
         });
@@ -58,7 +58,7 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res) {
     var id = req.params.id;
     Post.findById(id, function(err, post) {
-        if (err) { 
+        if (err) {
             return res.status(404).json({
                 message: 'Post not found!' , 'error': err
             });
