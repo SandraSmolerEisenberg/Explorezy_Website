@@ -65,7 +65,7 @@ export default {
       this.getAllUserTrips()
     },
     reloadData() {
-      this.messaga = ''
+      this.message = ''
       this.errorMessage = ''
       this.getAllUserTrips()
     },
