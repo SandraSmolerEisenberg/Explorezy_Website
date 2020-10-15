@@ -42,7 +42,15 @@ hr {
     font-size: large;
     display: inline-block;
 }
-
+.padding {
+    padding-top: 1em;
+}
+.offset {
+    padding-top: 3em;
+}
+.underline:hover {
+    text-decoration: underline;
+}
 .button-styling {
     background-color: #31c9f7!important;
     color: #2c3e50 !important;
@@ -74,7 +82,6 @@ hr {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     border: solid;
-    border-style: groove;
     min-height: 12em;
     max-height: 12em;
     overflow: hidden;
@@ -82,7 +89,6 @@ hr {
 .tiny-place-hover:hover {
     background-color: #f7f7f7;
 }
-
 .post-styling {
     margin-top: 1.5em;
     background:  white!important;
@@ -94,8 +100,15 @@ hr {
     margin-bottom: 1.5em;
     border: solid;
 }
-.padding {
-    padding-top: 1em;
+.trip-styling {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    background:  white!important;
+    border: solid;
+}
+.accordion-styling{
+    background-color: #31c9f7 !important;
+    color: #2c3e50 !important;
 }
 .img {
     width: 20em;
@@ -113,22 +126,7 @@ hr {
 .card-size-my-trips {
     max-width: 33.33%;
   }
-.trip-styling {
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    background:  white!important;
-    border: solid;
-}
-.underline:hover {
-    text-decoration: underline;
-}
-.offset {
-    padding-top: 3em;
-}
-.accordion-styling{
-    background-color: #31c9f7 !important;
-    color: #2c3e50 !important;
-}
+
 /* Media Queries */
 @media screen and (max-width: 995px) {
     .card-size-my-trips {     
@@ -136,10 +134,10 @@ hr {
     }
 }
 @media screen and (max-width: 767px) {
-    .mobileView {
+    .mobile-view {
         display: none;
     }
-    .homePagePosts {
+    .home-page-posts {
         display: none;
     }
     #jumbotron {
@@ -150,7 +148,7 @@ hr {
     }
 }
 @media screen and (min-width: 768px) {
-    .showMobileView {
+    .show-mobile-view {
         display: none;
     }
     .mobile-homepage-img{

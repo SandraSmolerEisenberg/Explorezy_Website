@@ -5,7 +5,7 @@
     <b-card-text v-if="message">{{message}}</b-card-text>
 
     <b-row class="col-md">
-        <b-col v-if="places" class="mobileView">
+        <b-col v-if="places" class="mobile-view">
             <b-row>
               <b-col class="col-md">
                 <b-container role="button" v-for="place in places" :key="place._id"  @click="showDetailedView(place)">
@@ -28,7 +28,7 @@
               </b-col>
             </b-row>
         </b-col>
-        <b-col class="showMobileView">
+        <b-col class="show-mobile-view">
           <b-container>
             <div v-for="place in places" :key="place._id" role="tablist">
               <b-card no-body class="mb-1">
