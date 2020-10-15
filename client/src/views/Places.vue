@@ -16,7 +16,7 @@
                 <b-container class="placeDetailedView">
                   <b-button-close @click="closeDetailedView"></b-button-close>
                   <b-button class="buttonColor" @click="addToFavourite" v-show="isLoggedIn() && !hasFavPlace(selectedPlace)">Add to favourites</b-button>
-                  <b-card-sub-title  v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
+                  <b-card-sub-title class="paddingClass" v-show="isLoggedIn() && hasFavPlace(selectedPlace)">In my Favorite list</b-card-sub-title>
                   <PlacesDetailedView :place="selectedPlace"></PlacesDetailedView>
                 </b-container>
               </b-col>
