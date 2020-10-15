@@ -3,8 +3,9 @@
       <h2>My Trips</h2>
       <hr/>
       <b-tabs class="tabsDesign" content-class="mt-3">
-        <b-tab :title-link-class="'tabText'" @click="getAllUserTrips" title="My Trips" active>
+        <b-tab :title-link-class="'tabText'" @click="reloadData()" title="My Trips" active>
           <b-card-text v-if="errorMessage">{{errorMessage}}</b-card-text>
+          <b-card-text v-if="message">{{message}}</b-card-text>
           <b-container class="tripDesign" v-for="trip in trips" :key="trip._id">
           <SingleTrip  :trip="trip"></SingleTrip>
           <b-button class="buttonColor" v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
@@ -61,6 +62,11 @@ export default {
     },
     clearMessage() {
       this.$refs.createTripTab.resetData()
+      this.getAllUserTrips()
+    },
+    reloadData() {
+      this.messaga = ''
+      this.errorMessage = ''
       this.getAllUserTrips()
     },
     getAllUserTrips() {
