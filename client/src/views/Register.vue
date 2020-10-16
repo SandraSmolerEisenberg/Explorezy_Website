@@ -68,14 +68,11 @@ export default {
           this.$router.push('/profile').catch(error => {
             console.log(error.message)
           })
-        },
-        error => {
-          console.log(error.toString())
-          if (error.response) {
-            this.message = error.response.data.message
-          }
         }
       ).catch(error => {
+        if (error.response) {
+          this.message = error.response.data.message
+        }
         this.message = 'Your request could not be prosed at this time'
         console.log(error.toString())
       })
