@@ -61,17 +61,27 @@ Open the `server` and `client` in separate VSCode workspaces or open the combine
 
 ### Purpose
 
-The system (named Explorezy) allows the user to view travel locations such as restaurants, accommodations, city sightseeing, activities, and their information. Furthermore, the user can create an account. When logged in the user can add/delete favorite places and create/edit/delete trips that contain selected locations. Users can also create posts about locations which are displayed to all visitors of the website.
+The system (named Explorezy) allows the user to view popular travel sights in New York and read other users posts. Furthermore, the user can create an account and modify their profile once logged in. When logged in the user can add/delete favorite places and create/delete trips and adding places to it. The user can share a trip with others by making it public in which case both other logged in and not logged in users will be able to see it. Users can also create/delete/edit posts which are displayed to all visitors of the website.
 
 ### Pages
 
-The website displays a global navigation bar where the user can navigate to the “Places” page, choose to log in, or register as a user. The Home Page displays posts about places made by users. If the user is logged in, the navigation bar also displays “My favorites” and “My trips”.
+The website displays a global navigation bar where the user can navigate to the “Places”, "Posts", "Trips" pages, choose to log in, or register as a user. The Home Page displays posts made by users and places. If the user is logged in, the navigation bar also displays “My favorites”, “My trips” and "Profile" as well as a "Logout" button.
 
-The page “Places” displays a list of all places in the database. A search box allows the user to search for specific places to narrow the list. The user can click on a place to show more details. Here, the user can also favorite the place and/or add it to a trip.
+The page “Places” displays all places in the database. A "next" and "previous" button allows the user to navigate throughout the list displaying five places on each page. The user can click on a place to view more details. Here, the user can also add the place to "MyFavoruites" list if they are logged in. When viewed on a smaller screen the places are instead displayed in an "accordion" style type of view.
 
-The page “My favorites” displays a list of places which have been favorited by the user. Places can be removed from the list on the page.
+The page “My favorites” displays a list of places which have been added to favourites by the user. The user has the option to remove a favourited Place from the list on the page.
 
-The page “My trips” shows a list of trips. The user can add a trip, delete a trip, and click on a trip to view details. Clicking a trip reveals all places that are added to the trip. A place can be added or removed from a trip.
+The page “My trips” shows a list of all trips for the currently logged in user. The user can create a trip where they can mark them as public (public trips can be seen by everyone including not logged in users) or private and they have the option to add places to a specific trip. The user can also delete a trip or choose to remove all their trips.
+
+On the "Profile" page the user can view their profile information as well as choose to update their profile. When a user has set a first name and is logged in the navigation bar displays ther first name instead of "Profile".
+
+The "Login" page consists of a simple log in form which requires correct email and password.
+
+The "Registration" page allows the user to create an account by providing email and password (required) and first name and last name (optional)
+
+The "Posts" page lists all posts created by all users. When logged in the user has the option to create a post, update their post or delete a post they have created.
+
+The "Trips" page displays all public trips for both logged in and not logged in users.
 
 ### Entity-Relationship (ER) Diagram
 
