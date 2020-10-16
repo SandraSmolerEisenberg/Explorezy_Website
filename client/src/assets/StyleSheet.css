@@ -1,0 +1,177 @@
+/* ID CSS */
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+#navbarImg {
+    max-width: 5em;
+    height: auto;
+}
+#jumbotron {
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    margin-top: 1em;
+}
+/* Element CSS */
+h2, h3 {
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+hr {
+    border:0;
+    margin:0;
+    width:100%;
+    height:2px;
+    background:#8fdd3c;
+}
+/* Class CSS */
+.headingHomePage {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    padding-top: 0em;
+}
+.router-link-text {
+    color: #2c3e50 !important;
+    font-size: large;
+}
+.heading {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    font-size: large;
+    display: inline-block;
+}
+.padding {
+    padding-top: 1em;
+}
+.offset {
+    padding-top: 3em;
+}
+.underline:hover {
+    text-decoration: underline;
+}
+.button-styling {
+    background-color: #31c9f7!important;
+    color: #2c3e50 !important;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+.button-styling:disabled,
+.button-styling[disabled]{
+    background-color: #f7f7f7 !important;
+}
+.form-styling {
+    background-color:  #f7f7f7!important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+.tabs-styling {
+    background-color:  #f7f7f7!important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 2em;
+}
+.tab-text {
+    color: #2c3e50;
+}
+.tab-text:hover {
+    color: #2c3e50;
+}
+.tiny-place-styling {
+    padding-bottom: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border: solid;
+    border-style: groove;
+    min-height: 13em;
+    max-height: 13em;
+    overflow: hidden;
+}
+.tiny-place-hover:hover {
+    background-color: #f7f7f7;
+}
+.post-styling {
+    margin-top: 1.5em;
+    background:  white!important;
+    margin-bottom: 1.5em;
+    border: solid;
+}
+.place-detailed-view-styling {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    border: solid;
+}
+.trip-styling {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    background:  white!important;
+    border: solid;
+}
+.accordion-styling{
+    background-color: #31c9f7 !important;
+    color: #2c3e50 !important;
+}
+.img {
+    width: 20em;
+    height: 20em;
+    object-fit: cover;
+}
+.tiny-img{
+    width: 15em;
+    height: 15em;
+    object-fit: cover;
+}
+.favourite-img{
+    max-width: 28em;
+}
+.card-size-my-trips {
+    max-width: 33.33%;
+  }
+
+/* Media Queries */
+@media screen and (max-width: 995px) {
+    .card-size-my-trips {     
+        max-width: 50%;  
+    }
+}
+@media screen and (max-width: 767px) {
+    .mobile-view {
+        display: none;
+    }
+    .home-page-posts {
+        display: none;
+    }
+    #jumbotron {
+        display:none
+    }
+    .card-size-my-trips {
+             max-width: 100%;
+    }
+}
+@media screen and (min-width: 768px) {
+    .show-mobile-view {
+        display: none;
+    }
+    .mobile-homepage-img{
+        display: none;
+    }
+    .headingHomePage {
+        display: none;
+    }
+}
+@media screen and (max-width: 320px) {
+    .tiny-img{
+        width: 8em;
+        height: 8em;
+        object-fit: cover;
+    }
+    .tab-text {
+        font-size: 0.9em;
+    }
+}

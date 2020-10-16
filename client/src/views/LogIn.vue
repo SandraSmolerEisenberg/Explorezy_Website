@@ -1,6 +1,7 @@
 <template>
   <b-container>
     <h2>Login Page</h2>
+    <b-container class="form-styling">
     <hr/>
     <ValidationObserver v-slot="{ invalid }">
       <form @submit.prevent="onLogin">
@@ -22,12 +23,13 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid" value="Submit" class="btn btn-primary mt-3"/>
+        <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
         <div v-if="message">
          <div class="alert alert-danger">{{message}}</div>
         </div>
       </form>
     </ValidationObserver>
+    </b-container>
   </b-container>
 </template>
 
@@ -52,9 +54,14 @@ export default {
         },
         error => {
           console.log(error.toString())
-          this.message = error.response.data.message
+          if (error.response) {
+            this.message = error.response.data.message
+          }
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
+      })
     }
   }
 

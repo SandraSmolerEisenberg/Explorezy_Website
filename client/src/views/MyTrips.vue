@@ -2,19 +2,23 @@
     <b-container>
       <h2>My Trips</h2>
       <hr/>
-      <b-tabs content-class="mt-3">
-        <b-tab @click="getAllUserTrips" title="My Trips" active>
-          <b-card v-for="trip in trips" :key="trip._id">
-          <SingleTrip  :trip="trip"></SingleTrip>
-          <b-button v-if="currentUser"  @click="deleteTrip(trip)">Delete</b-button>
-          </b-card>
-          <b-button v-if="currentUser"  @click="deleteAllTrips()">Delete All Trips</b-button>
+      <b-tabs class="tabs-styling" content-class="mt-3">
+        <b-tab :title-link-class="'tabText'" @click="reloadData()" title="My Trips" active>
+          <b-card-text v-if="errorMessage">{{errorMessage}}</b-card-text>
           <b-card-text v-if="message">{{message}}</b-card-text>
+          <b-container class="trip-styling" v-for="trip in trips" :key="trip._id">
+          <SingleTrip  :trip="trip"></SingleTrip>
+          <b-button class="button-styling" v-if="currentUser" @click="deleteTrip(trip)">Delete</b-button>
+          </b-container>
+          <hr/>
+          <b-button class="button-styling" v-if="currentUser" @click="deleteAllTrips()">Delete All Trips</b-button>
         </b-tab>
-        <b-tab title="Create Trip" @click="clearMessage">
+        <b-tab :title-link-class="'tabText'" title="Create" @click="clearMessage">
+          <b-container>
             <CreateTripForm ref="createTripTab"></CreateTripForm>
+          </b-container>
         </b-tab>
-        <b-tab title="Add Places to trip" @click="clearMessagePlaceTab">
+        <b-tab :title-link-class="'tabText'" title="Add Places" @click="clearMessagePlaceTab">
           <AddPlaceToTripForm ref="addPlaceTab" :trips="trips"></AddPlaceToTripForm>
         </b-tab>
       </b-tabs>
@@ -34,6 +38,7 @@ export default {
   data() {
     return {
       message: '',
+      errorMessage: '',
       trips: [],
       form: false
     }
@@ -59,6 +64,11 @@ export default {
       this.$refs.createTripTab.resetData()
       this.getAllUserTrips()
     },
+    reloadData() {
+      this.message = ''
+      this.errorMessage = ''
+      this.getAllUserTrips()
+    },
     getAllUserTrips() {
       var userTrips = this.$store.state.account.user.trips
       this.trips = []
@@ -67,7 +77,10 @@ export default {
           response => {
             this.trips.push(response.data)
           }
-        )
+        ).catch(error => {
+          console.log(error.toString())
+          this.errorMessage = 'Could not get all trips'
+        })
       }
     },
     deleteTrip(trip) {
@@ -77,25 +90,33 @@ export default {
       payload.tripID = trip._id
       this.$store.dispatch('account/deleteOneTrip', payload).then(
         () => {
-          this.message = 'Your trip have been deleted'
+          this.message = 'Your trip has been deleted'
           this.getAllUserTrips()
         },
         error => {
           this.message = error.response.data.message
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be processed at this time'
+        console.log(error.toString())
+      })
     },
     deleteAllTrips() {
       const id = this.$store.state.account.user._id
       this.$store.dispatch('account/deleteTrips', id).then(
         () => {
-          this.message = 'Your trips have been deleted'
+          this.message = 'Your trips has been deleted'
           this.getAllUserTrips()
         },
         error => {
-          this.message = error.response.data.message
+          if (error.response) {
+            this.message = error.response.data.message
+          }
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be processed at this time'
+        console.log(error.toString())
+      })
     }
   }
 }

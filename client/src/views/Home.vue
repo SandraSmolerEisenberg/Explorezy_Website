@@ -1,18 +1,24 @@
 <template>
   <div>
-    <b-jumbotron header="Welcome to Explorezy" lead="Explore exiting places!">
-    </b-jumbotron>
-      <b-row class="col-md">
+    <br><br>
+    <b-jumbotron id="jumbotron" header="Welcome to Explorezy" lead="Explore exiting places in New York!"></b-jumbotron >
+    <b-img class="mobile-homepage-img" :src="require('../assets/text.png')"></b-img>
+    <br>
+    <h2 class="headingHomePage">Explore exiting places in New York!</h2>
+      <b-row align-content="center" class="col-md">
         <b-col  v-show="places">
-          <b-card-header>Places</b-card-header>
-          <PlaceBaseView v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
-          <b-button @click="viewPlaces">View All Places</b-button>
+          <h3>Places</h3>
+          <hr>
+          <b-card-text v-if="message">{{message}}</b-card-text>
+          <PlaceBaseView class="tiny-place-styling" v-for="place in places" :key="place._id" :place="place"></PlaceBaseView>
+          <b-button class="button-styling" v-if="!message" @click="viewPlaces">View All Places</b-button>
         </b-col>
-        <b-col v-show="posts" >
-          <b-card-header>Posts</b-card-header>
+        <b-col class="home-page-posts" v-show="posts" >
+          <h3>Posts</h3>
+          <hr>
           <b-card-text v-if="postMessage">{{postMessage}}</b-card-text>
           <SinglePostLessText v-for="post in posts" :key="post._id" :post="post"></SinglePostLessText>
-          <b-button v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
+          <b-button class="button-styling" v-if="!postMessage" @click="viewPosts">View All Posts</b-button>
         </b-col>
       </b-row>
   </div>
@@ -29,7 +35,7 @@ export default {
   name: 'home',
   data() {
     return {
-      message: 'none',
+      message: '',
       postMessage: '',
       places: [],
       posts: []
@@ -58,12 +64,12 @@ export default {
         response => {
           this.places = response.data.places
           this.places = this.places.slice(0, 10)
-        },
-        error => {
-          this.places = []
-          this.message = error.toString()
         }
-      )
+      ).catch(error => {
+        this.places = []
+        this.message = 'Could not retrieve the places in New York'
+        console.log(error.toString())
+      })
     },
     getAllPosts() {
       PostService.getAllPosts().then(
@@ -75,11 +81,15 @@ export default {
             this.posts = this.posts.slice(0, 10)
           }
         }
-      )
+      ).catch(error => {
+        this.postMessage = 'Could not retrieve the posts'
+        console.log(error.toString())
+      })
     }
   }
 }
 </script>
 
 <style>
+
 </style>

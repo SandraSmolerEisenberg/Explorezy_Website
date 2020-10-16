@@ -1,5 +1,5 @@
 <template>
-<b-container>
+<b-container class="form-styling"  >
   <label class="col-md-3">Choose a post:</label>
   <b-form-select class="custom-select my-1 col-md-8" v-model="postSelected" >
     <option v-for="post in posts" :key="post._id">
@@ -7,6 +7,7 @@
     </option>
   </b-form-select>
   <b-container v-if="postSelected">
+    <hr/>
     <ValidationObserver  v-slot="{ invalid }">
       <form v-if="!message" @submit.prevent="updatePost">
         <!-- Email -->
@@ -26,7 +27,7 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid && postSelected" value="Submit" class="btn btn-primary mt-3"/>
+        <input type="submit" :disabled="invalid && postSelected" value="Submit" class="button-styling"/>
         <div v-if="message">
           <div class="alert alert-danger">{{message}}</div>
         </div>
@@ -70,6 +71,9 @@ export default {
       postToEdit.date = Date.now()
       PostService.updatePost(postToEdit).then(() => {
         this.message = 'Post Updated'
+      }).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
       })
     }
   }

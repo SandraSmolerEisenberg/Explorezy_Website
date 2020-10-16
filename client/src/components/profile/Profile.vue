@@ -1,7 +1,9 @@
 <template>
   <b-container>
+    <hr/>
   <b-card>
-    <b-card-header>{{currentUser.first_name || 'No name is added'}}</b-card-header>
+    <span class="heading">{{currentUser.first_name || 'No name is added'}}</span>
+    <br>
     <b-card-body>
       <p>
         <strong>First Name:</strong>

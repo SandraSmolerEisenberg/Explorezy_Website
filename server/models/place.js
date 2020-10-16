@@ -6,12 +6,9 @@ var addressSchema = new Schema({
     road: {type: String},
     state: {type: String},
     county: {type: String},
-    suburb: {type: String},
     country: {type: String},
     postcode: {type: String},
-    address29: {type: String},
     country_code: {type: String},
-    city_district: {type: String},
 });
 
 var wikipediaSchema = new Schema({

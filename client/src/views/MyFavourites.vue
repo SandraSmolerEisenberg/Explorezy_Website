@@ -4,10 +4,10 @@
       <hr/>
       <b-card-header v-show="message">{{message}}</b-card-header>
       <b-row>
-        <b-card v-for="place in places" :key="place._id">
-          <b-button variant="danger" @click="removeFromList(place)">Remove from my Favourite</b-button>
+        <b-container class="place-detailed-view-styling" v-for="place in places" :key="place._id">
+          <b-button class="button-styling" @click="removeFromList(place)">Remove from Favourites</b-button>
           <FavoritePlaceList :place="place"></FavoritePlaceList>
-        </b-card>
+        </b-container>
       </b-row>
     </b-container>
 </template>
@@ -42,22 +42,28 @@ export default {
       this.$store.dispatch('account/update', newUser).then(
         response => {
           if (response._id === newUser._id) {
-            this.message = 'Profile has been updated'
+            this.message = 'Place has been removed'
             const placeIndex = this.places.indexOf(place)
             this.places.splice(placeIndex, 1)
+            window.setInterval(() => {
+              this.message = ''
+            }, 3000)
           }
         },
         error => {
           this.message = error.response.data.message
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
+      })
     },
-    removeItemFormList(arr, value) {
-      const index = arr.indexOf(value)
+    removeItemFormList(places, itemToRemove) {
+      const index = places.indexOf(itemToRemove)
       if (index > -1) {
-        arr.splice(index, 1)
+        places.splice(index, 1)
       }
-      return arr
+      return places
     },
     loadFavouritePlace() {
       this.userFavourite = this.$store.state.account.user.favourite_places
@@ -73,7 +79,10 @@ export default {
           response => {
             this.places.push(response.data)
           }
-        )
+        ).catch(error => {
+          console.log(error.toString())
+          this.message = 'Your request could not be prosed at this time'
+        })
       }
     }
   }

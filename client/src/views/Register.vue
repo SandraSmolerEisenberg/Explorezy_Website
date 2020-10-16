@@ -1,9 +1,10 @@
 <template>
   <b-container>
     <h2>Registration Page</h2>
-    <hr/>
+    <b-container class="form-styling">
+      <hr/>
     <ValidationObserver v-slot="{ invalid }">
-      <form @submit.prevent="onRegister">
+      <form class="form-styling" @submit.prevent="onRegister">
 
         <!-- Email -->
         <ValidationProvider name="email" rules="required|email" v-slot="{ errors }">
@@ -38,12 +39,13 @@
           </div>
         </ValidationProvider>
         <!-- Button -->
-        <input type="submit" :disabled="invalid" value="Submit" class="btn btn-primary mt-3"/>
+        <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
         <div v-if="message">
          <div class="alert alert-danger">{{message}}</div>
         </div>
       </form>
     </ValidationObserver>
+    </b-container>
   </b-container>
 </template>
 
@@ -69,9 +71,14 @@ export default {
         },
         error => {
           console.log(error.toString())
-          this.message = error.response.data.message
+          if (error.response) {
+            this.message = error.response.data.message
+          }
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
+      })
     }
   }
 }

@@ -1,20 +1,21 @@
 <template>
   <b-container>
-    <b-card>
-      <b-card-header>{{trip.name}}</b-card-header>
-      <hr/>
+      <h3>{{trip.name}}</h3>
+      <br/>
+      <b-card-text v-if="message">{{message}}</b-card-text>
       <b-card-text>
-        <b-card-sub-title>Places on trip</b-card-sub-title>
+        <span class="heading">Places added to {{trip.name}}</span>
+        <br><br>
         <b-row>
        <b-card class="card-size-my-trips" v-for="place in places" :key="place._id">
-         <b-card-header>{{place.name}}</b-card-header>
-         <b-img class="img" :src=place.image></b-img>
+         <span class="heading">{{place.name}}</span>
+         <br>
+         <b-img class="tiny-img" :src=place.image></b-img>
          <b-card-text>{{place.wikipedia_extracts.text}}</b-card-text>
        </b-card>
         </b-row>
       </b-card-text>
-      <hr/>
-    </b-card>
+      <br/>
   </b-container>
 </template>
 <script>
@@ -38,19 +39,15 @@ export default {
           response => {
             this.places.push(response.data.place)
           }
-        )
+        ).catch(error => {
+          console.log(error.toString())
+          this.message = 'Your request could not be prosed at this time'
+        })
       }
     }
   }
 }
 </script>
 <style scoped>
-.card-size-my-trips {
-  max-width: 30em;
-}
-.img{
-  max-width: 28em;
-  max-height: 30em;
 
-}
 </style>

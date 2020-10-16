@@ -1,15 +1,11 @@
 <template>
   <b-container>
-    <h2>Trips</h2>
-    <h3>Trips shared by other users</h3>
+    <h2>Trips shared by other users</h2>
     <hr/>
-    <b-container>
       <b-card-text v-show="message">{{message}}</b-card-text>
-      <b-card v-for="trip in trips" :key="trip._id">
-        <SingleTrip :trip="trip"></SingleTrip>
-      </b-card>
-    </b-container>
-
+      <b-container v-for="trip in trips" :key="trip._id">
+        <SingleTrip class="trip-styling" :trip="trip"></SingleTrip>
+      </b-container>
   </b-container>
 </template>
 
@@ -37,8 +33,9 @@ export default {
         if (this.trips.length === 0) {
           this.message = 'There are currently no public trips'
         }
-      }).catch(() => {
-        this.message = 'Trips are not available at this time'
+      }).catch(error => {
+        this.message = 'Could not retrieve the trips at this time'
+        console.log(error.toString())
       })
     }
   }

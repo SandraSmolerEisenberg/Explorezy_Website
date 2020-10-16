@@ -2,28 +2,28 @@
     <b-container>
       <h2>Post Page</h2>
       <hr/>
-      <b-tabs v-if="loggedIn" content-class="mt-3">
-        <b-tab @click="getAllPost" title="Posts" active>
+      <b-tabs class="tabs-styling" v-if="loggedIn" content-class="mt-3">
+        <b-tab :title-link-class="'tabText'" @click="getAllPost" title="Posts" active>
           <b-card-text v-if="message">{{message}}</b-card-text>
-          <b-card v-for="post in posts" :key="post._id">
+          <b-container class="post-styling" v-for="post in posts" :key="post._id">
             <SinglePost :post="post"></SinglePost>
-            <b-button v-if="currentUser(post)"  @click="deletePost(post)">Delete</b-button>
-          </b-card>
+            <b-button class="button-styling" v-if="currentUser(post)" @click="deletePost(post)">Delete</b-button>
+          </b-container>
         </b-tab>
-        <b-tab title="Create Post" @click="clearData">
-          <b-card v-if="loggedIn">
+        <b-tab :title-link-class="'tabText'" class="tabsColor" title="Create" @click="clearData">
+          <b-container v-if="loggedIn">
             <CreatePostForm ref="createPost" @update="getAllPost"></CreatePostForm>
-          </b-card>
+          </b-container>
         </b-tab>
-        <b-tab @click="loadUserPost" title="Edit Post">
+        <b-tab :title-link-class="'tabText'" @click="loadUserPost" title="Edit">
           <UpdatePost ref="updatePost"></UpdatePost>
         </b-tab>
       </b-tabs>
       <b-container v-if="!loggedIn">
         <b-card-text v-if="message">{{message}}</b-card-text>
-        <b-card v-for="post in posts" :key="post._id">
-        <SinglePost  :post="post"></SinglePost>
-        </b-card>
+        <b-container v-for="post in posts" :key="post._id">
+        <SinglePost class="post-styling" :post="post"></SinglePost>
+        </b-container>
       </b-container>
 
     </b-container>
@@ -67,7 +67,10 @@ export default {
             this.message = ''
           }
         }
-      )
+      ).catch(error => {
+        this.message = 'Could not retrieve the posts at this time'
+        console.log(error.toString())
+      })
     },
     loadUserPost() {
       this.$refs.updatePost.getUsersPosts()

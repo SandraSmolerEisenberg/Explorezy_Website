@@ -1,6 +1,6 @@
 <template>
   <ValidationObserver v-slot="{ invalid }">
-    <form v-if="!message" @submit.prevent="createPost">
+    <form class="form-styling" v-if="!message" @submit.prevent="createPost">
       <!-- Email -->
       <ValidationProvider name="title" rules="required" v-slot="{ errors }">
         <div class="form-group">
@@ -18,7 +18,7 @@
         </div>
       </ValidationProvider>
       <!-- Button -->
-      <input type="submit" :disabled="invalid" value="Submit" class="btn btn-primary mt-3"/>
+      <input type="submit" :disabled="invalid" value="Submit" class="button-styling"/>
       <div v-if="message">
         <div class="alert alert-danger">{{message}}</div>
       </div>
@@ -43,6 +43,7 @@ export default {
   methods: {
     clearData() {
       this.message = ''
+      this.post = {}
     },
     createPost() {
       this.post.author = this.$store.state.account.user._id
@@ -55,7 +56,10 @@ export default {
         error => {
           this.message = error.response.data.message
         }
-      )
+      ).catch(error => {
+        this.message = 'Your request could not be prosed at this time'
+        console.log(error.toString())
+      })
     }
   }
 }

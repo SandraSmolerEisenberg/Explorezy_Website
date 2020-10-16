@@ -1,18 +1,16 @@
 <template>
   <b-container>
-    <b-card>
-      <b-card-header>{{post.title}}</b-card-header>
-      <hr/>
+    <br>
+      <span class="heading" >{{post.title}}</span>
       <b-card-text>
-        <b-card-sub-title>Post text</b-card-sub-title>
+        <br>
+        <span class="heading">Post text</span>
         <p>{{post.text}}</p>
       </b-card-text>
       <b-card-text>
-        <b-card-sub-title>Last updated on:</b-card-sub-title>
+        <span class="heading">Last updated on:</span>
         <p>{{creationDate}}</p>
       </b-card-text>
-      <hr/>
-    </b-card>
   </b-container>
 </template>
 <script>

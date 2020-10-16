@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0249bf3d-d038-4b80-8ac7-a1530bff911a",
+		"_postman_id": "0029fe75-5809-4a9c-a82b-0f865b8f6fae",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "375dae1b-f722-4737-8863-ed5221434669",
+								"id": "ab5bc34c-1e55-4183-838c-4b034f4bcc6a",
 								"exec": [
 									"pm.environment.set( \"email\", \"example@test.com\");",
 									"pm.environment.set( \"password\", \"example\");",
@@ -26,7 +26,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "426906bd-2c6e-4a41-9b2a-a2320a987395",
+								"id": "3e308bce-dac0-4e68-8dab-f87ebb0b925f",
 								"exec": [
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -79,7 +79,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "eb601386-3f39-4f9b-a6a5-c5b988572155",
+								"id": "dfa8e5f3-ce5d-405f-a632-e93dce203ea9",
 								"exec": [
 									""
 								],
@@ -89,7 +89,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "909ae1d4-af9d-44ab-bbcf-0bda057b231d",
+								"id": "726eb702-3aea-4ea6-8b28-22a5ae8dbe0a",
 								"exec": [
 									"pm.test(\"Status code is 409\", function () {",
 									"    pm.response.to.have.status(409);",
@@ -139,7 +139,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9748396f-0a54-4c3e-811f-bca0d4371de2",
+								"id": "738b9a08-5d74-4813-95cf-6a126fbe07eb",
 								"exec": [
 									""
 								],
@@ -149,7 +149,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ffa69746-ff01-426e-a713-5c8d0a1cf7ed",
+								"id": "216f55cb-fb27-4c69-9960-a56d6a9ece6e",
 								"exec": [
 									"pm.test(\"Status code is 409\", function () {",
 									"    pm.response.to.have.status(409);",
@@ -199,7 +199,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5de1841f-ccba-413e-b660-a38b40e3d083",
+								"id": "3ead57c0-1553-44a1-a93c-b5a17b542839",
 								"exec": [
 									"pm.variables.set( \"email\", \"testemail@test.com\");",
 									"pm.variables.set(\"password\", \"testpassword\");",
@@ -213,7 +213,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1a9d6578-7c6d-4a58-a0c9-32c79857aed3",
+								"id": "ae77c7e0-5093-4353-935b-f276e961e11f",
 								"exec": [
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -277,7 +277,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d068d7d7-7739-4018-82b2-7b0a3ef3c80b",
+								"id": "e1efebad-20ee-4459-b0c0-deb8e2243e60",
 								"exec": [
 									""
 								],
@@ -287,7 +287,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "80c1821f-4809-46b9-8c81-b360c4c3c4b6",
+								"id": "20695fc0-ec38-44f3-a5e2-1166e34b4438",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -295,7 +295,7 @@
 									"",
 									"var user = pm.response.json();",
 									"",
-									"pm.test(\"Verify that user is loged in\", function() {",
+									"pm.test(\"Verify that user is logged in\", function() {",
 									"    pm.expect(pm.variables.get(\"email\")).to.equal(user.email);",
 									"});",
 									""
@@ -342,7 +342,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "719f2da0-80be-4b86-8cbe-a4c6cf825e02",
+								"id": "24ef4dc0-dd4b-47d7-8c29-a9be958dd10c",
 								"exec": [
 									""
 								],
@@ -352,7 +352,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "65f72639-da7b-4190-afc2-721caae54f76",
+								"id": "8b6df4f6-14ec-4384-9904-dbda3bb20047",
 								"exec": [
 									"pm.test(\"User is not loged in without password\", function () {",
 									"    pm.response.to.have.status(401);",
@@ -401,7 +401,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "39b8615b-6084-4219-b727-3451d19beab5",
+								"id": "c0b9445b-77e8-400c-aac4-0c12e3b83180",
 								"exec": [
 									""
 								],
@@ -411,7 +411,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "33ac93b0-49bc-428b-bfba-86254e54b430",
+								"id": "35e5fc7c-84e8-4ebf-97e9-530119417e52",
 								"exec": [
 									"pm.test(\"User is not loged in without password\", function () {",
 									"    pm.response.to.have.status(401);",
@@ -455,12 +455,12 @@
 					"response": []
 				},
 				{
-					"name": "Update user",
+					"name": "Replace all user data",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "98e930bd-ece2-4355-b233-c0a04b23fc05",
+								"id": "873eeea8-b32e-45c3-a75c-d1c76bf0c6ca",
 								"exec": [
 									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
 									"pm.variables.set(\"email\", \"newemail@email.com\");",
@@ -475,7 +475,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1871c331-8202-4e33-a426-cfe1b98461aa",
+								"id": "cf764d85-6c7c-45c0-ac66-133fad5f486a",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -534,12 +534,12 @@
 					"response": []
 				},
 				{
-					"name": "Update user With partial dataset",
+					"name": "replace user With partial dataset",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "123ddb70-eb06-4bb7-b9f2-c588e3c0e964",
+								"id": "ebd6f7b8-8c28-4230-835c-aff85a3e4a7c",
 								"exec": [
 									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
 									"pm.variables.set(\"email\", \"newemail@email.com\");",
@@ -554,7 +554,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1fa614ea-cead-4122-8fcc-67523cce60af",
+								"id": "1412805e-ff01-424a-b3bf-bd1d4e525853",
 								"exec": [
 									"pm.test(\"User is not updated\", function () {",
 									"    pm.response.to.have.status(409);",
@@ -603,7 +603,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9ea9787b-0716-43d2-85dd-a9ac6bac8c3b",
+								"id": "3ce10c44-b9fe-45cb-885e-3b206c34835a",
 								"exec": [
 									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
 									"pm.variables.set(\"email\", \"newsecondemail@email.com\");",
@@ -618,7 +618,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "395d644b-f49a-41f0-84d4-f47d728e9327",
+								"id": "a5217ea3-d48c-430f-a7ae-66ca20c9dcec",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -678,7 +678,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a27632b7-e631-402a-bb0d-b0372dcaeb35",
+								"id": "a1719941-a4a9-4c5e-91ca-67a95dc6e125",
 								"exec": [
 									""
 								],
@@ -688,14 +688,20 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "27b3fc65-91af-4fda-84de-ef21c892c67c",
+								"id": "999e6f90-56b1-4cc9-b593-070a5566d9ed",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
+									"",
+									"var users = pm.response.json().users;",
+									"",
 									"pm.test(\"Validate that user dataset is not empty\", function (){",
-									"    pm.expect(pm.response.json().users).to.be.not.empty;",
-									"});"
+									"    pm.expect(users).to.be.not.empty;",
+									"\tpm.expect(users.length).to.be.equal(2);",
+									"\tpm.expect(users[1].email).to.be.equal(pm.variables.get(\"email\"));",
+									"});",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -742,7 +748,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4333bc3f-a8e6-4dec-949f-e0479126fb44",
+								"id": "6939bb8c-9320-483d-aa9b-1ce40d4dfd3d",
 								"exec": [
 									""
 								],
@@ -752,7 +758,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "dbc1617a-9890-483b-a8ca-98e90335d04f",
+								"id": "404aa6fa-9b18-4a78-9a9f-aaa54994e882",
 								"exec": [
 									"pm.test(\"No users are returned\", function () {",
 									"    pm.response.to.have.status(404);",
@@ -804,7 +810,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b7dd5089-b205-4886-92d9-eb9c72ab6bb3",
+								"id": "de450473-ce9a-4cdc-b1e4-277056743481",
 								"exec": [
 									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
 									""
@@ -815,7 +821,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "900c5db5-c3b6-40d4-bc40-bd42e7c0bc74",
+								"id": "35e8e9fb-5f5f-42e2-9740-01e595847026",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -875,7 +881,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b4f06589-0a51-47b9-8978-bb5c59924843",
+								"id": "e212c3eb-6868-4906-b452-429307b170db",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -899,7 +905,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "741f4e14-c022-4a30-98fb-e24798ebfe99",
+								"id": "9fbb08cd-ca20-4f62-984f-66cc090636fd",
 								"exec": [
 									""
 								],
@@ -912,7 +918,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"{{user_id}}\"\r\n}\r\n",
+							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"{{user_id}}\",\r\n\t\"public\": false\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -938,7 +944,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4bfdc6ce-c9df-4633-a86d-f96682c79171",
+								"id": "43be42b3-c665-49fe-a2fb-eb98707dbe16",
 								"exec": [
 									"pm.test(\"Successful Added Trip request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -955,15 +961,13 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5c15b5a7-3df7-429a-a6b2-c19216da4a23",
+								"id": "81040a26-8db8-4b8c-8f94-1244f2c0576c",
 								"exec": [
 									"",
 									""
 								],
 								"type": "text/javascript"
 							}
-
-
 						}
 					],
 					"request": {
@@ -1005,7 +1009,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f98e69f0-fe49-4a5a-993f-78d284aa00a0",
+								"id": "c124b2d8-4bc6-4d0f-ae91-4da38cc612e0",
 								"exec": [
 									"pm.test(\"Fail to Add Trip that exists\", function () {\r",
 									"    pm.response.to.have.status(409);\r",
@@ -1018,7 +1022,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b6a6267e-8445-4bb3-9909-fa6f2a7844b4",
+								"id": "53772f7e-ad3e-4bd8-a6a4-6a22587ca39c",
 								"exec": [
 									"",
 									""
@@ -1061,12 +1065,12 @@
 					"response": []
 				},
 				{
-					"name": "Delete a trip by id'",
+					"name": "Get all trips for specific user",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c228cb36-bdfd-40bc-943d-031a5bad9bed",
+								"id": "45e96922-b27e-4556-a518-5e50de6ab265",
 								"exec": [
 									""
 								],
@@ -1076,7 +1080,84 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2e9f5d7f-dca2-450a-b24b-77807028760e",
+								"id": "4e165a4f-aa29-4061-b057-f580785ff0de",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var myTrips = pm.response.json().trips;\r",
+									"\r",
+									"pm.test(\"Check if my trips result list is not empty\", function (){\r",
+									"    pm.expect(myTrips.length).to.equal(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if not empty\", function () {\r",
+									"\tpm.expect(myTrips).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips?user={{user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "{{user_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a trip by id'",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5bd7a3c6-c530-4122-a08c-4650fea77b49",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "85524512-0509-46d8-a8b3-37a4116633f8",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1115,7 +1196,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5bf6962d-d190-4ec1-adf3-f1bcfdc6565f",
+								"id": "71ae635c-ff3a-45fa-8391-29c3f3fe1f53",
 								"exec": [
 									"pm.test(\"Successful Added Trip request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1132,7 +1213,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d15a15c1-1511-4667-8b9e-b5c6a563fead",
+								"id": "3a2efb76-6204-4be6-909a-f4f3b662e9e0",
 								"exec": [
 									"",
 									""
@@ -1175,12 +1256,12 @@
 					"response": []
 				},
 				{
-					"name": "Delete all trips",
+					"name": "Delete all trips for user",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e9908962-ed78-4acb-a169-5a24493a2842",
+								"id": "a6ab3d31-a7d3-4747-96c1-3e8b7d53223e",
 								"exec": [
 									""
 								],
@@ -1190,14 +1271,14 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72e464dc-bb86-4c5a-8a36-8715f70f6488",
+								"id": "c2bf689e-47c4-465c-904f-4a2433067eaa",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"var trips = pm.response.json();\r",
+									"var trips = pm.response.json().trips;\r",
 									"pm.test(\"Validate that trips is empty\", function (){\r",
-									"    pm.expect(trips).to.not.be.empty;\r",
+									"    pm.expect(trips.length).to.be.equal(0);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1228,7 +1309,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "12c95867-1679-44c4-8dd3-8c0e98aade48",
+								"id": "20bb7a5f-6693-45cd-b76b-ef80f215151e",
 								"exec": [
 									""
 								],
@@ -1238,7 +1319,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "10169cce-fd1e-491c-9769-d7b0ead5703d",
+								"id": "a679d2ee-fafb-4cb5-8e56-c75e23b5855d",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1275,7 +1356,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d5fd41ec-7937-412f-b93f-94248f1c5db9",
+								"id": "01b880b3-91c8-4240-8938-b1387c594ff5",
 								"exec": [
 									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
 									""
@@ -1286,7 +1367,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "196eaa2e-539f-4c8c-80b6-e00066e4123e",
+								"id": "b79bbde2-be7b-4564-b1ae-e89da4b2043d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1342,7 +1423,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "feba1dd5-2662-400d-ba91-753c96e35230",
+								"id": "825bed2d-1dfe-4b0a-ba23-6cfda7a4f168",
 								"exec": [
 									"pm.variables.set(\"user_id\", pm.variables.get(\"user\")._id);",
 									""
@@ -1353,7 +1434,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a09bc916-82b4-4c15-bf94-bfbf87e6876d",
+								"id": "d3fdd77b-b0c7-4ee4-85c0-df2548ea4e8a",
 								"exec": [
 									"pm.test(\"User is not updated\", function () {",
 									"    pm.response.to.have.status(404);",
@@ -1403,12 +1484,12 @@
 			"name": "Trips",
 			"item": [
 				{
-					"name": "Create a new trip object",
+					"name": "Create a new public trip object",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "a742046f-09ad-431d-9ba1-e93bbe22f96a",
+								"id": "c2f47da7-6e6e-4870-ba29-a26c2ef20265",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -1422,6 +1503,7 @@
 									"\r",
 									"pm.test(\"Successful name validation\", function(){\r",
 									"    pm.expect(testTrip.name).to.equal(tripName);\r",
+									"\tpm.expect(testTrip.public).to.equal(true);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1430,7 +1512,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "30d5f3ab-23ef-471c-a046-58306c21abe8",
+								"id": "bb28d6d2-035d-4aaa-ac05-da70abf9ce3f",
 								"exec": [
 									""
 								],
@@ -1443,7 +1525,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}\r\n",
+							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\",\r\n\t\"public\": true\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1465,18 +1547,124 @@
 					"response": []
 				},
 				{
-					"name": "Get a list of all trips",
+					"name": "Create a new private trip object",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "a0bced0b-c929-45bc-9b5a-d34876bd7982",
+								"id": "d34dfc97-2fbb-4c89-b418-51cfff77ac67",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testTrip2\", pm.response.json());\r",
+									"pm.environment.set(\"tripId2\", pm.response.json()._id);\r",
+									"\r",
+									"var tripName = \"Samuels private Trip\";\r",
+									"var testTrip2 = pm.variables.get(\"testTrip2\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testTrip2.name).to.equal(tripName);\r",
+									"\tpm.expect(testTrip2.public).to.equal(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "231e99df-22b8-4b82-86a2-88dbd9265c0a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Samuels private Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\",\r\n\t\"public\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of all public trips",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6c3898d-ae66-4827-932c-5dd0ceaebe1b",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"Validate that database is not empty\", function (){\r",
 									"    pm.expect(pm.response.json().trips).to.be.not.empty;\r",
+									"\tpm.expect(pm.response.json().trips.length).to.be.equal(1)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips?public=true",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							],
+							"query": [
+								{
+									"key": "public",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a list of all trips",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ff9a022-a193-46de-8b56-3fd9d0b3efe2",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Validate that database is not empty\", function (){\r",
+									"    pm.expect(pm.response.json().trips).to.be.not.empty;\r",
+									"\tpm.expect(pm.response.json().trips.length).to.be.equal(2)\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1505,7 +1693,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f47e3ffd-a8f5-4c47-a89d-ff072c6dbf1c",
+								"id": "2827de9c-3f04-4953-8b2b-0224f26da02b",
 								"exec": [
 									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
 								],
@@ -1515,7 +1703,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9060c4b9-7f2a-4a82-9e9f-472f7dad1865",
+								"id": "06cc82a1-f08a-4f5b-8256-8ee2730fd078",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1556,7 +1744,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dac5d7fb-9fc0-4e0c-87d0-1f651bc7a42b",
+								"id": "8e885cbb-dd22-452d-98fd-d8e1e71e5a95",
 								"exec": [
 									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
 								],
@@ -1566,7 +1754,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8b0e151c-cfa2-4de6-829a-b6b910f7ca8c",
+								"id": "02beb304-b03e-41b0-8984-b368da2d6924",
 								"exec": [
 									"pm.test(\"Successful PUT request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1587,7 +1775,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Krasens Trip\",\r\n\t\"places\": [], \r\n\t\"public\": true\n, \r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
+							"raw": "{\r\n\t\"name\": \"Krasens Trip\",\r\n\t\"places\": [], \r\n\t\"public\": true, \r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1614,7 +1802,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "86d11340-d795-43bf-9d9f-af07bd6f96b7",
+								"id": "94137bcb-2c2e-44fb-ab96-2fa2db973838",
 								"exec": [
 									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
 								],
@@ -1624,7 +1812,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "86336a5c-a85e-40a3-b52a-423e07c3b7d1",
+								"id": "9cfdf326-4dac-4fbc-b604-b171fda11d84",
 								"exec": [
 									"pm.test(\"Successful PATCH request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1635,9 +1823,7 @@
 									"pm.test(\"Validate different values in object fields\", function (){\r",
 									"    pm.expect(pm.variables.get(\"testTrip\").name).to.not.equal(pm.response.json().name);\r",
 									"});\r",
-									"pm.test(\"Validate same values in unchanged object fields\", function (){\r",
-									"    pm.expect(pm.variables.get(\"testTrip\").user).to.equal(pm.response.json().user);\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1648,7 +1834,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"name\": \"Some new trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\"\r\n}",
+							"raw": "{\r\n\t\"name\": \"Some new trip\",\r\n\t\"places\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1675,7 +1861,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5bd06a0e-f386-4cb3-b187-eb513d4ad83c",
+								"id": "713c57e4-8b85-4e7a-b0ad-66e0382cabeb",
 								"exec": [
 									""
 								],
@@ -1685,7 +1871,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a9728ec5-0b5b-4e3d-a92e-461391dba649",
+								"id": "c1d9002a-f0e8-4402-9ad5-d0d353ccb33a",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -1694,7 +1880,7 @@
 									"pm.environment.set(\"testPlace\", pm.response.json());\r",
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
 									"\r",
-									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var placeName = \"LaFayette Park\";\r",
 									"var testPlace = pm.variables.get(\"testPlace\");\r",
 									"\r",
 									"pm.test(\"Successful name validation\", function(){\r",
@@ -1717,7 +1903,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"raw": "   {\r\n      \"name\":\"LaFayette Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Elk Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"house_number\":\"33\",\r\n         \"neighbourhood\":\"Sheridan Hollow\"\r\n      },\r\n      \"wikipedia\":\"https://en.wikipedia.org/wiki/Lafayette%20Park%20Historic%20District\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Elk_Street_Albany.jpg/400px-Elk_Street_Albany.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"en:Lafayette Park Historic District\",\r\n         \"text\":\"The Lafayette Park Historic District is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.\",\r\n         \"html\":\"<p>The <b>Lafayette Park Historic District</b> is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.755806,\r\n         \"lat\":42.653233\r\n      }\r\n   }\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1743,7 +1929,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bfb69ace-7bcb-46fd-b792-b81cb66aada7",
+								"id": "8dc8e6f2-0174-4d77-85d9-df3cc0e3e2f2",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1759,7 +1945,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d768e59a-cd63-4590-90dc-534081be9e45",
+								"id": "e4052c4d-a0d7-4735-9510-412f946395d2",
 								"exec": [
 									""
 								],
@@ -1800,7 +1986,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3a9701f7-2606-4086-b1b4-1e435126a04c",
+								"id": "d10e3f5d-5a9e-4fd8-bf7d-c3df76232c33",
 								"exec": [
 									"pm.test(\"Place is not added\", function () {\r",
 									"    pm.response.to.have.status(409);\r",
@@ -1812,9 +1998,8 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c8c36262-83bf-4f94-b8a0-6069addf97a5",
+								"id": "fb844fbe-3330-4206-9a7a-85e2334b7abb",
 								"exec": [
-									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1854,13 +2039,14 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d3fdb312-9c58-4f2e-b7bf-c0ed266ae5cb",
+								"id": "e0ee444c-02e3-40eb-8608-df76e8dde41d",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"Validate that places is not empty\", function (){\r",
 									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"\tpm.expect(pm.response.json().places).to.contain(pm.variables.get(\"placeId\"));\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1891,7 +2077,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "20e5e3b4-0ed9-436a-9cf6-c967f96db839",
+								"id": "96916508-eea0-4643-98d0-4301de031ed4",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1932,7 +2118,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "527dd1f8-127d-44b3-bf0b-907aacbfddad",
+								"id": "84dd0492-bff6-4818-af73-cf6d808fdc8d",
 								"exec": [
 									""
 								],
@@ -1942,7 +2128,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4e857d7e-dc5b-4235-b8be-c5920c7ed003",
+								"id": "a2f164cf-d0d0-4a5a-8a4a-64d1d43f049f",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1976,12 +2162,12 @@
 					"response": []
 				},
 				{
-					"name": "Add a place to trip Copy",
+					"name": "Add a place to trip 2",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "4c4207db-01a4-452c-9214-90bb36ca0348",
+								"id": "4923a0fa-3eb7-4352-8c41-f56a5d740005",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2028,7 +2214,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ca84fc5c-69a3-46fa-ba6d-f60adaeba1c5",
+								"id": "9bf61760-8c6c-4af7-b815-40558922bc46",
 								"exec": [
 									""
 								],
@@ -2038,7 +2224,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7e5bcacb-b345-454d-b327-df95b0db75c3",
+								"id": "50ea456a-298d-4a72-bed4-e07f67fe0b6c",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2075,7 +2261,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b3a92662-b97f-4812-beff-4c81e3f3d85e",
+								"id": "6c773773-4928-455a-9cb2-d4fcfc6151da",
 								"exec": [
 									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
 								],
@@ -2085,7 +2271,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "afdb7299-e6c2-46ec-9fff-a8709e415433",
+								"id": "e0814f67-5665-4519-975d-dea2611c1ed0",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2117,12 +2303,185 @@
 					"response": []
 				},
 				{
-					"name": "Delete a place by id Copy",
+					"name": "Delete all trips in database",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "847f14e4-c185-4b9e-ab94-59929f2c0bf2",
+								"id": "2f95cccb-fbaa-4d06-a1c5-79e04986f10d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3e182c54-8cb4-4634-b2c9-39246ccc9541",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check deleted trips count\", function () {\r",
+									"\tpm.expect(pm.response.json().deletedCount).to.equal(1)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new public trip object 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7fd6c4b6-5de3-4582-9b16-07495e7db937",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testTrip\", pm.response.json());\r",
+									"pm.environment.set(\"tripId\", pm.response.json()._id);\r",
+									"\r",
+									"var tripName = \"Sandras Trip\";\r",
+									"var testTrip = pm.variables.get(\"testTrip\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testTrip.name).to.equal(tripName);\r",
+									"\tpm.expect(testTrip.public).to.equal(true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2b10f972-ffbe-4b0c-b14d-b65451249a29",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Sandras Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\",\r\n\t\"public\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new private trip object 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f5e6f408-a8c9-4d9a-b9c0-a270f8a107d2",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testTrip2\", pm.response.json());\r",
+									"pm.environment.set(\"tripId2\", pm.response.json()._id);\r",
+									"\r",
+									"var tripName = \"Samuels private Trip\";\r",
+									"var testTrip2 = pm.variables.get(\"testTrip2\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testTrip2.name).to.equal(tripName);\r",
+									"\tpm.expect(testTrip2.public).to.equal(false);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "12265e23-ff7c-45cc-b5c8-303e9c88e0d2",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Samuels private Trip\",\r\n\t\"places\": [],\r\n\t\"user\": \"5f63752c18e1524c60444c66\",\r\n\t\"public\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/trips/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a test place by id",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fc981cad-cd04-4f58-901f-4c810e574796",
 								"exec": [
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
 								],
@@ -2132,7 +2491,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d404eda7-9f0d-443b-86f8-bc07c425b10e",
+								"id": "dd688ba1-7650-4441-a6a9-558181f01e0c",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2162,6 +2521,58 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete all trips for specific user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6a988773-8c51-4558-9015-e640f921be04",
+								"exec": [
+									"pm.variables.set(\"tripId\", pm.variables.get(\"testTrip\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "78fd8c91-3454-4e35-8326-da70c542102d",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check deleted trips count for user\", function () {\r",
+									"\tpm.expect(pm.response.json().deletedCount).to.equal(2)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/trips?user=5f63752c18e1524c60444c66",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"trips"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "5f63752c18e1524c60444c66"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2175,7 +2586,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a26ab534-4187-4eec-8c7e-2cf89f75d210",
+								"id": "4dedcfa4-3696-4a37-baeb-721bcf843d0d",
 								"exec": [
 									"pm.variables.set( \"email\", \"testemail@test.com\");",
 									"pm.variables.set(\"password\", \"testpassword\");",
@@ -2189,7 +2600,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a948f81e-60a1-4641-b6b2-1709509a0d9c",
+								"id": "fa50cc73-4115-4f5f-a643-5ee7077cc1d2",
 								"exec": [
 									"pm.test(\"Status code is 201\", function () {",
 									"    pm.response.to.have.status(201);",
@@ -2207,8 +2618,9 @@
 									"pm.test(\"Verify that user is created with correct last name\", function() {",
 									"    pm.expect(user.last_name).to.equal(pm.variables.get(\"last_name\"));",
 									"});",
-									"pm.environment.set(\"user\", user);",
-									"pm.environment.set(\"user_id\", user._id);",
+									"pm.environment.set(\"post_user\", user);",
+									"pm.environment.set(\"post_user_id\", user._id);",
+									"",
 									""
 								],
 								"type": "text/javascript"
@@ -2253,9 +2665,10 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "48ef6142-0b72-477a-b732-8e49c3a113da",
+								"id": "2b5e22e2-5d09-4271-b10d-e79263081533",
 								"exec": [
-									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))\r",
+									"pm.environment.set(\"date\", Date.now())"
 								],
 								"type": "text/javascript"
 							}
@@ -2263,7 +2676,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9674d47e-1fda-4d52-a76c-5b6b28d3ed59",
+								"id": "20f552f5-0449-4d92-85eb-d626340bd578",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -2276,6 +2689,10 @@
 									"\r",
 									"pm.test(\"Successful title validation\", function(){\r",
 									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful author validation\", function(){\r",
+									"    pm.expect(pm.environment.get(\"testPost\").author).to.equal(pm.environment.get(\"post_user_id\"));\r",
 									"});\r",
 									"\r",
 									"\r",
@@ -2297,7 +2714,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\"\r\n}\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\",\r\n\t\"author\": \"{{post_user_id}}\",\r\n\t\"date\": \"{{date}}\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2324,7 +2741,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "90b6fe2a-8664-4485-9b5e-b6f57aa57b38",
+								"id": "1a47e30a-9241-4c24-8422-7abda6162728",
 								"exec": [
 									""
 								],
@@ -2334,7 +2751,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fbd191cf-eb0b-4419-9750-85f51c6f0054",
+								"id": "e24d100a-b544-40d5-b2bc-6e568a0c639a",
 								"exec": [
 									"pm.test(\"Title already created\", function(){\r",
 									"    pm.response.to.have.status(409);\r",
@@ -2382,7 +2799,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e039a970-3187-4fdf-84b2-608c52c2afe1",
+								"id": "be5100b5-e1eb-401f-aecb-dfdfbf3818f4",
 								"exec": [
 									""
 								],
@@ -2392,14 +2809,18 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "07344cc9-9ef9-4816-bb3b-8d8f44ced9dc",
+								"id": "6b5245f2-eeb2-4152-9b93-2fef85e1bfb0",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"pm.test(\"Validate that database is not empty\", function (){\r",
 									"    pm.expect(pm.response.json().posts).to.be.not.empty;\r",
-									"});"
+									"});\r",
+									"pm.test(\"Check elements in post responce validation\", function(){\r",
+									"    pm.expect(pm.response.json().posts[0].title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -2446,7 +2867,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7e063632-4edf-43c7-9116-b0d36ee34530",
+								"id": "9e850915-280e-4b38-8ab4-de2e54f1e47e",
 								"exec": [
 									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
 								],
@@ -2456,7 +2877,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "505bed73-665c-4b86-90b6-7715d037118a",
+								"id": "9d2006a7-1e9a-4c07-80fe-be9d6e5834ef",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2511,12 +2932,165 @@
 					"response": []
 				},
 				{
+					"name": "Create secondPost",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "76e1a524-0711-43b6-a7f0-e1e488940f10",
+								"exec": [
+									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))\r",
+									"pm.environment.set(\"date\", Date.now())"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "19706d6b-9046-4062-824d-e925051f69c7",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPost\", pm.response.json());\r",
+									"\r",
+									"var title = pm.environment.get(\"testPost\").title;\r",
+									"\r",
+									"\r",
+									"pm.test(\"Successful title validation\", function(){\r",
+									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Successful author validation\", function(){\r",
+									"    pm.expect(pm.environment.get(\"testPost\").author).to.equal(pm.environment.get(\"post_user_id\"));\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset\",\r\n\t\"author\": \"{{post_user_id}}\",\r\n\t\"date\": \"{{date}}\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get posts for specific user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "e985163f-3eed-474d-9ff8-ee141b8991d7",
+								"exec": [
+									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0bfde86-2e49-4052-b05a-dddd5b017ac4",
+								"exec": [
+									"pm.test(\"Successful GET request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"var expectedPostList = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Check if post result list is not empty\", function (){\r",
+									"    pm.expect(expectedPostList.length).to.equal(2);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check if not empty\", function () {\r",
+									"\tpm.expect(expectedPostList).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts?user={{post_user_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "{{post_user_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Replace a post by id",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9130f3ab-926e-4756-89af-ecbca80423b7",
+								"id": "6c5ab690-7883-46e6-8a24-40c625c899de",
 								"exec": [
 									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);\r",
 									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
@@ -2527,7 +3101,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b63289d3-a712-47c5-a304-a2155a3d4033",
+								"id": "25987907-d19f-4a08-bf9c-28cd13e5e8ea",
 								"exec": [
 									"pm.test(\"Successful PUT request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2539,6 +3113,9 @@
 									"\r",
 									"pm.test(\"Successful title validation\", function(){\r",
 									"    pm.expect(title).to.equal(pm.environment.get(\"postTitle\"));\r",
+									"});\r",
+									"pm.test(\"Successful text validation\", function(){\r",
+									"    pm.expect(pm.environment.get(\"testPost\").text).to.equal(\"Test text\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2556,7 +3133,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"I had a wonderful time eating finnish buns in the sunset with @Sven\",\r\n    \"author\": \"{{user_id}}\",\r\n    \"date\": \"\"\r\n}\r\n\r\n",
+							"raw": "{\r\n    \"title\": \"{{postTitle}}\",\r\n    \"text\": \"Test text\",\r\n    \"author\": \"{{user_id}}\",\r\n    \"date\": \"{{date}}\"\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2583,7 +3160,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e2a8623c-e4ae-4cad-bbcb-56eeba322a00",
+								"id": "102ef7a1-6251-4490-812e-7e189b44356d",
 								"exec": [
 									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);\r",
 									"pm.environment.set(\"postTitle\", pm.variables.replaceIn('{{$randomCatchPhrase}}'))"
@@ -2594,7 +3171,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8cf725ea-70a1-4ee5-a1df-37e927b587b9",
+								"id": "f668fab0-4955-4db1-964b-cf62a98a4387",
 								"exec": [
 									"pm.test(\"Successful PUT request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2650,7 +3227,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7fe60700-20b9-4dfb-af65-3336706b8f37",
+								"id": "31187745-1e0e-41e4-9c04-89118021b3b2",
 								"exec": [
 									"pm.variables.set(\"postId\", pm.variables.get(\"testPost\")._id);"
 								],
@@ -2660,7 +3237,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "48bcab85-b3da-4c23-8178-2125d9e69c4a",
+								"id": "f056da32-4814-4e81-aa5a-e5d4018c65c3",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2705,6 +3282,67 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete all posts in database",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a506ca49-812e-4e10-aba6-b8587367d6e5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "44728f27-6e20-4cdb-8a91-fd680c934fde",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check deleted post count\", function () {\r",
+									"\tpm.expect(pm.response.json().deletedCount).to.equal(1)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2718,7 +3356,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "37d101cf-623c-4f96-9637-d71ac379187e",
+								"id": "6d9919fe-4ec9-4fa7-b7ea-10fac0561e1e",
 								"exec": [
 									""
 								],
@@ -2728,7 +3366,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cb8f1a46-db91-437c-a945-1a15e02058d3",
+								"id": "6a7ff56d-b08f-465b-9ea2-b5b454eac893",
 								"exec": [
 									"pm.test(\"Successful POST request\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -2737,7 +3375,7 @@
 									"pm.environment.set(\"testPlace\", pm.response.json());\r",
 									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
 									"\r",
-									"var placeName = \"Gustav II Adolfs staty\";\r",
+									"var placeName = \"LaFayette Park\";\r",
 									"var testPlace = pm.variables.get(\"testPlace\");\r",
 									"\r",
 									"pm.test(\"Successful name validation\", function(){\r",
@@ -2760,7 +3398,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Gustav II Adolfs staty\",\r\n      \"address\":{\r\n         \"city\":\"Gbg\",\r\n         \"road\":\"Norra Hamngatan\",\r\n         \"state\" :\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"address29\":\"Gustaf Adolfs Torg\",\r\n         \"country_code\":\"se\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/Gustav%20II%20Adolfs%20staty%2C%20G%C3%B6teborg\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:G%C3%B6teborg.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Gustav II Adolfs staty, Göteborg\",\r\n         \"text\":\"Gustav II Adolfs staty är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:.\",\r\n         \"html\":\"<p><b>Gustav II Adolfs staty</b> är en bronsstaty av Bengt Erland Fogelberg, uppförd 1854 på Gustaf Adolfs Torg i centrala Göteborg. Statyn som är Göteborgs äldsta offentliga konstverk föreställer Gustav II Adolf pekande med höger hand ned mot torget samtidigt som han tittar i fjärran å andra hållet, och avbildar det tänkta tillfälle när kungen ska ha uttalat \\\"Här ska staden ligga!\\\", och på ett symboliskt plan representerar statyn därmed tillblivelsen av staden Göteborg. Statyn är placerad på en hög kvadratisk bronssockel ovanpå ett trappstegsformat fundament i sten. På sockeln finns inskriptionen:</p><p>.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966817,\r\n         \"lat\":57.707104\r\n      }\r\n   }\r\n",
+							"raw": "   {\r\n      \"name\":\"LaFayette Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Elk Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"house_number\":\"33\",\r\n         \"neighbourhood\":\"Sheridan Hollow\"\r\n      },\r\n      \"wikipedia\":\"https://en.wikipedia.org/wiki/Lafayette%20Park%20Historic%20District\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Elk_Street_Albany.jpg/400px-Elk_Street_Albany.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"en:Lafayette Park Historic District\",\r\n         \"text\":\"The Lafayette Park Historic District is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.\",\r\n         \"html\":\"<p>The <b>Lafayette Park Historic District</b> is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.755806,\r\n         \"lat\":42.653233\r\n      }\r\n   }\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2786,7 +3424,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fe4df60c-dd52-4f06-b448-c12cd8831ebc",
+								"id": "1244a8f7-0715-47b2-a228-05980d886e7f",
 								"exec": [
 									""
 								],
@@ -2796,13 +3434,18 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8ac22b64-e604-4517-831e-fc5b9255b028",
+								"id": "a2704f55-b6a0-4b4e-9c38-993be48465d8",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"var places = pm.response.json().places;\r",
+									"\r",
 									"pm.test(\"Validate that database is not empty\", function (){\r",
-									"    pm.expect(pm.response.json().places).to.be.not.empty;\r",
+									"    pm.expect(places).to.be.not.empty;\r",
+									"\tpm.expect(places.length).to.be.equal(1);\r",
+									"\tpm.expect(places[0].name).to.be.equal(\"LaFayette Park\")\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2849,7 +3492,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ac3cc33a-42c2-42ea-90aa-7dc7fd6e881a",
+								"id": "d7818249-ae8a-453d-b52d-a57a40b39b59",
 								"exec": [
 									""
 								],
@@ -2859,7 +3502,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a666ffc0-4034-4e84-b027-c2b89cb3af4a",
+								"id": "9d63d805-d30f-4a15-95e7-02d8d6d40e64",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2868,6 +3511,13 @@
 									"\r",
 									"pm.test(\"Validate that results are reseived and are not empty\", function (){\r",
 									"    pm.expect(paginatedPlaces.results).to.be.not.empty;\r",
+									"});\r",
+									"\r",
+									"var places = pm.response.json().results;\r",
+									"\r",
+									"pm.test(\"Validate that place is in database\", function (){\r",
+									"\tpm.expect(places.length).to.be.equal(1);\r",
+									"\tpm.expect(places[0].name).to.be.equal(\"LaFayette Park\")\r",
 									"});\r",
 									""
 								],
@@ -2925,7 +3575,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d411a47a-2c85-47d1-a8f0-5ccf019acc31",
+								"id": "e1aec3d9-0ad6-4af2-ac5b-164be6f26e50",
 								"exec": [
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
 									"\r",
@@ -2937,7 +3587,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6fdb346c-c422-427b-bea2-804d6e8a0fb4",
+								"id": "a5f22400-e6a0-46ab-a9ae-cbf552d1b9da",
 								"exec": [
 									"pm.test(\"Successful GET request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -2997,7 +3647,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fd0445f1-fd28-496d-a81b-e51f2ee9d165",
+								"id": "c179fc4d-c83e-4022-8b91-e2d9db39be9b",
 								"exec": [
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);\r",
 									""
@@ -3008,7 +3658,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "76369a25-16d1-43a7-98d7-38838132216d",
+								"id": "1eff4d9c-8b9b-474c-833c-99b6c4ca58be",
 								"exec": [
 									"pm.test(\"Successful PUT request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3021,7 +3671,7 @@
 									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
 									"});\r",
 									"\r",
-									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
 									""
 								],
 								"type": "text/javascript"
@@ -3039,7 +3689,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Göteborgs stadshus\",\r\n      \"address\":{\r\n          \"city\":\"Gbg\",\r\n         \"road\":\"Gustaf Adolfs Torg\",\r\n         \"state\":\"Västra Götalands län\",\r\n         \"county\":\"Göteborg\",\r\n         \"suburb\":\"Nordstaden\",\r\n         \"country\":\"Sverige\",\r\n         \"postcode\":\"41106\",\r\n         \"country_code\":\"se\",\r\n         \"house_number\":\"4A\",\r\n         \"city_district\":\"Centrum\"\r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
+							"raw": "{\r\n      \"name\":\"Academy Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Eagle Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"neighbourhood\":\"Downtown\"\r\n      },\r\n      \"wikipedia\":\"https://ce.wikipedia.org/wiki/%3AAcademy%20Park%20%28parke%20sa%20Tinipong%20Bansa%2C%20New%20York%29\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USA_location_map.svg/400px-USA_location_map.svg.png\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"ceb:Academy Park (parke sa Tinipong Bansa, New York)\",\r\n         \"text\":\"Parke ang Academy Park sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.\",\r\n         \"html\":\"<p>Parke ang <b>Academy Park</b> sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.754883,\r\n         \"lat\":42.652645\r\n      }\r\n   }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3066,7 +3716,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "bae42417-3940-4080-8e79-910756bd4e18",
+								"id": "6cbe07f1-ab0c-473e-a627-024c622dd7a5",
 								"exec": [
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
 								],
@@ -3076,7 +3726,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "773aae43-db06-4246-ae0d-1c89c8c91127",
+								"id": "222008f4-9e1f-40de-a580-d145e4a37993",
 								"exec": [
 									"pm.test(\"Successful PATCH request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3089,7 +3739,7 @@
 									"    pm.expect(pm.variables.get(\"testPlace\").address).to.not.equal(pm.response.json().address);\r",
 									"});\r",
 									"pm.test(\"Validate same values in unchanged object fields\", function (){\r",
-									"    pm.expect(pm.variables.get(\"testPlace\").title).to.equal(pm.response.json().title);\r",
+									"    pm.expect(pm.variables.get(\"testPlace\").wikipedia_extracts.title).to.equal(pm.response.json().wikipedia_extracts.title);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3101,7 +3751,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "   {\r\n      \"name\":\"Göteborgs new name\",\r\n      \"address\":{\r\n          \"city\":\"Gbg-test\",\r\n         \"road\":\"Gustaf Adolfs Torg- test\",\r\n         \"state\":\"Västra Götalands län - test\",\r\n         \"county\":\"Göteborg - test\",\r\n         \"suburb\":\"Nordstaden - test\",\r\n         \"country\":\"Sverige- test\",\r\n         \"postcode\":\"41106 - test\",\r\n         \"country_code\":\"se - test\",\r\n         \"house_number\":\"4A - test\",\r\n         \"city_district\":\"Centrum -  test\" \r\n      },\r\n      \"wikipedia\":\"https://sv.wikipedia.org/wiki/G%C3%B6teborgs%20stadshus\",\r\n      \"image\":\"https://commons.wikimedia.org/wiki/File:Nordst_16_2_Gbg_Stadshus_1.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"sv:Göteborgs stadshus  test\",\r\n         \"text\":\"Stadshuset i Göteborg, ligger vid Gustaf Adolfs torg 4 och Postgatan 35 - en genomgående tomt - i stadsdelen Nordstaden i centrala Göteborg. Stadshuset är förvaltningsbyggnad för Göteborgs stad med sammanträdessal och tjänsterum för kommunstyrelsen. Mot torget har huvudbyggnaden tre och en halv våning slätputsad fasad, med en nyklassicistisk stil och en utbyggd entréport. På andra sidan, mot Postgatan, finns ett tvåvåningshus med ett högt brant tak och en putsad fasad som är indelad med lisener. Stadshuset är uppfört mellan det Wenngrenska huset och Börsen. Det är byggnadsminne sedan 24 oktober 1968 respektive 21 december 1973.\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":11.966537,\r\n         \"lat\":57.707436\r\n      }\r\n   }\r\n",
+							"raw": "{\r\n      \"name\":\"Academy Test Park\",\r\n      \"address\":{\r\n         \"city\":\"Test\",\r\n         \"road\":\"Test\",\r\n         \"state\":\"Test York\",\r\n         \"county\":\"Test County\",\r\n         \"country\":\"Test States of America\",\r\n         \"postcode\":\"1234556\",\r\n         \"country_code\":\"Test\",\r\n         \"neighbourhood\":\"Test\"\r\n      },\r\n      \"wikipedia\":\"https://ce.wikipedia.org/wiki/%3AAcademy%20Park%20%28parke%20sa%20Tinipong%20Bansa%2C%20New%20York%29\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USA_location_map.svg/400px-USA_location_map.svg.png\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"ceb:Academy Park (parke sa Tinipong Bansa, New York)\",\r\n         \"text\":\"Parke ang Academy Park sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.\",\r\n         \"html\":\"<p>Parke ang <b>Academy Park</b> sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.754883,\r\n         \"lat\":42.652645\r\n      }\r\n   }\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3128,7 +3778,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9a91cf5e-928a-4924-a0cc-a251e486931b",
+								"id": "5c6d4817-1264-4f0f-8726-a616e44a733c",
 								"exec": [
 									"pm.variables.set(\"placeId\", pm.variables.get(\"testPlace\")._id);"
 								],
@@ -3138,7 +3788,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8466bcc3-3a80-40f3-b7bc-bf30ec17d918",
+								"id": "5c5d6c22-3841-43b9-87fa-394e41366753",
 								"exec": [
 									"pm.test(\"Successful DELETE request\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -3168,6 +3818,203 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create place object 1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "6ae2f5ba-0147-4232-a77a-d67f48d86619",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c87b74a2-402c-43d6-a29f-5ee8a9bf35e4",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
+									"\r",
+									"var placeName = \"LaFayette Park\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "   {\r\n      \"name\":\"LaFayette Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Elk Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"house_number\":\"33\",\r\n         \"neighbourhood\":\"Sheridan Hollow\"\r\n      },\r\n      \"wikipedia\":\"https://en.wikipedia.org/wiki/Lafayette%20Park%20Historic%20District\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Elk_Street_Albany.jpg/400px-Elk_Street_Albany.jpg\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"en:Lafayette Park Historic District\",\r\n         \"text\":\"The Lafayette Park Historic District is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.\",\r\n         \"html\":\"<p>The <b>Lafayette Park Historic District</b> is located in central Albany, New York, United States. It includes the park and the combination of large government buildings and small rowhouses on the neighboring streets. In 1978 it was recognized as a historic district and listed on the National Register of Historic Places (NRHP). Many of its contributing properties are themselves listed on the National Register. One of them, the New York State Capitol, is a National Historic Landmark as well. City hall and the building housing Albany County government, along with the state's highest court and the offices of its Education Department. The Episcopal Diocese of Albany also has its cathedral within the district.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.755806,\r\n         \"lat\":42.653233\r\n      }\r\n   }\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create place object 2",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "09d4af56-52db-4cc3-9612-00d67548a94d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "74371382-597c-4616-a28e-484a116eb00d",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"testPlace\", pm.response.json());\r",
+									"pm.environment.set(\"placeId\", pm.response.json()._id);\r",
+									"\r",
+									"var placeName = \"Academy Park\";\r",
+									"var testPlace = pm.variables.get(\"testPlace\");\r",
+									"\r",
+									"pm.test(\"Successful name validation\", function(){\r",
+									"    pm.expect(testPlace.name).to.equal(placeName);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\":\"Academy Park\",\r\n      \"address\":{\r\n         \"city\":\"Albany\",\r\n         \"road\":\"Eagle Street\",\r\n         \"state\":\"New York\",\r\n         \"county\":\"Albany County\",\r\n         \"country\":\"United States of America\",\r\n         \"postcode\":\"12207\",\r\n         \"country_code\":\"us\",\r\n         \"neighbourhood\":\"Downtown\"\r\n      },\r\n      \"wikipedia\":\"https://ce.wikipedia.org/wiki/%3AAcademy%20Park%20%28parke%20sa%20Tinipong%20Bansa%2C%20New%20York%29\",\r\n      \"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USA_location_map.svg/400px-USA_location_map.svg.png\",\r\n      \"wikipedia_extracts\":{\r\n         \"title\":\"ceb:Academy Park (parke sa Tinipong Bansa, New York)\",\r\n         \"text\":\"Parke ang Academy Park sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.\",\r\n         \"html\":\"<p>Parke ang <b>Academy Park</b> sa Tinipong Bansa. Ang Academy Park nahimutang sa kondado sa Albany County ug estado sa New York, sa sidlakang bahin sa nasod, 500 km sa amihanan-sidlakan sa ulohang dakbayan Washington, D.C. 45 metros ibabaw sa dagat kahaboga ang nahimutangan sa Academy Park.</p>\"\r\n      },\r\n      \"point\":{\r\n         \"lon\":-73.754883,\r\n         \"lat\":42.652645\r\n      }\r\n   }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all places in database",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "532c9f31-66e6-46c7-a68d-268571a9f546",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a785805-0999-482c-bca2-61277b4c4ec7",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check deleted places count\", function () {\r",
+									"\tpm.expect(pm.response.json().deletedCount).to.equal(2)\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/places",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"places"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -3178,7 +4025,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "649bb4f4-a25d-40ef-810d-da3974807f06",
+						"id": "9826b3ef-61a1-478c-8d7e-febf3b464a75",
 						"exec": [
 							""
 						],
@@ -3188,7 +4035,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c6c9c7dc-9db6-4704-85b6-f0921f956e20",
+						"id": "0f3c4f7f-04bc-411b-83e8-6a2c958776a4",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -3224,7 +4071,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2d8ba603-6ca5-4222-9e68-e1544b7e4e02",
+				"id": "f9302e00-d270-402e-8070-596dd1dd0399",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3234,7 +4081,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "40fc2ecc-52c8-467b-b3ce-b21034c6487f",
+				"id": "576e7d03-d643-4791-802e-4108442ff9a2",
 				"type": "text/javascript",
 				"exec": [
 					""

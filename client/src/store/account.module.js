@@ -1,4 +1,5 @@
 import UserService from '../services/UserService.js'
+
 const user = JSON.parse(localStorage.getItem('user'))
 const initialState = user
   ? { status: { currentUser: true }, user }
@@ -27,7 +28,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('addingFailed')
           return Promise.reject(error)
         }
       )
@@ -39,7 +39,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('deletionFailed')
           return Promise.reject(error)
         }
       )
@@ -51,7 +50,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('deletionFailed')
           return Promise.reject(error)
         }
       )
@@ -75,7 +73,6 @@ export const account = {
           return Promise.resolve(user)
         },
         error => {
-          commit('updateFailed')
           return Promise.reject(error)
         }
       )

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="lg" type="dark" variant="info">
+        <b-navbar toggleable="lg" type="light" variant="light" fixed="top">
             <b-navbar-brand>
                 <router-link to="/">
                     <b-img id="navbarImg" :src="require('../../assets/logo-and-text.png')"></b-img>
@@ -30,5 +30,5 @@ export default {
   name: 'navigationBar'
 }
 </script>
-<style>
+<style scoped>
 </style>
